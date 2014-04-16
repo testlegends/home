@@ -1,0 +1,89 @@
+<div class="row project-details" ng-repeat="project in projects | filter: projectQuery | orderBy: orderPredicate:reverse | filterMenu: filterPredicate">
+	<div class="col-lg-3">
+		<a href="#" ng-click="" eat-click>{{project.name}}</a> &nbsp;
+		<span ng-bind-html-unsafe="project.link | makeURL"></span>
+		<div>(Status: {{project.info.status}})</div>
+	</div>
+
+	<div class="col-lg-2">
+		<table>
+			<tr ng-if="project.tool.cakephp"><td class="list-title">CakePHP</td><td class="list-value">{{project.tool.cakephp}}</td></tr>
+			<tr ng-if="project.tool.wordpress"><td class="list-title">WordPress</td><td class="list-value">{{project.tool.wordpress}}</td></tr>
+			<tr ng-if="project.tool.angularjs"><td class="list-title">AngularJS</td><td class="list-value">{{project.tool.angularjs}}</td></tr>
+			<tr ng-if="project.tool.jquery"><td class="list-title">jQuery</td><td class="list-value">{{project.tool.jquery}}</td></tr>
+			<tr ng-if="project.tool.bootstrap"><td class="list-title">Bootstrap</td><td class="list-value">{{project.tool.bootstrap}}</td></tr>
+			<tr ng-if="project.tool.fontawesome"><td class="list-title">FontAwesome</td><td class="list-value">{{project.tool.fontawesome}}</td></tr>
+		</table>
+	</div>
+
+	<div class="col-lg-2">
+		<table>
+			<tr ng-repeat="tool in project.tool.others">
+				<td class="list-title">{{tool.name}}</td>
+				<td class="list-value">{{tool.version}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-lg-5">
+		<ul id="repos">
+			<li ng-repeat="repo in project.repo">
+				<span class="list-title">{{repo.location}}</span><span class="list-value">{{repo.path}}</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<style type="text/css">
+	.project-details {
+		border-bottom: 1px solid #666;
+		padding: 10px 0;
+		font-size: 90%;
+	}
+
+	.list-title {
+		font-weight: bold;
+		padding-right: 5px;
+	}
+
+	.list-title:after {
+		content: ":";
+	}
+
+	ul#repos {
+		list-style: none;
+	}
+</style>
+
+	<!--table class="table table-striped table-bordered table-hover" id="projects">
+		<thead>
+			<th><a href="" ng-click="orderPredicate = 'name'; reverse = !reverse">Name</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.cakephp'; reverse = !reverse">CakePHP</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.wordpress'; reverse = !reverse">WordPress</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.angularjs'; reverse = !reverse">AngularJS</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.jquery'; reverse = !reverse">jQuery</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.bootstrap'; reverse = !reverse">Bootstrap</a></th>
+			<th><a href="" ng-click="orderPredicate = 'tool.fontawesome'; reverse = !reverse">Font Awesome</a></th>
+			<th><a href="" ng-click="orderPredicate = 'info.year'; reverse = !reverse">Year</a></th>
+			<th><a href="" ng-click="orderPredicate = 'info.status'; reverse = !reverse">Status</a></th>
+			<th>Git Repos</th>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="project in projects | filter: projectQuery | orderBy: orderPredicate:reverse | filterMenu: filterPredicate">
+				<td>
+					<a href="#" ng-click="" eat-click>{{project.name}}</a> &nbsp;
+					<span ng-bind-html-unsafe="project.link | makeURL"></span>
+				</td>
+				<td>{{project.tool.cakephp}}</td>
+				<td>{{project.tool.wordpress}}</td>
+				<td>{{project.tool.angularjs}}</td>
+				<td>{{project.tool.jquery}}</td>
+				<td>{{project.tool.bootstrap}}</td>
+				<td>{{project.tool.fontawesome}}</td>
+				<td>{{project.info.year}}</td>
+				<td>{{project.info.status}}</td>
+				<td><a href="#" ng-click="" eat-click>{{project.repo.length}}</a></td>
+			</tr>
+		</tbody>
+	</table-->
