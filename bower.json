@@ -1,0 +1,26 @@
+{
+  "name": "leejefon-project-catalog",
+  "version": "0.0.0",
+  "authors": [
+    "Jeff Lee <leejefon@gmail.com>"
+  ],
+  "description": "My Own Project Catalog",
+  "main": "app.js",
+  "license": "MIT",
+  "homepage": "http://jefflee.net",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-loading-bar": "~0.3.0",
+    "angular-route": "~1.2.15",
+    "underscore": "~1.6.0",
+    "requirejs": "~2.1.11",
+    "oauth-js": "~0.1.7"
+  }
+}
