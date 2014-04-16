@@ -1,13 +1,14 @@
 {
-  "name": "leejefon-project-catalog",
-  "version": "0.0.0",
+  "name": "TestLegends",
+  "version": "0.1.0",
   "authors": [
-    "Jeff Lee <leejefon@gmail.com>"
+    "Jeff Lee <leejefon@gmail.com>",
+    "Alex Chen <alexwchenpro@gmail.com>"
   ],
-  "description": "My Own Project Catalog",
+  "description": "TestLegends",
   "main": "app.js",
   "license": "MIT",
-  "homepage": "http://jefflee.net",
+  "homepage": "http://testlegends.com",
   "private": true,
   "ignore": [
     "**/.*",

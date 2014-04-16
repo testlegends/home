@@ -4,7 +4,7 @@
   "author": "Jeff Lee",
   "version": "0.1.0",
   "private": true,
-  "repository": "https://github.com/leejefon/Sails-Template",
+  "repository": "https://github.com/testlegends/testlegends",
   "main": "app.js",
   "license": "",
   "engines": {
@@ -33,7 +33,8 @@
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jst": "^0.6.0",
-    "grunt-sails-linker": "^0.9.5"
+    "grunt-sails-linker": "^0.9.5",
+    "sendgrid": "^1.0.2"
   },
   "devDependencies": {
     "sails-disk": "~0.9.0",

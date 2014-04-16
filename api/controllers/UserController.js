@@ -19,7 +19,7 @@
 var Html = require('../helpers/HtmlHelper.js'),
 Form = require('../helpers/FormHelper.js');
 
-var Mailer = require("nodemailer");
+var Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 var MD5 = require('MD5');
 
 module.exports = (function () {
@@ -27,10 +27,10 @@ module.exports = (function () {
     var helpers = { Html: Html, Form: Form };
 
     var params = {
-        project_name: 'Project Catalog',
-        project_domain: 'http://leejefon-project-catalog.herokuapp.com',
+        project_name: 'TestLegends',
+        project_domain: 'http://testlegends.herokuapp.com',
         //project_domain: 'http://localhost:1337',
-        admin_email: 'leejefon@gmail.com'
+        admin_email: 'admin@testlegends.com'
     };
 
     function login (req, res) {
@@ -187,14 +187,6 @@ module.exports = (function () {
                     }
                 }, helpers));
             } else {
-                var transport = Mailer.createTransport("SMTP", {
-                    service: "Gmail",
-                    auth: {
-                        user: "leejefon@gmail.com",
-                        pass: process.env.GMAIL_PASSWORD
-                    }
-                });
-
                 var mailOptions = {
                     from: params.admin_email,
                     to: email,
@@ -202,7 +194,7 @@ module.exports = (function () {
                     text: params.project_domain + "/user/reset_password/" + key
                 };
 
-                transport.sendMail(mailOptions, function (err, response) {
+                Sendgrid.send(mailOptions, function (err, response) {
                     if (err) {
                         return res.view(_.extend({
                             key: null,
