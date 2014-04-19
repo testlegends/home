@@ -10,16 +10,14 @@
 <%- Form.end('Login') %>
 
 <script type="text/javascript">
-	$(document).ready(function($){
-		$('#Username').focus();
+	$(document).ready(function(){
+		$('input[name=username]').focus();
 
 		var reset_password = 'Reset Password';
         $('input[name=password]').parent('div').after($('<div />').addClass('col-lg-2 reset-password').html(
             $('<a />').attr('href', '/user/reset_password').html(reset_password)
         ));
-
-        $('#submit').parent('div').removeClass('col-lg-4').addClass('col-lg-1');
-    });
+	});
 </script>
 
 <style type="text/css">

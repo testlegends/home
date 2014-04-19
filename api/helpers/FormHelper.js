@@ -7,10 +7,10 @@
  */
 
 var Html = require('./HtmlHelper.js'),
+    ChangeCase = require('change-case'),
 	_ = require('underscore');
 
 module.exports = {
-
 	create: function(model, options) {
 		if (!_.isEmpty(model)) {
 			try {
@@ -25,7 +25,8 @@ module.exports = {
 		options = _.extend({
 			method: 'GET',
 			action: '',
-			encoding: 'utf8'
+			encoding: 'utf8',
+            name: model + 'Form'
 		}, options);
 
 		return Html._tags.form({ action: options.action, attrs: Html._parseAttributes(options, ['action']) });
@@ -49,7 +50,7 @@ module.exports = {
 		if (selectOptions) {
 
 		} else if (fieldName === 'password' || type === 'password') {
-      options.type = 'password';
+            options.type = 'password';
 			result = this._textField(fieldName, options);
 		} else if (type === 'string' || type === 'text') {
 			options.type = 'text';
@@ -62,9 +63,11 @@ module.exports = {
 
 		} else if (type === 'boolean') {
 
-		}
+		} else if (type === 'button' || type === 'submit') {
 
-		result = Html.div('form-group') + Html._tags.label({ id: options.id, name: fieldName, attrs: null }) + result + '</div>';
+        }
+
+		result = Html.div('form-group') + Html._tags.label({ id: options.id, name: ChangeCase.titleCase(fieldName), attrs: null }) + result + '</div>';
 
 		return result;
 	},
