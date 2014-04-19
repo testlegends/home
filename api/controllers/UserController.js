@@ -17,10 +17,10 @@
  */
 
 var Html = require('../helpers/HtmlHelper.js'),
-Form = require('../helpers/FormHelper.js');
-
-var Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-var MD5 = require('MD5');
+    Form = require('../helpers/FormHelper.js'),
+    Passport = require('passport'),
+    bcrypt = require('bcrypt'),
+    Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 module.exports = (function () {
 
@@ -37,30 +37,27 @@ module.exports = (function () {
         if (_.isEmpty(req.body)) {
             return res.view(helpers);
         } else {
-            // verify email/password with db, and get username
-            // set session
-
-            var username = req.body.username;
-            var password = MD5(req.body.password + process.env.PASSWORD_SALT);
-
-            User.find({
-                username: username,
-                password: password
-            }).done(function(err, user){
-                if (err) {
-                    console.log(err);
-                } else if (user.length === 0) {
+            Passport.authenticate('local', function (err, user, info){
+                if ((err) || (!user)) {
                     return res.view(_.extend({
                         flash: {
                             error: "Username/password incorrect"
                         }
                     }, helpers));
-                } else if (user.length === 1) {
-                    req.session.authenticated = user[0].username;
-                    req.session.role = user[0].role;
-                    res.redirect('/user/profile/' + user[0].username);
                 }
-            });
+                req.logIn(user, function(err){
+                    if (err) {
+                        return res.view(_.extend({
+                            flash: {
+                                error: "Something wrong with login"
+                            }
+                        }, helpers));
+                    } else {
+                        req.session.role = user.role;
+                        return res.redirect('/');
+                    }
+                });
+            })(req, res);
         }
     }
 
@@ -105,9 +102,7 @@ module.exports = (function () {
     }
 
     function logout (req, res) {
-        delete req.session.authenticated;
-        delete req.session.role;
-
+        req.logout();
         return res.redirect('/');
     }
 
@@ -164,7 +159,7 @@ module.exports = (function () {
 
     function _reset_password_sendmail (req, res) {
         var email = req.body.email;
-        var key = MD5(email + (new Date().getTime()).toString());
+        var key = bcrypt.hashSync(email + (new Date().getTime()).toString(), 10);
         var extraVars = {};
 
         User.update({
@@ -223,7 +218,7 @@ module.exports = (function () {
         User.update({
             password_reset_key: key
         }, {
-            password: MD5(password + process.env.PASSWORD_SALT),
+            password: password,
             password_reset_key: null
         }).done(function(err, user) {
             if (err) {

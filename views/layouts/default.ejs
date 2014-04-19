@@ -38,7 +38,7 @@
 
 					<div class="collapse navbar-collapse navbar-right">
 						<ul class="nav navbar-nav">
-							<% if (_.isUndefined(req.session.authenticated)) { %>
+							<% if (!req.isAuthenticated()) { %>
 								<li><a href="/user/login"><i class="fa fa-sign-in"></i> Log In</a></li>
 							<% } else { %>
 								<li><a href="/user/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
