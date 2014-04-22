@@ -1,3 +1,3 @@
 module.exports = {
-    appName : 'Project Catalog'
+    appName : 'TestLegends Home'
 };

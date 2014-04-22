@@ -19,7 +19,7 @@
 var Html = require('../helpers/HtmlHelper.js'),
     Form = require('../helpers/FormHelper.js'),
     Passport = require('passport'),
-    bcrypt = require('bcrypt'),
+    SHA256 = require('sha256'),
     Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
 
 module.exports = (function () {
@@ -29,76 +29,11 @@ module.exports = (function () {
     var params = {
         project_name: 'TestLegends',
         project_domain: 'http://testlegends.herokuapp.com',
-        //project_domain: 'http://localhost:1337',
         admin_email: 'admin@testlegends.com'
     };
 
-    function login (req, res) {
-        if (_.isEmpty(req.body)) {
-            return res.view(helpers);
-        } else {
-            Passport.authenticate('local', function (err, user, info){
-                if ((err) || (!user)) {
-                    return res.view(_.extend({
-                        flash: {
-                            error: "Username/password incorrect"
-                        }
-                    }, helpers));
-                }
-                req.logIn(user, function(err){
-                    if (err) {
-                        return res.view(_.extend({
-                            flash: {
-                                error: "Something wrong with login"
-                            }
-                        }, helpers));
-                    } else {
-                        req.session.role = user.role;
-                        return res.redirect('/');
-                    }
-                });
-            })(req, res);
-        }
-    }
-
-    function fbLogin (req, res) {
-        if (!_.isEmpty(req.body)) {
-            var username = req.body.username || req.body.email;
-
-            User.find({
-                username: username
-            }).done(function(err, user){
-                if (err) {
-                    console.log(err);
-                } else if (user.length === 0) {
-                    User.create({
-                        username: username,
-                        password: null,
-                        role: 'regular'
-                    }).done(function(err, user){
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            req.session.authenticated = user.username;
-                            req.session.role = user.role;
-
-                            res.json({
-                                status: "OK",
-                                url: "/user/profile/" + username
-                            });
-                        }
-                    });
-                } else {
-                    req.session.authenticated = user[0].username;
-                    req.session.role = user[0].role;
-
-                    res.json({
-                        status: "OK",
-                        url: "/user/profile/" + username
-                    });
-                }
-            });
-        }
+    function loginForm (req, res) {
+        return res.view(helpers);
     }
 
     function logout (req, res) {
@@ -159,7 +94,7 @@ module.exports = (function () {
 
     function _reset_password_sendmail (req, res) {
         var email = req.body.email;
-        var key = bcrypt.hashSync(email + (new Date().getTime()).toString(), 10);
+        var key = SHA256(email + (new Date().getTime()).toString());
         var extraVars = {};
 
         User.update({
@@ -244,12 +179,12 @@ module.exports = (function () {
 
     function profile (req, res) {
         // Need to check if is admin or the right user
-        if (!req.session.authenticated) {
+        if (!req.isAuthenticated()) {
             res.redirect('/user/login');
         }
 
         return res.view(_.extend({
-            user: req.param('username')
+
         }, helpers));
     }
 
@@ -258,9 +193,9 @@ module.exports = (function () {
     }
 
     return {
-        login: login,
+        login: Passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/user/login' }),
+        loginForm: loginForm,
         logout: logout,
-        fbLogin: fbLogin,
         index: index,
         reset_password: reset_password,
         profile: profile,

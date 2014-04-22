@@ -18,7 +18,7 @@
 
 var Html = require('../helpers/HtmlHelper.js');
 
-module.exports = (function(){
+    module.exports = (function(){
 
 	function index (req, res) {
 		return res.view({
@@ -27,15 +27,15 @@ module.exports = (function(){
 		});
 	}
 
+    function docs (req, res) {
+
+    }
 
     return {
         index: index,
+        docs: docs,
 
-    	/**
-    	 * Overrides for the settings in `config/controllers.js`
-    	 * (specific to HomeController)
-    	 */
-    	_config: {}
-    }
+        _config: {}
+    };
 
 })();
