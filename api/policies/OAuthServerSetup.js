@@ -49,7 +49,7 @@ module.exports = (function(){
     server.grant(OAuth2orize.grant.token(function(client, user, ares, done) {
         var token = uid(256);
 
-        AccesToken.create({
+        AccessToken.create({
             token: token,
             userId: user.id,
             clientId: client.clientId
