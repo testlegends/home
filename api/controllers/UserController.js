@@ -10,18 +10,11 @@
 var Html = require('../helpers/HtmlHelper.js'),
     Form = require('../helpers/FormHelper.js'),
     Passport = require('passport'),
-    SHA256 = require('sha256'),
-    Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+    SHA256 = require('sha256');
 
 module.exports = (function () {
 
     var helpers = { Html: Html, Form: Form };
-
-    var params = {
-        project_name: 'TestLegends',
-        project_domain: 'http://testlegends.herokuapp.com',
-        admin_email: 'admin@testlegends.com'
-    };
 
     function loginForm (req, res) {
         return res.view(helpers);
@@ -108,14 +101,10 @@ module.exports = (function () {
                     }
                 }, helpers));
             } else {
-                var mailOptions = {
-                    from: params.admin_email,
-                    to: email,
-                    subject: params.project_name + " Password Reset",
-                    text: params.project_domain + "/user/reset_password/" + key
-                };
-
-                Sendgrid.send(mailOptions, function (err, response) {
+                EmailService.sendResetPasswordEmail({
+                    email: email,
+                    key: key
+                }, function (err, response) {
                     if (err) {
                         return res.view(_.extend({
                             key: null,
@@ -160,6 +149,10 @@ module.exports = (function () {
         });
     }
 
+    function register (req, res) {
+
+    }
+
     function index (req, res) {
         User.find().exec(function (err, users) {
             return res.view(_.extend({
@@ -179,16 +172,13 @@ module.exports = (function () {
         }, helpers));
     }
 
-    function import_test_data (req, res) {
-        this.adapter = 'test';
-    }
-
     return {
         login: Passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/user/login' }),
         loginForm: loginForm,
         logout: logout,
-        index: index,
         reset_password: reset_password,
+        register: register,
+        index: index,
         profile: profile,
 
         _config: {}
