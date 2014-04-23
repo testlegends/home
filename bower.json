@@ -21,7 +21,6 @@
     "angular-loading-bar": "~0.3.0",
     "angular-route": "~1.2.15",
     "underscore": "~1.6.0",
-    "requirejs": "~2.1.11",
-    "oauth-js": "~0.1.7"
+    "requirejs": "~2.1.11"
   }
 }

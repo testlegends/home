@@ -17,6 +17,8 @@ module.exports = (function(){
     var helpers = { Html: Html, Form: Form };
 
     function authorize (req, res) {
+        //TODO if already registered, auto decision
+
         return res.view(_.extend({
             transactionID: req.oauth2.transactionID,
             user: req.user,
