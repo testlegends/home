@@ -11,7 +11,6 @@
  * http://sailsjs.org/#documentation
  */
 
-
 module.exports.policies = {
 
     '*': true,

@@ -1,3 +1,12 @@
+/**
+ * OAuthServerSetup
+ *
+ * @module      :: Policy Library*
+ * @description ::
+ * @docs        :: https://github.com/jaredhanson/oauth2orize/tree/master/examples/all-grants
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/20
+ */
 
 var OAuth2orize = require('oauth2orize');
 

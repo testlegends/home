@@ -2,7 +2,8 @@
  * HtmlHelper
  *
  * @module      :: Helper
- * @description	:: Html helpers for the views.
+ * @description :: Html helpers for the views.
+ * @author      :: Jeff Lee
  * @created     :: 2014/02/11
  */
 
@@ -24,7 +25,7 @@ module.exports = {
 		label: _.template('<label for="<%= id %>"<%= attrs %>><%= name %></label>'),
 		input: _.template('<input name="<%= name %>"<%= attrs %>/>'),
 		textarea: '<textarea name="%s"%s>%s</textarea>',
-		hidden: '<input type="hidden" name="%s"%s/>',
+		hidden: _.template('<input type="hidden" name="<%= name %>" value="<%= value %>" />'),
 		checkbox: '<input type="checkbox" name="%s" %s/>',
 		checkboxmultiple: '<input type="checkbox" name="%s[]"%s />',
 		radio: '<input type="radio" name="%s" id="%s"%s />%s',
@@ -331,7 +332,7 @@ module.exports = {
 			var newUrl = '/' + url.controller + '/' + url.action;
 
 			if (!_.isUndefined(url.params)) {
-				// Need a way to use routes
+				// TODO Need a way to use routes
 				newUrl += '/' + url.params;
 			}
 

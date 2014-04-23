@@ -1,3 +1,12 @@
+/**
+ * OAuthController
+ *
+ * @module      :: Controller
+ * @description ::
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/19
+ */
+
 var _ = require('underscore'),
     Html = require('../helpers/HtmlHelper.js'),
     Passport = require('passport');

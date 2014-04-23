@@ -1,3 +1,11 @@
+/**
+ * Client
+ *
+ * @module      :: Model
+ * @description ::
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/19
+ */
 
 module.exports = {
 
@@ -10,12 +18,5 @@ module.exports = {
         clientSecret: {
             type: 'string'
         }
-    },
-
-    beforeCreate: function (client, cb) {
-        Client.count(function (err, num) {
-            client._id = num + 1;
-            cb(null, client);
-        });
     }
 };

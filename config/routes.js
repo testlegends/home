@@ -10,29 +10,12 @@
 
 module.exports.routes = {
 
-    '/': {
-        controller: 'home',
-        action: 'index'
-    },
+    '/': { controller: 'home', action: 'index' },
 
-    'get /user/login': {
-        controller: 'user',
-        action: 'loginForm'
-    },
+    'GET  /user/login'             : { controller: 'user', action: 'loginForm' },
+    'POST /user/login'             : { controller: 'user', action: 'login' },
+    'GET  /user/profile/:username' : { controller: 'user', action: 'profile' },
 
-    'post /user/login': {
-        controller: 'user',
-        action: 'login'
-    },
-
-    '/user/profile/:username' : {
-        controller: 'user',
-        action: 'profile'
-    },
-
-    '/user/reset_password/:key' : {
-        controller: 'user',
-        action: 'reset_password'
-    }
+    '/user/reset_password/:key' : { controller: 'user', action: 'reset_password' }
 
 };

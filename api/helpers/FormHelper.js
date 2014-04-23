@@ -2,7 +2,8 @@
  * FormHelper
  *
  * @module      :: Helper
- * @description	:: Form helpers for the views.
+ * @description :: Form helpers for the views.
+ * @author      :: Jeff Lee
  * @created     :: 2014/02/11
  */
 
@@ -65,6 +66,11 @@ module.exports = {
 
 		} else if (type === 'button' || type === 'submit') {
 
+        } else if (type === 'hidden') {
+            return Html._tags.input({
+                name: fieldName,
+                value: options.value
+            });
         }
 
 		result = Html.div('form-group') + Html._tags.label({ id: options.id, name: ChangeCase.titleCase(fieldName), attrs: null }) + result + '</div>';

@@ -2,14 +2,12 @@
  * isAuthenticated
  *
  * @module      :: Policy
- * @description :: Simple policy to allow any authenticated user
- *                 Assumes that your login action in one of your controllers sets `req.session.authenticated = true;`
- * @docs        :: http://sailsjs.org/#!documentation/policies
- *
+ * @description ::
+ * @docs        :: https://github.com/jaredhanson/connect-ensure-login/
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/21
  */
 
-
-// https://github.com/jaredhanson/connect-ensure-login/
 module.exports = (function ensureLoggedIn(options) {
     if (typeof options === 'string') {
         options = { redirectTo: options };

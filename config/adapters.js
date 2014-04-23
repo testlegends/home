@@ -14,19 +14,19 @@
 
 module.exports.adapters = {
 
-  'default': 'mongodb',
+    'default': 'mongodb',
 
-  mongodb: {
-    module: 'sails-mongo',
-    host: process.env.MONGOHQ_HOST,
-    port: process.env.MONGOHQ_PORT,
-    database: process.env.MONGOHQ_DATABASE,
-    user: process.env.MONGOHQ_USERNAME,
-    password: process.env.MONGOHQ_PASSWORD
-  },
+    mongodb: {
+        module: 'sails-mongo',
+        host: process.env.MONGOHQ_HOST,
+        port: process.env.MONGOHQ_PORT,
+        database: process.env.MONGOHQ_DATABASE,
+        user: process.env.MONGOHQ_USERNAME,
+        password: process.env.MONGOHQ_PASSWORD
+    },
 
-  test: {
-    module: 'sails-memory'
-  }
+    test: {
+        module: 'sails-memory'
+    }
 
 };

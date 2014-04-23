@@ -19,7 +19,6 @@
 
 module.exports.controllers = {
 
-
   /**
    * NOTE:
    * A lot of the configuration options below affect so-called "CRUD methods",
@@ -65,7 +64,6 @@ module.exports.controllers = {
     actions: true,
 
 
-
     /**
      * `rest`
      *
@@ -97,7 +95,6 @@ module.exports.controllers = {
     shortcuts: false,
 
 
-
     /**
      * `prefix`
      *
@@ -118,9 +115,6 @@ module.exports.controllers = {
     prefix: '',
 
 
-
-
-
     /**
      * `pluralize`
      *
@@ -137,7 +131,6 @@ module.exports.controllers = {
   },
 
 
-
   /**
    * `jsonp`
    *
@@ -149,7 +142,6 @@ module.exports.controllers = {
    * Defaults to false.
    */
   jsonp: false,
-
 
 
   /**

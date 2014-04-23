@@ -1,3 +1,12 @@
+/**
+ * Passport
+ *
+ * @description ::
+ * @docs        :: https://github.com/jaredhanson/oauth2orize/tree/master/examples/all-grants
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/19
+ */
+
 var Passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     BasicStrategy = require('passport-http').BasicStrategy,
@@ -46,25 +55,25 @@ Passport.use(new LocalStrategy(
  * the specification, in practice it is quite common.
  */
 Passport.use(new BasicStrategy(
-  function(username, password, done) {
-    Client.findById(username).done(function (err, client) {
-      if (err) { return done(err); }
-      if (!client) { return done(null, false); }
-      if (client.clientSecret != password) { return done(null, false); }
-      return done(null, client);
-    });
-  }
+    function(username, password, done) {
+        Client.findById(username).done(function (err, client) {
+            if (err) { return done(err); }
+            if (!client) { return done(null, false); }
+            if (client.clientSecret != password) { return done(null, false); }
+            return done(null, client);
+        });
+    }
 ));
 
 Passport.use(new ClientPasswordStrategy(
-  function(clientId, clientSecret, done) {
-    Client.findOneById(clientId.toString()).done(function (err, client) {
-      if (err) { return done(err); }
-      if (!client) { return done(null, false); }
-      if (client.clientSecret != clientSecret) { return done(null, false); }
-      return done(null, client);
-    });
-  }
+    function(clientId, clientSecret, done) {
+        Client.findOneById(clientId.toString()).done(function (err, client) {
+            if (err) { return done(err); }
+            if (!client) { return done(null, false); }
+            if (client.clientSecret != clientSecret) { return done(null, false); }
+            return done(null, client);
+        });
+    }
 ));
 
 
