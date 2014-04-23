@@ -1,13 +1,13 @@
 <%- Html.tag('h2', 'Login') %>
 
 <%- Form.create('User', { method: 'POST', class: 'form-horizontal' }) %>
-<%- Form.input('username', { placeholder: 'Username' }) %>
+<%- Form.input('email', { placeholder: 'E-mail' }) %>
 <%- Form.input('password', { placeholder: 'Password' }) %>
 <%- Form.end('Login') %>
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('input[name=username]').focus();
+		$('input[name=email]').focus();
 
 		var reset_password = 'Reset Password';
         $('input[name=password]').parent('div').after($('<div />').addClass('col-lg-2 reset-password').html(

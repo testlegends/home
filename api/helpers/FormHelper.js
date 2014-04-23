@@ -56,6 +56,9 @@ module.exports = {
 		} else if (type === 'string' || type === 'text') {
 			options.type = 'text';
 			result = this._textField(fieldName, options);
+        } else if (type === 'email') {
+            options.type = 'email';
+            result = this._textField(fieldName, options);
 		} else if (type === 'date') {
 
 		} else if (type === 'time') {
@@ -67,7 +70,7 @@ module.exports = {
 		} else if (type === 'button' || type === 'submit') {
 
         } else if (type === 'hidden') {
-            return Html._tags.input({
+            return Html._tags.hidden({
                 name: fieldName,
                 value: options.value
             });

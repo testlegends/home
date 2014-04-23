@@ -150,7 +150,51 @@ module.exports = (function () {
     }
 
     function register (req, res) {
+        return res.view(helpers);
+    }
 
+    function add (req, res) {
+        User.create({
+            name: '',
+            email: '',
+            password: ''
+        }).done(function (err, user) {
+            if (err) {
+                return console.log(err);
+            } else {
+                return res.view(_.extend({
+
+                }, helpers));
+            }
+        });
+    }
+
+    function edit (req, res) {
+        return res.view(_.extend({
+
+        }, helpers));
+    }
+
+    function update (req, res) {
+        User.update({
+            id: ''
+        }, {
+            name: '',
+            email: '',
+            password: ''
+        }).done(function (err, user) {
+            if (err) {
+                return console.log(err);
+            } else {
+                return res.view(_.extend({
+
+                }, helpers));
+            }
+        });
+
+        return res.view(_.extend({
+
+        }, helpers));
     }
 
     function index (req, res) {
@@ -178,6 +222,9 @@ module.exports = (function () {
         logout: logout,
         reset_password: reset_password,
         register: register,
+        add: add,
+        edit: edit,
+        update: update,
         index: index,
         profile: profile,
 

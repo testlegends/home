@@ -14,7 +14,7 @@ var Passport = require('passport'),
     bcrypt = require('bcrypt');
 
 Passport.serializeUser(function (user, done) {
-    done(null, user[0].id);
+    done(null, user.id);
 });
 
 Passport.deserializeUser(function (id, done) {
@@ -30,12 +30,13 @@ Passport.deserializeUser(function (id, done) {
  * Anytime a request is made to authorize an application, we must ensure that
  * a user is logged in before asking them to approve the request.
  */
-Passport.use(new LocalStrategy(
-    function (username, password, done) {
-        User.findByUsername(username).done(function (err, user) {
+Passport.use(new LocalStrategy({
+        usernameField: 'email'
+    }, function (email, password, done) {
+        User.findOneByEmail(email, function (err, user) {
             if (err) { return done(null, err); }
             if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect User'}); }
-            bcrypt.compare(password, user[0].password, function (err, res) {
+            bcrypt.compare(password, user.password, function (err, res) {
                 if (!res) return done(null, false, { message: 'Invalid Password'});
                 return done(null, user);
             });
@@ -55,8 +56,8 @@ Passport.use(new LocalStrategy(
  * the specification, in practice it is quite common.
  */
 Passport.use(new BasicStrategy(
-    function(username, password, done) {
-        Client.findById(username).done(function (err, client) {
+    function(clientId, password, done) {
+        Client.findOneById(clientId, function (err, client) {
             if (err) { return done(err); }
             if (!client) { return done(null, false); }
             if (client.clientSecret != password) { return done(null, false); }
@@ -67,7 +68,7 @@ Passport.use(new BasicStrategy(
 
 Passport.use(new ClientPasswordStrategy(
     function(clientId, clientSecret, done) {
-        Client.findOneById(clientId.toString()).done(function (err, client) {
+        Client.findOneById(clientId, function (err, client) {
             if (err) { return done(err); }
             if (!client) { return done(null, false); }
             if (client.clientSecret != clientSecret) { return done(null, false); }

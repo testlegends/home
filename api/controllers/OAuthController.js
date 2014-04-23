@@ -9,11 +9,12 @@
 
 var _ = require('underscore'),
     Html = require('../helpers/HtmlHelper.js'),
+    Form = require('../helpers/FormHelper.js'),
     Passport = require('passport');
 
 module.exports = (function(){
 
-    var helpers = { Html: Html };
+    var helpers = { Html: Html, Form: Form };
 
     function authorize (req, res) {
         return res.view(_.extend({

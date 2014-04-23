@@ -14,15 +14,14 @@ module.exports = {
     tableName: 'users',
 
     attributes: {
-        username: {
-            type: 'string',
-            required: true
-        },
-        password: {
+        name: {
             type: 'string'
         },
         email: {
             type: 'email'
+        },
+        password: {
+            type: 'string'
         },
         role: {
             type: 'string',
