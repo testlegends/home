@@ -62,11 +62,9 @@ module.exports = (function () {
             }
 
             if (users.length === 0) {
+                req.flash('error', 'Invalid Password reset key');
                 return res.view(_.extend({
-                    key: null,
-                    flash: {
-                        error: 'Invalid Password reset key'
-                    }
+                    key: null
                 }, helpers));
             } else {
                 return res.view(_.extend({
@@ -87,18 +85,14 @@ module.exports = (function () {
             password_reset_key: key
         }).done(function (err, users) {
             if (err) {
+                req.flash('error', 'Something went wrong');
                 return res.view(_.extend({
-                    key: null,
-                    flash: {
-                        error: 'Something went wrong'
-                    }
+                    key: null
                 }, helpers));
             } else if (users.length === 0) {
+                req.flash('error', 'No user with the email found')
                 return res.view(_.extend({
-                    key: null,
-                    flash: {
-                        error: 'No user with such email found'
-                    }
+                    key: null
                 }, helpers));
             } else {
                 EmailService.sendResetPasswordEmail({
@@ -106,18 +100,14 @@ module.exports = (function () {
                     key: key
                 }, function (err, response) {
                     if (err) {
+                        req.flash('error', 'Something went wrong');
                         return res.view(_.extend({
-                            key: null,
-                            flash: {
-                                error: 'Something went wrong'
-                            }
+                            key: null
                         }, helpers));
                     } else {
+                        req.flash('success', 'E-mail has been sent');
                         return res.view(_.extend({
-                            key: null,
-                            flash: {
-                                success: 'E-mail has been sent'
-                            }
+                            key: null
                         }, helpers));
                     }
                 });
@@ -171,18 +161,19 @@ module.exports = (function () {
 
     function edit (req, res) {
         return res.view(_.extend({
-
+            user: req.user[0]
         }, helpers));
     }
 
     function update (req, res) {
-        User.update({
-            id: ''
-        }, {
-            name: '',
-            email: '',
-            password: ''
-        }).done(function (err, user) {
+        var user = req.user[0];
+        var updated = {};
+
+        if (req.body.name !== user.name) { updated.name = req.body.name; }
+        if (req.body.email !== user.email) { updated.email = req.body.email; }
+        if (!_.isEmpty(req.body.password)) { updated.password = req.body.password; }
+
+        User.update({ id: req.user[0].id }, updated).done(function (err, user) {
             if (err) {
                 return console.log(err);
             } else {
@@ -217,7 +208,7 @@ module.exports = (function () {
     }
 
     return {
-        login: Passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/user/login' }),
+        login: Passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/user/login', failureFlash: 'Wrong username or password.' }),
         loginForm: loginForm,
         logout: logout,
         reset_password: reset_password,

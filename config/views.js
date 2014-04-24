@@ -13,6 +13,9 @@ module.exports.views = {
 
     engine: 'ejs',
 
-    layout: 'layouts/default'
+    layout: 'layouts/default',
+
+    // Use different styles of flash message.  Available options: bootstrap, toastr
+    flash: 'toastr'
 
 };

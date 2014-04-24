@@ -16,6 +16,12 @@ module.exports = {
 		if (!_.isEmpty(model)) {
 			try {
 				this.model = require('../models/' + model);
+                if (options.values) {
+                    this.values = options.values;
+                    delete this.values.password;
+                    delete this.values.password_reset_key;
+                    delete options.values;
+                }
 			} catch (e) {
 				this.model = model;
 			}
@@ -82,6 +88,10 @@ module.exports = {
 	},
 
 	_textField: function(fieldName, options) {
+        if (this.values && this.values[fieldName]) {
+            options.value = this.values[fieldName];
+        }
+
 		return Html._tags.input({
 			name: fieldName,
 			attrs: Html._parseAttributes(options)
