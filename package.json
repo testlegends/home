@@ -41,7 +41,8 @@
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jst": "^0.6.0",
-    "grunt-sails-linker": "^0.9.5"
+    "grunt-sails-linker": "^0.9.5",
+    "grunt-sync": "0.0.7"
   },
   "devDependencies": {
     "sails-memory": "^0.9.1",

@@ -12,8 +12,8 @@ var Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SE
 module.exports = (function(){
 
     var generalParams = {
-        project_name: 'TestLegends',
-        admin_email: 'admin@testlegends.com'
+        project_name: 'Project Catelog',
+        admin_email: 'leejefon@gmail.com'
     };
 
     function sendWelcomeEmail (params, callback) {

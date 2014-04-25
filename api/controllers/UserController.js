@@ -9,8 +9,7 @@
 
 var Html = require('../helpers/HtmlHelper.js'),
     Form = require('../helpers/FormHelper.js'),
-    Passport = require('passport'),
-    SHA256 = require('sha256');
+    Passport = require('passport');
 
 module.exports = (function () {
 
@@ -32,111 +31,17 @@ module.exports = (function () {
 
         if (_.isEmpty(req.body)) {
             if (_.isEmpty(req.param('key'))) {
-                _reset_password_email_form(req, res);
+                ResetPasswordService.emailForm(req, res, helpers);
             } else {
-                _reset_password_reset_form(req, res);
+                ResetPasswordService.resetForm(req, res, helpers);
             }
         } else {
             if (_.isEmpty(req.param('key'))) {
-                _reset_password_sendmail(req, res);
+                ResetPasswordService.sendmail(req, res, helpers);
             } else {
-                _reset_password(req, res);
+                ResetPasswordService.reset(req, res, helpers);
             }
         }
-    }
-
-    function _reset_password_email_form (req, res) {
-        return res.view(_.extend({
-            key: null
-        }, helpers));
-    }
-
-    function _reset_password_reset_form (req, res) {
-        var key = req.param('key');
-
-        User.find({
-            password_reset_key: key
-        }).done(function(err, users) {
-            if (err) {
-                console.log("Error finding key");
-            }
-
-            if (users.length === 0) {
-                req.flash('error', 'Invalid Password reset key');
-                return res.view(_.extend({
-                    key: null
-                }, helpers));
-            } else {
-                return res.view(_.extend({
-                    key: key
-                }, helpers));
-            }
-        });
-    }
-
-    function _reset_password_sendmail (req, res) {
-        var email = req.body.email;
-        var key = SHA256(email + (new Date().getTime()).toString());
-        var extraVars = {};
-
-        User.update({
-            email: email
-        }, {
-            password_reset_key: key
-        }).done(function (err, users) {
-            if (err) {
-                req.flash('error', 'Something went wrong');
-                return res.view(_.extend({
-                    key: null
-                }, helpers));
-            } else if (users.length === 0) {
-                req.flash('error', 'No user with the email found')
-                return res.view(_.extend({
-                    key: null
-                }, helpers));
-            } else {
-                EmailService.sendResetPasswordEmail({
-                    email: email,
-                    key: key
-                }, function (err, response) {
-                    if (err) {
-                        req.flash('error', 'Something went wrong');
-                        return res.view(_.extend({
-                            key: null
-                        }, helpers));
-                    } else {
-                        req.flash('success', 'E-mail has been sent');
-                        return res.view(_.extend({
-                            key: null
-                        }, helpers));
-                    }
-                });
-            }
-        });
-    }
-
-    function _reset_password (req, res) {
-        var key = req.param('key');
-        var password = req.body.new_password;
-
-        var id = null;
-        User.update({
-            password_reset_key: key
-        }, {
-            password: password,
-            password_reset_key: null
-        }).done(function(err, user) {
-            if (err) {
-                return res.view(_.extend({
-                    flash: {
-                        error: 'Something went wrong'
-                    }
-                }, helpers));
-            } else {
-                // TODO: Figure out how to add flash
-                res.redirect('/user/login');
-            }
-        });
     }
 
     function register (req, res) {
