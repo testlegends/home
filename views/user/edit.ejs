@@ -1,7 +1,7 @@
 <%- Html.tag('h2', 'Update Info') %>
 
-<%- Form.create('User', { method: 'post', class: 'form-horizontal', values: user }) %>
-<%- Form.input('name', { placeholder: 'Enter your Name' }) %>
-<%- Form.input('email', { placeholder: 'Enter your E-mail' }) %>
-<%- Form.input('password', { placeholder: 'Enter Password' }) %>
+<%- Form.create('User', { method: 'post', class: 'form-horizontal', values: user, action: '/user/update' }) %>
+<%- Form.input('name') %>
+<%- Form.input('email') %>
+<%- Form.input('password', { placeholder: 'Enter new password or Leave blank'}) %>
 <%- Form.end('Update') %>

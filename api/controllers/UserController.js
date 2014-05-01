@@ -50,16 +50,15 @@ module.exports = (function () {
 
     function add (req, res) {
         User.create({
-            name: '',
-            email: '',
-            password: ''
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
         }).done(function (err, user) {
             if (err) {
                 return console.log(err);
             } else {
-                return res.view(_.extend({
-
-                }, helpers));
+                req.flash('success', 'You have successfully registered');
+                return res.redirect('/user/login');
             }
         });
     }
@@ -82,15 +81,9 @@ module.exports = (function () {
             if (err) {
                 return console.log(err);
             } else {
-                return res.view(_.extend({
-
-                }, helpers));
+                return res.redirect('/user/profile');
             }
         });
-
-        return res.view(_.extend({
-
-        }, helpers));
     }
 
     function index (req, res) {

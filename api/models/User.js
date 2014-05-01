@@ -46,7 +46,6 @@ module.exports = {
                     console.log(err);
                     cb(err);
                 } else {
-                    user._id = num + 1;
                     user.password = hash;
                     cb(null, user);
                 }

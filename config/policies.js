@@ -22,9 +22,7 @@ module.exports.policies = {
     UserController: {
         index: ['isAuthenticated', 'isAdmin'],
         edit: 'isAuthenticated',
-        update: 'isAuthenticated',
-        register: 'isAuthenticated',
-        add: 'isAuthenticated'
+        update: 'isAuthenticated'
     },
 
     OAuthController: {

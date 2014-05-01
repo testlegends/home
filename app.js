@@ -13,7 +13,7 @@ iniparser.parse('.env', function(err, data){
 	if (!_.isUndefined(process.env.NODETIME_ACCOUNT_KEY)) {
 		require('nodetime').profile({
 			accountKey: process.env.NODETIME_ACCOUNT_KEY,
-			appName: 'Project Catalog'
+			appName: 'TestLegends'
 		});
 	}
 
