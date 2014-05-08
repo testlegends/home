@@ -48,44 +48,77 @@ module.exports = {
 		options.class += ' form-control';
 
 		var type = options.type || this.model.attributes[fieldName].type || this.model.attributes[fieldName];
+
 		var selectOptions = null;
-		if (!_.isUndefined(this.model.attributes)) {
-			selectOptions = this.model.attributes[fieldName].in;
-		}
+		if (options.in) {
+            selectOptions = options.in;
+        } else if (this.model.attributes && this.model.attributes[fieldName] && this.model.attributes[fieldName].in) {
+            selectOptions = this.model.attributes[fieldName].in;
+        }
 
 		var result = "";
+
 		if (selectOptions) {
+            if (type === 'radio' || type === 'boolean' || type === 'string') {
+                if (type === 'radio' || type === 'boolean' || selectOptions.length < 5) {
+                    var that = this;
+                    _.each(selectOptions, function (value, key) {
+                        result += that._singleSelectField(fieldName, options, value);
+                    });
+                    result = Html.div('btn-group col-lg-4', null, { 'data-toggle': 'buttons' }) + result + '</div>';
+                } else {
+                    // TODO use select2
+                }
 
-		} else if (fieldName === 'password' || type === 'password') {
-            options.type = 'password';
-			result = this._textField(fieldName, options);
-		} else if (type === 'string' || type === 'text') {
-			options.type = 'text';
-			result = this._textField(fieldName, options);
-        } else if (type === 'email') {
-            options.type = 'email';
-            result = this._textField(fieldName, options);
-		} else if (type === 'date') {
+            } else if (type === 'checkbox' || type === 'array') {
+                // TODO multiple select
+            }
+		}
 
-		} else if (type === 'time') {
-
-		} else if (type === 'datetime') {
-
-		} else if (type === 'boolean') {
-
-		} else if (type === 'button' || type === 'submit') {
-
-        } else if (type === 'hidden') {
+        if (type === 'hidden') {
             return Html._tags.hidden({
                 name: fieldName,
                 value: options.value
             });
         }
 
+        if (fieldName === 'password' || type === 'password') {
+            options.type = 'password';
+			result = this._textField(fieldName, options);
+		} else if (type === 'string' && !selectOptions) {
+			options.type = 'text';
+			result = this._textField(fieldName, options);
+        } else if (type === 'email' || type === 'text' || type === 'number') {
+            options.type = type;
+            result = this._textField(fieldName, options);
+		} else if (type === 'date' || type === 'time' || type === 'datetime') {
+
+		} else if (type === 'button' || type === 'submit') {
+
+        }
+
 		result = Html.div('form-group') + Html._tags.label({ id: options.id, name: ChangeCase.titleCase(fieldName), attrs: null }) + result + '</div>';
 
 		return result;
 	},
+
+    _singleSelectField: function(fieldName, options, value, type) {
+        // if too many use dropdown, if not radio
+        if (type && type === 'dropdown') {
+
+        } else {
+            return '<label class="btn btn-default">' +
+                Html._tags.radio({
+                    name: fieldName,
+                    attrs: Html._parseAttributes(options),
+                    displayText: value
+                }) + "</label>";
+        }
+    },
+
+    _multipleSelectField: function() {
+        // if too many use multi select, if not checkbox
+    },
 
 	_textField: function(fieldName, options) {
         if (this.values && this.values[fieldName]) {
@@ -96,22 +129,6 @@ module.exports = {
 			name: fieldName,
 			attrs: Html._parseAttributes(options)
 		});
-	},
-
-	_selectField: function() {
-
-	},
-
-	_checkboxField: function() {
-
-	},
-
-	_dateField: function() {
-
-	},
-
-	_timeField: function() {
-
 	},
 
 	_datetimeField: function() {

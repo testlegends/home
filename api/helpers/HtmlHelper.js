@@ -28,7 +28,7 @@ module.exports = {
 		hidden: _.template('<input type="hidden" name="<%= name %>" value="<%= value %>" />'),
 		checkbox: '<input type="checkbox" name="%s" %s/>',
 		checkboxmultiple: '<input type="checkbox" name="%s[]"%s />',
-		radio: '<input type="radio" name="%s" id="%s"%s />%s',
+		radio: _.template('<input type="radio" name="<%= name %>"<%= attrs %> /> <%= displayText %>'),
 		selectstart: '<select name="%s"%s>',
 		selectmultiplestart: '<select name="%s[]"%s>',
 		selectempty: '<option value=""%s>&nbsp;</option>',
@@ -260,7 +260,7 @@ module.exports = {
 	},
 
 	div: function(class_name, text, options) {
-		if (!_.isUndefined(class_name)) {
+		if (class_name) {
 			if (_.isUndefined(options)) {
 				options = {};
 			}

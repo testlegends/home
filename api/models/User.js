@@ -25,7 +25,7 @@ module.exports = {
         },
         role: {
             type: 'string',
-            in: ['admin', 'regular']
+            in: ['admin', 'student', 'teacher']
         },
         password_reset_key: {
             type: 'string',

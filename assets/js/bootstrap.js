@@ -1,5 +1,5 @@
 (function ($) {
- 
+
 	$.fn.twitterBootstrap = function (options) {
 		options = $.extend({
 			formHorizontal: ['lg', 2, 4]
@@ -34,12 +34,14 @@
 		},
 
 		iconize: function () {
-			
+
 		}
 	};
- 
+
 }(jQuery));
 
 $(document).ready(function(){
 	$('*').twitterBootstrap();
+    //$('textarea').autosize();
+    //$('select').select2();
 });
