@@ -17,6 +17,15 @@ module.exports = {
         },
         clientSecret: {
             type: 'string'
+        },
+        userId: {
+            type: 'string'
+        },
+        redirectURI: {
+            type: 'json'
+        },
+        icon: {
+            type: 'string'
         }
     }
 };

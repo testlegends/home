@@ -9,13 +9,12 @@
 
 var Html = require('../helpers/HtmlHelper.js');
 
-    module.exports = (function(){
+module.exports = (function(){
 
 	function index (req, res) {
-		return res.view({
-			hello: 'world',
-			Html: Html
-		});
+        return res.view({
+            Html: Html
+        });
 	}
 
     function docs (req, res) {

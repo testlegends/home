@@ -16,13 +16,14 @@ module.exports.policies = {
     '*': true,
 
     HomeController: {
-        index: 'isAuthenticated'
+
     },
 
     UserController: {
         index: ['isAuthenticated', 'isAdmin'],
         edit: 'isAuthenticated',
-        update: 'isAuthenticated'
+        update: 'isAuthenticated',
+        profile: 'isAuthenticated'
     },
 
     OAuthController: {

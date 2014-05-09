@@ -96,14 +96,17 @@ module.exports = (function () {
     }
 
     function profile (req, res) {
-        // TODO Need to check if is admin or the right user
         if (!req.isAuthenticated()) {
             res.redirect('/user/login');
         }
 
-        return res.view(_.extend({
-
-        }, helpers));
+        ProfileService.get(req.user[0].id, function(result){
+            return res.view(_.extend({
+                user: result.user,
+                appsAuthorized: result.appsAuthorized,
+                appsCreated: result.appsCreated
+            }, helpers));
+        });
     }
 
     return {
