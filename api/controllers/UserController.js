@@ -52,7 +52,8 @@ module.exports = (function () {
         User.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            role: req.body.role
         }).done(function (err, user) {
             if (err) {
                 return console.log(err);
