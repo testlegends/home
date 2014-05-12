@@ -52,6 +52,15 @@ module.exports = {
 		var selectOptions = null;
 		if (options.in) {
             selectOptions = options.in;
+            if (!_.isArray(selectOptions)) {
+                selectOptions.length = (function(){
+                    var size = 0;
+                    for (var key in selectOptions) {
+                        if (selectOptions.hasOwnProperty(key)) size++;
+                    }
+                    return size;
+                })();
+            }
         } else if (this.model.attributes && this.model.attributes[fieldName] && this.model.attributes[fieldName].in) {
             selectOptions = this.model.attributes[fieldName].in;
         }
@@ -62,9 +71,10 @@ module.exports = {
             if (type === 'radio' || type === 'boolean' || type === 'string') {
                 if (type === 'radio' || type === 'boolean' || selectOptions.length < 5) {
                     var that = this;
-                    _.each(selectOptions, function (value, key) {
-                        result += that._singleSelectField(fieldName, options, value);
-                    });
+                    for (var key in selectOptions) {
+                        if (key === 'length') continue;
+                        result += that._singleSelectField(fieldName, options, key, selectOptions[key]);
+                    }
                     result = Html.div('btn-group col-lg-4', null, { 'data-toggle': 'buttons' }) + result + '</div>';
                 } else {
                     // TODO use select2
@@ -102,7 +112,7 @@ module.exports = {
 		return result;
 	},
 
-    _singleSelectField: function(fieldName, options, value, type) {
+    _singleSelectField: function(fieldName, options, value, text, type) {
         // if too many use dropdown, if not radio
         if (type && type === 'dropdown') {
 
@@ -110,8 +120,9 @@ module.exports = {
             return '<label class="btn btn-default">' +
                 Html._tags.radio({
                     name: fieldName,
+                    value: value,
                     attrs: Html._parseAttributes(options),
-                    displayText: value
+                    displayText: text
                 }) + "</label>";
         }
     },

@@ -28,7 +28,7 @@ module.exports = {
 		hidden: _.template('<input type="hidden" name="<%= name %>" value="<%= value %>" />'),
 		checkbox: '<input type="checkbox" name="%s" %s/>',
 		checkboxmultiple: '<input type="checkbox" name="%s[]"%s />',
-		radio: _.template('<input type="radio" name="<%= name %>"<%= attrs %> /> <%= displayText %>'),
+		radio: _.template('<input type="radio" name="<%= name %>" value="<%= value %>"<%= attrs %> /> <%= displayText %>'),
 		selectstart: '<select name="%s"%s>',
 		selectmultiplestart: '<select name="%s[]"%s>',
 		selectempty: '<option value=""%s>&nbsp;</option>',

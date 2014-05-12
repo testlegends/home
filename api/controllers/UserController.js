@@ -53,10 +53,13 @@ module.exports = (function () {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
+            password_reset_key: null,
             role: req.body.role
         }).done(function (err, user) {
             if (err) {
-                return console.log(err);
+                console.log(err);
+                req.flash('error', err);
+                return res.redirect('/user/register');
             } else {
                 req.flash('success', 'You have successfully registered');
                 return res.redirect('/user/login');

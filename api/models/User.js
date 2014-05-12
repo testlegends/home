@@ -15,19 +15,25 @@ module.exports = {
 
     attributes: {
         name: {
-            type: 'string'
+            type: 'string',
+            required: true
         },
+
         email: {
-            type: 'email'
+            type: 'email',
+            required: true
         },
+
         password: {
             type: 'string'
         },
+
         role: {
             type: 'string',
             in: ['admin', 'student', 'teacher'],
             defaultsTo: 'student'
         },
+
         password_reset_key: {
             type: 'string',
             defaultsTo: null
@@ -36,6 +42,7 @@ module.exports = {
         toJSON: function () {
             var obj = this.toObject();
             delete obj.password;
+            delete obj.password_reset_key;
             return obj;
         }
     },
