@@ -10,4 +10,4 @@
 
 var Passport = require('passport');
 
-module.exports = Passport.authenticate(['basic', 'oauth2-client-password'], { session: false });
+module.exports = Passport.authenticate(['oauth2-user-password', 'oauth2-client-password'], { session: false });

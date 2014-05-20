@@ -24,19 +24,29 @@ module.exports = {
             required: true
         },
 
-        password: {
-            type: 'string'
-        },
-
         role: {
             type: 'string',
             in: ['admin', 'student', 'teacher'],
             defaultsTo: 'student'
         },
 
+        password: {
+            type: 'string'
+        },
+
         password_reset_key: {
             type: 'string',
             defaultsTo: null
+        },
+
+        games: {
+            type: 'array',
+            defaultsTo: []
+        },
+
+        payments: {
+            type: 'array',
+            defaultsTo: []
         },
 
         toJSON: function () {
@@ -78,4 +88,22 @@ module.exports = {
             cb();
         }
     }
+};
+
+var example = {
+    name: 'Jeff Lee',
+    email: 'leejefon@gmail.com',
+    role: 'admin',
+    password: 'password',
+    password_reset_key: null,
+    games: [
+        {
+            // put this in user to support random stage access
+            id: "1",
+            questions_completed: 10
+        }
+    ],
+    payments: [
+
+    ]
 };

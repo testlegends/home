@@ -8,7 +8,8 @@
  * @created     :: 2014/04/20
  */
 
-var OAuth2orize = require('oauth2orize');
+var OAuth2orize = require('oauth2orize'),
+    bcrypt = require('bcrypt');
 
 module.exports = (function(){
 
@@ -57,7 +58,6 @@ module.exports = (function(){
 
     server.grant(OAuth2orize.grant.token(function(client, user, ares, done) {
         var token = uid(256);
-
         AccessToken.create({
             token: token,
             userId: user.id,
@@ -68,7 +68,7 @@ module.exports = (function(){
         });
     }));
 
-    server.exchange(OAuth2orize.exchange.code(function(client, code, redirectURI, done) {
+    server.exchange(OAuth2orize.exchange.authorizationCode(function(client, code, redirectURI, done) {
         AuthCode.findOne({ code: code }, function (err, authCode) {
             if (err) { return done(err); }
             if (client.id !== authCode.clientId) { return done(null, false); }
@@ -87,7 +87,7 @@ module.exports = (function(){
     }));
 
     server.exchange(OAuth2orize.exchange.password(function (client, username, password, scope, done) {
-        Client.findOne({ id: client.clientId }, function (err, localClient) {
+        Client.findOne({ id: client.id }, function (err, localClient) {
             if (err) { return done(err); }
             if (localClient === null) {
                 return done(null, false);
@@ -95,31 +95,30 @@ module.exports = (function(){
             if (localClient.clientSecret !== client.clientSecret) {
                 return done(null, false);
             }
-            //Validate the user
-            User.findOne({ username: username }, function (err, user) {
-                if (err) { return done(err); }
-                if (user === null) {
-                    return done(null, false);
-                }
-                if (password !== user.password) {
-                    return done(null, false);
-                }
-                //Everything validated, return the token
-                var token = uid(256);
-                AccessToken.create({
-                    token: token,
-                    userId: user.id,
-                    clientId: client.clientId
-                }, function (err, accessToken) {
-                    if (err) { return done(err); }
-                    done(null, token);
+
+            User.findOneByEmail(username, function (err, user) {
+                if (err) { return done(null, err); }
+                if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect User'}); }
+                bcrypt.compare(password, user.password, function (err, res) {
+                    if (!res) return done(null, false, { message: 'Invalid Password'});
+
+                    //Everything validated, return the token
+                    var token = uid(256);
+                    AccessToken.create({
+                        token: token,
+                        userId: user.id,
+                        clientId: client.clientId
+                    }, function (err, accessToken) {
+                        if (err) { return done(err); }
+                        done(null, token);
+                    });
                 });
             });
         });
     }));
 
     server.exchange(OAuth2orize.exchange.clientCredentials(function(client, scope, done) {
-        Client.findOne({ id: client.clientId }, function(err, localClient) {
+        Client.findOne({ id: client.id }, function(err, localClient) {
             if (err) { return done(err); }
             if (localClient === null) {
                 return done(null, false);

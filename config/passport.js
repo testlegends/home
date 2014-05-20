@@ -9,9 +9,9 @@
 
 var Passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    BasicStrategy = require('passport-http').BasicStrategy,
     ClientPasswordStrategy = require('passport-oauth2-client-password').Strategy,
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    util = require('util');
 
 Passport.serializeUser(function (user, done) {
     done(null, user.id);
@@ -22,6 +22,41 @@ Passport.deserializeUser(function (id, done) {
         done(err, user);
     });
 });
+
+var UserPasswordStrategy = (function(){
+    function Strategy (options, verify) {
+        if (typeof options == 'function') {
+            verify = options;
+            options = {};
+        }
+        if (!verify) throw new Error('OAuth 2.0 password strategy requires a verify function');
+
+        Passport.Strategy.call(this);
+        this.name = 'oauth2-user-password';
+        this._verify = verify;
+    }
+
+    util.inherits(Strategy, Passport.Strategy);
+
+    Strategy.prototype.authenticate = function (req) {
+        if (!req.body || !req.body.client_id) {
+          return this.fail();
+        }
+
+        var clientId = req.body.client_id;
+        var self = this;
+
+        function verified(err, client, info) {
+            if (err) { return self.error(err); }
+            if (!client) { return self.fail(); }
+            self.success(client, info);
+        }
+
+        this._verify(clientId, verified);
+    };
+
+    return Strategy;
+})();
 
 /**
  * LocalStrategy
@@ -45,7 +80,7 @@ Passport.use(new LocalStrategy({
 );
 
 /**
- * BasicStrategy & ClientPasswordStrategy
+ * UserPasswordStrategy & ClientPasswordStrategy
  *
  * These strategies are used to authenticate registered OAuth clients.  They are
  * employed to protect the `token` endpoint, which consumers use to obtain
@@ -55,19 +90,18 @@ Passport.use(new LocalStrategy({
  * to the `Authorization` header).  While this approach is not recommended by
  * the specification, in practice it is quite common.
  */
-Passport.use(new BasicStrategy(
-    function(clientId, password, done) {
+Passport.use(new UserPasswordStrategy(
+    function (clientId, done) {
         Client.findOneById(clientId, function (err, client) {
             if (err) { return done(err); }
             if (!client) { return done(null, false); }
-            if (client.clientSecret != password) { return done(null, false); }
             return done(null, client);
         });
     }
 ));
 
 Passport.use(new ClientPasswordStrategy(
-    function(clientId, clientSecret, done) {
+    function (clientId, clientSecret, done) {
         Client.findOneById(clientId, function (err, client) {
             if (err) { return done(err); }
             if (!client) { return done(null, false); }
@@ -76,7 +110,6 @@ Passport.use(new ClientPasswordStrategy(
         });
     }
 ));
-
 
 module.exports = {
     express: {
