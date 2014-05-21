@@ -11,9 +11,10 @@ define(['angular'], function (angular) {
 
         .factory('referals', ['$http', function ($http) {
             return {
-                join: function (email, cb) {
+                join: function (data, cb) {
                     $http.put('/referals', {
-                        email: email
+                        email: data.email,
+                        ref: data.refCode
                     }).success(function (response) {
                         if (response.status === 'OK') {
                             cb(response.data);

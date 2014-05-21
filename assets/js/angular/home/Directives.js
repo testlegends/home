@@ -9,7 +9,7 @@ define(['angular', 'home/Services'], function (angular) {
 
     return angular.module('Home.directives', ['Home.services'])
 
-        .directive('landing', ['referals', function (referals) {
+        .directive('landing', ['$location', 'referals', function ($location, referals) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -36,6 +36,17 @@ define(['angular', 'home/Services'], function (angular) {
                             $('.submit').addClass('submit_hide');
                             $('.subtext').addClass('subtext_hide');
                             $('.social').toggleClass('social_hide');
+
+                            referals.join({
+                                email: $('#email').val(),
+                                refCode: $location.search().ref
+                            }, function (data) {
+                                if (data.status === 'newly_joined') {
+                                    alert("just joined " + data.code);
+                                } else {
+                                    alert("already joined " + data.code);
+                                }
+                            });
                         });
                     });
                 }

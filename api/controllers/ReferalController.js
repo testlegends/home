@@ -22,11 +22,23 @@ module.exports = (function(){
                     data: {
                         email: referals[0].email,
                         code: referals[0].code,
-                        count: referals[0].length
+                        count: referals[0].referals.length,
+                        status: 'joined'
                     }
                 });
             } else {
                 var code = uid(6);
+                var refCode = req.body.ref;
+
+                if (refCode) {
+                    Referal.findOneByCode(refCode, function (err, referal) {
+                        referal.referals.push(email);
+                        referal.save(function (err) {
+                            if (err) console.log(err);
+                        });
+                    });
+                }
+
                 Referal.create({
                     email: email,
                     code: code,
@@ -40,7 +52,8 @@ module.exports = (function(){
                         status: 'OK',
                         data: {
                             email: referal.email,
-                            code: referal.code
+                            code: referal.code,
+                            status: 'newly_joined'
                         }
                     });
                 });

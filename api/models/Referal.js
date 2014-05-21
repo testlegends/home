@@ -12,7 +12,7 @@ module.exports = {
     tableName: 'referals',
 
     attributes: {
-        userId: {
+        email: {
             type: 'email',
             required: true
         },
@@ -30,7 +30,7 @@ module.exports = {
 
 var example = {
 
-    userId: 'me@email.com',
+    email: 'me@email.com',
 
     code: 'code',
 
