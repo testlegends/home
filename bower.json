@@ -21,6 +21,9 @@
     "angular-route": "~1.2.15",
     "underscore": "~1.6.0",
     "requirejs": "~2.1.11",
-    "toastr": "~2.0.1"
+    "toastr": "~2.0.1",
+    "FlowType.JS": "*",
+    "jquery-mousewheel": "~3.1.11",
+    "KeyboardJS": "~0.4.2"
   }
 }

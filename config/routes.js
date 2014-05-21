@@ -10,10 +10,16 @@
 
 module.exports.routes = {
 
-    '/': { controller: 'home', action: 'index' },
+    '/': 'HomeController.index',
 
-    'GET /user/login'           : { controller: 'user', action: 'loginForm' },
+    'GET /user/login'           : 'UserController.loginForm',
+    '/user/reset_password/:key' : 'UserController.reset_password',
 
-    '/user/reset_password/:key' : { controller: 'user', action: 'reset_password' }
+    'GET /questions'       : 'QuestionController.list',
+    'PUT /questions'       : 'QuestionController.add',
+    'GET /question/latest' : 'QuestionController.latest',
+    'GET /question/:id'    : 'QuestionController.find',
+
+    'PUT /referals'      : 'ReferalController.join'
 
 };

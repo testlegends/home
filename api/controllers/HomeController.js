@@ -13,7 +13,7 @@ module.exports = (function(){
 
 	function index (req, res) {
         return res.view({
-            Html: Html
+            layout: 'layouts/home'
         });
 	}
 
