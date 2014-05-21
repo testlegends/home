@@ -20,6 +20,13 @@ define(['angular'], function (angular) {
                             cb(response.data);
                         }
                     });
+                },
+                visited: function (code, cb) {
+                    if (code) {
+                        $http.post('/referal/' + code, {}).success(function (response) {
+                            cb(response.data);
+                        });
+                    }
                 }
             };
         }])

@@ -14,10 +14,9 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/landing.html',
-                controller: function ($scope) {
-
-                },
                 link: function (scope) {
+                    referals.visited($location.search().ref, function (data) { });
+
                     $('#join').on('click', function(e){
                         $('.submit').addClass('submit_box');
                         $(this).addClass('join_with_input');

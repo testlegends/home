@@ -20,6 +20,6 @@ module.exports.routes = {
     'GET /question/latest' : 'QuestionController.latest',
     'GET /question/:id'    : 'QuestionController.find',
 
-    'PUT /referals'      : 'ReferalController.join'
-
+    'PUT /referals'        : 'ReferalController.join',
+    'POST /referal/:code'  : 'ReferalController.visited'
 };

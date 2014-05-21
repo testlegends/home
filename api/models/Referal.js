@@ -24,6 +24,10 @@ module.exports = {
 
         referals: {
             type: 'array'
+        },
+
+        visited: {
+            type: 'integer'
         }
     }
 };
@@ -36,5 +40,7 @@ var example = {
 
     referals: [
         'a@email.com', 'b@email.com', 'c@email.com'
-    ]
+    ],
+
+    visited: 3
 };

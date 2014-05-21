@@ -48,7 +48,7 @@ require([
                 behaviors.gotoNextBox(event.deltaY > 0 ? 'up' : 'down');
             }, 100));
             return false;
-        }, 100, true));
+        }, 75, true));
 
         keyboard.on('up', function(e){
             e.preventDefault();

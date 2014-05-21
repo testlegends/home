@@ -23,6 +23,7 @@ module.exports = (function(){
                         email: referals[0].email,
                         code: referals[0].code,
                         count: referals[0].referals.length,
+                        visited: referals[0].visited,
                         status: 'joined'
                     }
                 });
@@ -42,7 +43,8 @@ module.exports = (function(){
                 Referal.create({
                     email: email,
                     code: code,
-                    referals: []
+                    referals: [],
+                    visited: 0
                 }, function (err, referal) {
                     if (err) {
                         console.log(err);
@@ -58,6 +60,28 @@ module.exports = (function(){
                     });
                 });
             }
+        });
+    }
+
+    function visited (req, res) {
+        var code = req.param('code');
+
+        Referal.findOneByCode(code, function (err, referal) {
+            if (err) {
+                console.log(err);
+            }
+
+            referal.visited++;
+            referal.save(function (err) {
+                if (err) {
+                    console.log(err);
+                }
+
+                return res.json({
+                    status: 'OK',
+                    visited: referal.visited
+                });
+            });
         });
     }
 
@@ -79,6 +103,7 @@ module.exports = (function(){
 
     return {
         join: join,
+        visited: visited,
 
         _config: {
             blueprints: {
