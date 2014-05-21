@@ -18,7 +18,7 @@ module.exports = {
         },
 
         options: {
-            type: 'array'
+            type: 'json'
         }
     }
 };
@@ -27,10 +27,12 @@ var example = {
 
     content: '',
 
-    options: [
-        { text: '' },
-        { text: '' },
-        { text: '' },
-        { text: '' }
-    ]
+    options: {
+        correct: '',
+        wrong: [
+            { text: '' },
+            { text: '' },
+            { text: '' }
+        ]
+    }
 };

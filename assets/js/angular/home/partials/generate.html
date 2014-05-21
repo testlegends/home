@@ -18,40 +18,13 @@
     <div class="share_area">
         <div class="share_box">
             <p id="share_header">Shared from your fellow adventurers!</p>
-            <div class="qBox" id="q1">
-                <p class="questions">What is the acceleration due to gravity on Earth?</p>
+            <div class="qBox" ng-repeat="question in questions">
+                <p class="questions">{{ question.content }}</p>
                 <div>
-                    <p>a) 6.67x10<sup>-11</sup> m<sup>3</sup>kg<sup>-1</sup>s<sup>-2</sup></p>
-                    <p>b) 9.81 m/s<sup>2</sup></p>
-                    <p class="bottom">c) the same as on the Sun</p>
-                    <p class="bottom">d) all of the above</p>
-                </div>
-            </div>
-            <div class="qBox" id="q2">
-                <p class="questions">When did Christopher Columbus first land on the shores of America?</p>
-                <div>
-                    <p>a) Jan 1, 0 AD</p>
-                    <p>b) July 4, 1776 AD</p>
-                    <p class="bottom">c) Oct 12, 1492 AD</p>
-                    <p class="bottom">d) in the 14th century</p>
-                </div>
-            </div>
-            <div class="qBox" id="q3">
-                <p class="questions">What does the character Jon Snow from Game of Thrones know?</p>
-                <div>
-                    <p>a) Hodor!</p>
-                    <p>b) Valar Morghulis</p>
-                    <p class="bottom">c) don't be related to Sean Bean's character</p>
-                    <p class="bottom">d) Nothing</p>
-                </div>
-            </div>
-            <div class="qBox" id="q4">
-                <p class="questions">if <span>x</span>=8, which of the following is equivalent to <span>xn</span><sup>2</sup> + <span>xn</span> + <span>x</span>?</p>
-                <div>
-                    <p>a) 8(<span>x</span><sup>2</sup> + 1)</p>
-                    <p>b) 8(<span>x</span><sup>2</sup> + <span>x</span> + 1)</p>
-                    <p class="bottom">c) 8(<span>x</span> + 1)<sup>2</sup></p>
-                    <p class="bottom">d) 8(8<span>x</span> + <span>x</span> + 1)</p>
+                    <p>a) {{ question.options.correct }}</p>
+                    <p>b) {{ question.options.wrong[0].text }}</p>
+                    <p class="bottom">c) {{ question.options.wrong[1].text }}</p>
+                    <p class="bottom">d) {{ question.options.wrong[2].text }}</p>
                 </div>
             </div>
         </div>
@@ -61,16 +34,16 @@
         <div class="demo_box">
             <div><textarea id="user_input" placeholder="This is an example question which you can generate to see it displayed in game. You can also type here to create your own and edit the __________ choice answers below." rows="7"></textarea></div>
             <div>
-                <input class="answers" id="correct" placeholder="multiple" />
+                <input class="answers" placeholder="multiple" id="correct" />
             </div>
             <div>
-                <input class="answers" placeholder="mule" />
+                <input class="answers" placeholder="mule" id="wrong1" />
             </div>
             <div>
-                <input class="answers" placeholder="multiplayer" />
+                <input class="answers" placeholder="multiplayer" id="wrong2" />
             </div>
             <div>
-                <input class="answers" placeholder="mumble" />
+                <input class="answers" placeholder="mumble" id="wrong3" />
             </div>
             <div>
                 <div id="generate">

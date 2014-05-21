@@ -66,20 +66,44 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('generate', ['referals', 'questions', function (referals, questionss) {
+        .directive('generate', ['referals', 'questions', function (referals, questions) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/generate.html',
                 controller: function ($scope) {
-
+                    questions.list(function (data) {
+                        $scope.questions = data;
+                    });
                 },
-                link: function () {
+                link: function (scope) {
                     var isOpen = false;
                     $('.action img').on('click', function(){
                         $('.share_area').toggleClass('share_change');
                         $('.demo_area').toggleClass('area_change');
                         $('.demo_box').toggleClass('box_change');
+                    });
+
+                    $('#generate').click(function(){
+                        questions.add({
+                            content: $('#user_input').val(),
+                            options: {
+                                correct: $('#correct').val(),
+                                wrong: [
+                                    { text: $('#wrong1').val() },
+                                    { text: $('#wrong2').val() },
+                                    { text: $('#wrong3').val() }
+                                ]
+                            }
+                        }, function (data) {
+                            scope.questions.unshift(data);
+                            $('#user_input').val("");
+                            $('#correct').val("");
+                            $('#wrong1').val("");
+                            $('#wrong2').val("");
+                            $('#wrong3').val("");
+                            $('.action img').click();
+                        });
                     });
                 }
             };

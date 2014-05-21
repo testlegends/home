@@ -14,6 +14,7 @@ module.exports = (function(){
         Referal.findByEmail(email, function (err ,referals) {
             if (err) {
                 console.log(err);
+
             }
 
             if (referals.length > 0) {
@@ -33,10 +34,12 @@ module.exports = (function(){
 
                 if (refCode) {
                     Referal.findOneByCode(refCode, function (err, referal) {
-                        referal.referals.push(email);
-                        referal.save(function (err) {
-                            if (err) console.log(err);
-                        });
+                        if (referal.referals.indexOf(email) !== -1) {
+                            referal.referals.push(email);
+                            referal.save(function (err) {
+                                if (err) console.log(err);
+                            });
+                        }
                     });
                 }
 
@@ -55,11 +58,27 @@ module.exports = (function(){
                         data: {
                             email: referal.email,
                             code: referal.code,
+                            count: referal.referals.length,
+                            visited: referal.visited,
                             status: 'newly_joined'
                         }
                     });
                 });
             }
+        });
+    }
+
+    function get (req, res) {
+        var code = req.param('code');
+        Referal.findOneByCode(code, function (err, referal) {
+            if (err) {
+                console.log(err);
+            }
+
+            return res.json({
+                status: 'OK',
+                data: referal
+            });
         });
     }
 
@@ -79,7 +98,7 @@ module.exports = (function(){
 
                 return res.json({
                     status: 'OK',
-                    visited: referal.visited
+                    data: referal
                 });
             });
         });
@@ -103,6 +122,7 @@ module.exports = (function(){
 
     return {
         join: join,
+        get: get,
         visited: visited,
 
         _config: {

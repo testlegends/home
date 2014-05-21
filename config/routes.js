@@ -21,5 +21,6 @@ module.exports.routes = {
     'GET /question/:id'    : 'QuestionController.find',
 
     'PUT /referals'        : 'ReferalController.join',
+    'GET /referal/:code'   : 'ReferalController.get',
     'POST /referal/:code'  : 'ReferalController.visited'
 };

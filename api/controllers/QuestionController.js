@@ -10,30 +10,50 @@
 module.exports = (function(){
 
     function add (req, res) {
-        return res.json({
-            status: 'OK',
-            data: {
-                content: req.body.content
+        DemoQuestion.create({
+            content: req.body.content,
+            options: req.body.options
+        }, function (err, question) {
+            if (err) {
+                console.log(err);
             }
+
+            return res.json({
+                status: 'OK',
+                data: question
+            });
         });
     }
 
     function list (req, res) {
-        return res.json({
-            status: 'OK',
-            data: [
-                { content: 'hello' },
-                { content: 'world' }
-            ]
+        DemoQuestion.find({
+
+        }, function (err, questions) {
+            if (err) {
+                console.log(err);
+            }
+
+            return res.json({
+                status: 'OK',
+                data: questions
+            });
         });
     }
 
     function find (req, res) {
-        return res.json({
-            status: 'OK',
-            data: {
-                content: 'hello find'
+        var id = req.param('id');
+
+        DemoQuestion.findOne({
+            id: id
+        }, function (err, question) {
+            if (err) {
+                console.log(err);
             }
+
+            return res.json({
+                status: 'OK',
+                data: question
+            });
         });
     }
 

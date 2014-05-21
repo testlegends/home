@@ -41,7 +41,10 @@ define(['angular'], function (angular) {
                     });
                 },
                 add: function (data, cb) {
-                    $http.put('/questions').success(function (response) {
+                    $http.put('/questions', {
+                        content: data.content,
+                        options: data.options
+                    }).success(function (response) {
                         if (response.status === 'OK') {
                             cb(response.data);
                         }
