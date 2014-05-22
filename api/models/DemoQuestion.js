@@ -22,19 +22,6 @@ module.exports = (function(){
         }
     };
 
-    var example = {
-        content: '',
-
-        options: {
-            correct: '',
-            wrong: [
-                { text: '' },
-                { text: '' },
-                { text: '' }
-            ]
-        }
-    };
-
     if (process.env.NODE_ENV === 'development') {
         tableName += '_test';
     }

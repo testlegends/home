@@ -31,18 +31,6 @@ module.exports = (function(){
         }
     };
 
-    var example = {
-        email: 'me@email.com',
-
-        code: 'code',
-
-        referals: [
-            'a@email.com', 'b@email.com', 'c@email.com'
-        ],
-
-        visited: 3
-    };
-
     if (process.env.NODE_ENV === 'development') {
         tableName += '_test';
     }

@@ -29,10 +29,6 @@ module.exports = (function(){
         }
     };
 
-    var example = {
-
-    };
-
     if (process.env.NODE_ENV === 'development') {
         tableName += '_test';
     }

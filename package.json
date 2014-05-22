@@ -53,14 +53,17 @@
     "karma-mocha": "^0.1.3",
     "karma-requirejs": "^0.2.1",
     "karma-chrome-launcher": "^0.1.3",
-    "karma-firefox-launcher": "^0.1.3"
+    "karma-firefox-launcher": "^0.1.3",
+    "mongodb": "^1.4.5"
   },
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "api-test": "jasmine-node tests/api",
-    "unit-test": "karma start karma.conf.js --single-run",
-    "update-webdriver": "webdriver-manager update",
-    "protractor": "protractor tests/protractor.conf.js"
+    "test-api": "jasmine-node tests/api",
+    "test-unit": "karma start karma.conf.js --single-run",
+    "test-acceptance": "protractor tests/protractor.conf.js",
+    "test-dbclean": "node scripts/testdb.js clean",
+    "test-dbload": "node scripts/testdb.js load",
+    "update-webdriver": "webdriver-manager update"
   }
 }

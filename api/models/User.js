@@ -57,24 +57,6 @@ module.exports = (function(){
         }
     };
 
-    var example = {
-        name: 'Jeff Lee',
-        email: 'leejefon@gmail.com',
-        role: 'admin',
-        password: 'password',
-        password_reset_key: null,
-        games: [
-            {
-                // put this in user to support random stage access
-                id: "1",
-                questions_completed: 10
-            }
-        ],
-        payments: [
-
-        ]
-    };
-
     if (process.env.NODE_ENV === 'development') {
         tableName += '_test';
     }
