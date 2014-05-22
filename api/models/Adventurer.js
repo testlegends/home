@@ -1,5 +1,5 @@
 /**
- * Referal
+ * Adventurer
  *
  * @module      :: Model
  * @description ::
@@ -9,7 +9,7 @@
 
 module.exports = (function(){
 
-    var tableName = 'referals';
+    var tableName = 'adventurers';
 
     var attributes = {
         email: {
@@ -22,12 +22,16 @@ module.exports = (function(){
             required: true
         },
 
-        referals: {
+        referrals: {
             type: 'array'
         },
 
         visited: {
             type: 'integer'
+        },
+
+        survey: {
+            type: 'json'
         }
     };
 

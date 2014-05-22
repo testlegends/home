@@ -12,6 +12,11 @@ module.exports = (function(){
     var tableName = 'demo_questions';
 
     var attributes = {
+        game: {
+            type: 'string',
+            required: true
+        },
+
         content: {
             type: 'string',
             required: true

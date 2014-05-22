@@ -9,6 +9,7 @@ module.exports = {
 
     demo_questions_test: [
         {
+            game: 'Physics',
             content: "What is the acceleration due to gravity on Earth?",
             options: {
                 correct: "9.81 m/s^2",
@@ -20,6 +21,7 @@ module.exports = {
             }
         },
         {
+            game: 'English',
             content: "When did Christopher Columbus first land on the shores of America?",
             options: {
                 correct: "July 4, 1776 AD",
@@ -31,6 +33,7 @@ module.exports = {
             }
         },
         {
+            game: 'Game of Thrones',
             content: "What does the character Jon Snow from Game of Thrones know?",
             options: {
                 correct: "Nothing",
@@ -42,6 +45,7 @@ module.exports = {
             }
         },
         {
+            game: 'Physics',
             content: "if n=8, which of the following is equivalent to xn2 + xn + x?",
             options: {
                 correct: "8(x^2 + x + 1)",
@@ -55,6 +59,17 @@ module.exports = {
     ],
 
     clients_test: [
+        {
+            name: "TestLegends App",
+            clientSecret: "9532e520710b03bc7fd827fe4094240cd578a658195c3bba8c3520d8386a405a",
+            userId: "1",
+            redirectURI: {
+                protocol: "http",
+                domain: "app.testlegends.com"
+            },
+            icon: "",
+            _id: "536c7df8fe3a9bf0fa000216"
+        },
         {
             name: "TestLegends Build",
             clientSecret: "cc560cac675ef6cfe06328b05882d8f7a09dfbbf9d1f63a4208e5ac2953c49a6",

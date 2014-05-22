@@ -9,13 +9,13 @@ define(['angular', 'home/Services'], function (angular) {
 
     return angular.module('Home.directives', ['Home.services'])
 
-        .directive('landing', ['$location', 'referals', function ($location, referals) {
+        .directive('landing', ['$location', 'adventurers', function ($location, adventurers) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/landing.html',
                 link: function (scope) {
-                    referals.visited($location.search().ref, function (data) { });
+                    adventurers.visited($location.search().ref, function (data) { });
 
                     if ($location.search().close_window === 'true') {
                         window.close();
@@ -40,7 +40,7 @@ define(['angular', 'home/Services'], function (angular) {
                             $('.subtext').addClass('subtext_hide');
                             $('.social').toggleClass('social_hide');
 
-                            referals.join({
+                            adventurers.join({
                                 email: $('#email').val(),
                                 refCode: $location.search().ref
                             }, function (data) {
@@ -69,7 +69,7 @@ define(['angular', 'home/Services'], function (angular) {
                                 if (data.status === 'newly_joined') {
                                     // show thank you
                                 } else {
-                                    // show referal count
+                                    // show referrals count
                                 }
                             });
                         });
@@ -78,7 +78,7 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('demo', ['referals', 'questions', function (referals, questionss) {
+        .directive('demo', ['adventurers', 'questions', function (adventurers, questionss) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -92,7 +92,7 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('generate', ['referals', 'questions', function (referals, questions) {
+        .directive('generate', ['adventurers', 'questions', function (adventurers, questions) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -153,7 +153,7 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('last', ['referals', function (referals) {
+        .directive('last', ['adventurers', function (adventurers) {
             return {
                 restrict: 'E',
                 replace: true,

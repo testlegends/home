@@ -9,12 +9,14 @@ define(['angular'], function (angular) {
 
     return angular.module('Home.services', [])
 
-        .factory('referals', ['$http', function ($http) {
+        .factory('adventurers', ['$http', function ($http) {
             return {
                 join: function (data, cb) {
-                    $http.put('/referals', {
+                    $http.put('/adventurers', {
                         email: data.email,
-                        ref: data.refCode
+                        ref: data.refCode,
+                        metric: data.metric,
+                        topic: data.topic
                     }).success(function (response) {
                         if (response.status === 'OK') {
                             cb(response.data);
@@ -23,7 +25,7 @@ define(['angular'], function (angular) {
                 },
                 visited: function (code, cb) {
                     if (code) {
-                        $http.post('/referal/' + code, {}).success(function (response) {
+                        $http.post('/adventurer/' + code, {}).success(function (response) {
                             cb(response.data);
                         });
                     }
@@ -33,32 +35,8 @@ define(['angular'], function (angular) {
 
         .factory('questions', ['$http', function ($http) {
             return {
-                list: function (cb) {
-                    $http.get('/questions').success(function (response) {
-                        if (response.status === 'OK') {
-                            cb(response.data);
-                        }
-                    });
-                },
-                add: function (data, cb) {
-                    $http.put('/questions', {
-                        content: data.content,
-                        options: data.options
-                    }).success(function (response) {
-                        if (response.status === 'OK') {
-                            cb(response.data);
-                        }
-                    });
-                },
-                get: function (id, cb) {
-                    $http.get('/question/' + id).success(function (response) {
-                        if (response.status === 'OK') {
-                            cb(response.data);
-                        }
-                    });
-                },
-                latest: function (cb) {
-                    $http.get('/question/latest').success(function (response) {
+                list: function (game, cb) {
+                    $http.get('/questions/' + game).success(function (response) {
                         if (response.status === 'OK') {
                             cb(response.data);
                         }

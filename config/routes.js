@@ -15,12 +15,9 @@ module.exports.routes = {
     'GET /user/login'           : 'UserController.loginForm',
     '/user/reset_password/:key' : 'UserController.reset_password',
 
-    'GET /questions'       : 'QuestionController.list',
-    'PUT /questions'       : 'QuestionController.add',
-    'GET /question/latest' : 'QuestionController.latest',
-    'GET /question/:id'    : 'QuestionController.find',
+    'GET /questions/:game'       : 'QuestionController.list',
 
-    'PUT /referals'        : 'ReferalController.join',
-    'GET /referal/:code'   : 'ReferalController.get',
-    'POST /referal/:code'  : 'ReferalController.visited'
+    'PUT /adventurers'        : 'AdventurerController.join',
+    'GET /adventurer/:code'   : 'AdventurerController.get',
+    'POST /adventurer/:code'  : 'AdventurerController.visited'
 };
