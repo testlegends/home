@@ -7,22 +7,38 @@
  * @created     :: 2014/04/19
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'authorization_codes',
+    var tableName = 'authorization_codes';
 
-    attributes: {
+    var attributes = {
         clientId: {
             type: 'string'
         },
+
         userId: {
             type: 'string'
         },
+
         redirectURI: {
             type: 'url'
         },
+
         code: {
             type: 'string'
         }
+    };
+
+    var example = {
+
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
     }
-};
+
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();

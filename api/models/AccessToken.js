@@ -7,19 +7,34 @@
  * @created     :: 2014/04/19
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'access_tokens',
+    var tableName = 'access_tokens';
 
-    attributes: {
+    var attributes = {
         userId: {
             type: 'string'
         },
+
         clientId: {
             type: 'string'
         },
+
         token: {
             type: 'string'
         }
+    };
+
+    var example = {
+
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
     }
-};
+
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();

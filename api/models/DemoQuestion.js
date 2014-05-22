@@ -7,11 +7,11 @@
  * @created     :: 2014/05/20
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'demo_questions',
+    var tableName = 'demo_questions';
 
-    attributes: {
+    var attributes = {
         content: {
             type: 'string',
             required: true
@@ -20,19 +20,27 @@ module.exports = {
         options: {
             type: 'json'
         }
+    };
+
+    var example = {
+        content: '',
+
+        options: {
+            correct: '',
+            wrong: [
+                { text: '' },
+                { text: '' },
+                { text: '' }
+            ]
+        }
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
     }
-};
 
-var example = {
-
-    content: '',
-
-    options: {
-        correct: '',
-        wrong: [
-            { text: '' },
-            { text: '' },
-            { text: '' }
-        ]
-    }
-};
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();

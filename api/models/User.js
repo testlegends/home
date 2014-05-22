@@ -9,11 +9,11 @@
 
 var bcrypt = require('bcrypt');
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'users',
+    var tableName = 'users';
 
-    attributes: {
+    var attributes = {
         name: {
             type: 'string',
             required: true
@@ -55,24 +55,35 @@ module.exports = {
             delete obj.password_reset_key;
             return obj;
         }
-    },
+    };
 
-    beforeCreate: function (user, cb) {
-        bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(user.password, salt, function (err, hash) {
-                if (err) {
-                    console.log(err);
-                    cb(err);
-                } else {
-                    user.password = hash;
-                    cb(null, user);
-                }
-            });
-        });
-    },
+    var example = {
+        name: 'Jeff Lee',
+        email: 'leejefon@gmail.com',
+        role: 'admin',
+        password: 'password',
+        password_reset_key: null,
+        games: [
+            {
+                // put this in user to support random stage access
+                id: "1",
+                questions_completed: 10
+            }
+        ],
+        payments: [
 
-    beforeUpdate: function (user, cb) {
-        if (user.password) {
+        ]
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
+    }
+
+    return {
+        tableName: tableName,
+        attributes: attributes,
+
+        beforeCreate: function (user, cb) {
             bcrypt.genSalt(10, function(err, salt) {
                 bcrypt.hash(user.password, salt, function (err, hash) {
                     if (err) {
@@ -84,26 +95,24 @@ module.exports = {
                     }
                 });
             });
-        } else {
-            cb();
-        }
-    }
-};
+        },
 
-var example = {
-    name: 'Jeff Lee',
-    email: 'leejefon@gmail.com',
-    role: 'admin',
-    password: 'password',
-    password_reset_key: null,
-    games: [
-        {
-            // put this in user to support random stage access
-            id: "1",
-            questions_completed: 10
+        beforeUpdate: function (user, cb) {
+            if (user.password) {
+                bcrypt.genSalt(10, function(err, salt) {
+                    bcrypt.hash(user.password, salt, function (err, hash) {
+                        if (err) {
+                            console.log(err);
+                            cb(err);
+                        } else {
+                            user.password = hash;
+                            cb(null, user);
+                        }
+                    });
+                });
+            } else {
+                cb();
+            }
         }
-    ],
-    payments: [
-
-    ]
-};
+    };
+})();

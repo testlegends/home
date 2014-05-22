@@ -7,25 +7,53 @@
  * @created     :: 2014/04/19
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'clients',
+    var tableName = 'clients';
 
-    attributes: {
+    var attributes = {
         name: {
             type: 'string'
         },
+
         clientSecret: {
             type: 'string'
         },
+
         userId: {
             type: 'string'
         },
+
         redirectURI: {
             type: 'json'
         },
+
         icon: {
             type: 'string'
         }
+    };
+
+    var example = {
+        name: 'TestLegends Build',
+
+        clientSecret: 'whatever',
+
+        userId: '1',
+
+        redirectURI: {
+            protocol: 'http',
+            domain: 'build.testlegends.com'
+        },
+
+        icon: 'icon.png'
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
     }
-};
+
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();

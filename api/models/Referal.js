@@ -7,11 +7,11 @@
  * @created     :: 2014/05/20
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'referals',
+    var tableName = 'referals';
 
-    attributes: {
+    var attributes = {
         email: {
             type: 'email',
             required: true
@@ -29,18 +29,26 @@ module.exports = {
         visited: {
             type: 'integer'
         }
+    };
+
+    var example = {
+        email: 'me@email.com',
+
+        code: 'code',
+
+        referals: [
+            'a@email.com', 'b@email.com', 'c@email.com'
+        ],
+
+        visited: 3
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
     }
-};
 
-var example = {
-
-    email: 'me@email.com',
-
-    code: 'code',
-
-    referals: [
-        'a@email.com', 'b@email.com', 'c@email.com'
-    ],
-
-    visited: 3
-};
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();

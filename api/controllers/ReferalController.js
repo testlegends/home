@@ -14,7 +14,6 @@ module.exports = (function(){
         Referal.findByEmail(email, function (err ,referals) {
             if (err) {
                 console.log(err);
-
             }
 
             if (referals.length > 0) {
@@ -34,7 +33,7 @@ module.exports = (function(){
 
                 if (refCode) {
                     Referal.findOneByCode(refCode, function (err, referal) {
-                        if (referal.referals.indexOf(email) !== -1) {
+                        if (referal && referal.referals.indexOf(email) === -1) {
                             referal.referals.push(email);
                             referal.save(function (err) {
                                 if (err) console.log(err);

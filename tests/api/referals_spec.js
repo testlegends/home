@@ -39,7 +39,7 @@ frisby.create('Join Adventure')
         frisby.create('Join Adventure with Referal Code')
             .put(serverUrl + '/referals', {
                 email: 'a@a.cc',
-                ref: referal.code
+                ref: referal.data.code
             })
             .expectStatus(200)
             .expectJSON({
@@ -49,13 +49,13 @@ frisby.create('Join Adventure')
             })
             .afterJSON(function (referred) {
                 frisby.create('Referer Updated')
-                    .get(serverUrl + '/referal/' + referal.code)
+                    .get(serverUrl + '/referal/' + referal.data.code)
                     .expectStatus(200)
-                    .expectJSONLength('data.referal', 1)
+                    .expectJSONLength('data.referals', 1)
                     .expectJSON({
                         status: 'OK',
                         data: {
-                            referal: ['a@a.cc']
+                            referals: ['a@a.cc']
                         }
                     })
                     .toss();
@@ -84,7 +84,7 @@ frisby.create('Join Adventure')
 
 
         frisby.create('Visit page with Referal Code')
-            .post(serverUrl + '/referals/' + referal.code, {})
+            .post(serverUrl + '/referal/' + referal.data.code, {})
             .expectStatus(200)
             .expectJSONTypes({
                 status: String,

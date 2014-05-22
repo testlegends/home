@@ -23,10 +23,6 @@ module.exports.adapters = {
         database: process.env.MONGOHQ_DATABASE,
         user: process.env.MONGOHQ_USERNAME,
         password: process.env.MONGOHQ_PASSWORD
-    },
-
-    test: {
-        module: 'sails-memory'
     }
 
 };

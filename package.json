@@ -45,7 +45,6 @@
     "q": "^1.0.1"
   },
   "devDependencies": {
-    "sails-memory": "^0.9.1",
     "frisby": "^0.8.1",
     "chai": "^1.9.1",
     "mocha": "^1.18.2",
@@ -59,7 +58,6 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "start-test": "node app.js --adapters.default=test",
     "api-test": "jasmine-node tests/api",
     "unit-test": "karma start karma.conf.js --single-run",
     "update-webdriver": "webdriver-manager update",
