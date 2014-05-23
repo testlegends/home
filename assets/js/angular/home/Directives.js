@@ -98,7 +98,7 @@ define(['angular', 'home/Services'], function (angular) {
                 replace: true,
                 templateUrl: '/js/angular/home/partials/generate.html',
                 controller: function ($scope) {
-                    questions.list(function (data) {
+                    questions.list('Physics', function (data) {
                         $scope.questions = data;
                     });
                 },
