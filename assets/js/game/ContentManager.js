@@ -77,12 +77,12 @@ ContentManager.prototype.initialize = function (){
   // this is in the Preload world for these functions
   // --------------------------
   handleProgress = function (event){
-    console.log('Progress: '+String(event.loaded));
+    //console.log('Progress: '+String(event.loaded));
   };
 
   handleComplete = function(event)
   {
-    console.log('ContentManager - Finish Loading!!!!');
+    //console.log('ContentManager - Finish Loading!!!!');
     parent.game_start();
   };
 

@@ -14,8 +14,8 @@
 <body onload="preload()">
     <div id="box1" class="section">
         <landing></landing>
-        <div id='canvas_container'>
-            <canvas id="EpicGame" width="2272" height="1280"></canvas>
+        <div id='canvas_container' >
+            <canvas id="EpicGame" width="2272" height="1280" style="width: 100%"></canvas>
         </div>
     </div>
 
@@ -24,15 +24,15 @@
     </div>
 
     <div id="box3" class="section">
-        <generate></generate>
+        <customize></customize>
     </div>
 
     <div id="box4" class="section">
-        <build></build>
+        <track></track>
     </div>
 
     <div id="box5" class="section">
-        <last></last>
+        <publish></publish>
     </div>
 
     <div id="breadcrumbs">
@@ -73,9 +73,9 @@
 
     $(window).on("resize", function(){
         var ratio = 640/1136;
-        var update_w = window.innerWidth*0.8;
-        $('#canvas_container').css('width',update_w);
-        $('#canvas_container').css('height',update_w*ratio);
+        var update_w = window.innerWidth * 0.8;
+        $('#canvas_container').css('width', update_w);
+        $('#canvas_container').css('height', update_w*ratio);
         style_width = update_w;
         style_height = update_w*ratio;
         // preload();

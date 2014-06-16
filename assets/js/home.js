@@ -12,7 +12,18 @@ require.config({
         jqueryMouseWheel: '../vendor/jquery-mousewheel/jquery.mousewheel.min',
         keyboardjs: '../vendor/KeyboardJS/keyboard',
         underscore: '../vendor/underscore/underscore',
-        flowtype: '../vendor/FlowType.JS/flowtype'
+        flowtype: '../vendor/FlowType.JS/flowtype',
+
+        // requirejs-plugins
+        goog: '../vendor/requirejs-plugins/src/goog',
+        async: '../vendor/requirejs-plugins/src/async',
+        font: '../vendor/requirejs-plugins/src/font',
+        image: '../vendor/requirejs-plugins/src/image',
+        json: '../vendor/requirejs-plugins/src/json',
+        noext: '../vendor/requirejs-plugins/src/noext',
+        mdown: '../vendor/requirejs-plugins/src/mdown',
+        propertyParser : '../vendor/requirejs-plugins/src/propertyParser',
+        markdownConverter : '../vendor/requirejs-plugins/lib/Markdown.Converter'
     },
     shim: {
         jqueryMouseWheel: ['jquery'],

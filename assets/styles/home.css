@@ -32,7 +32,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /*-------------navigation-------------*/
-
 #breadcrumbs {
     position: fixed;
     right: 1.7%;
@@ -61,18 +60,16 @@ h1, h2, h3, h4, h5, h6, p {
     width: 100%;
     position: fixed;
     bottom: 0;
-    background-image: -moz-linear-gradient(top, transparent, black);
-    background-image: -ms-linear-gradient(top, transparent, black);
-    background-image: -o-linear-gradient(top, transparent, black);
-    background-image: -webkit-linear-gradient(top, transparent, black);
-    background-image: linear-gradient(top, transparent, black);
+    background-image: -moz-ease-gradient(top, transparent, black);
+    background-image: -ms-ease-gradient(top, transparent, black);
+    background-image: -o-ease-gradient(top, transparent, black);
+    background-image: -webkit-ease-gradient(top, transparent, black);
+    background-image: ease-gradient(top, transparent, black);
     opacity: 0.62;
 }
-
 /*-------------------------------------*/
 
 /*---------------sidebar---------------*/
-
 .sidebar {
     width: 21.11111111%;
     height: 100%;
@@ -104,7 +101,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .top_quote p {
-    font-size: 1.61111111em;
+    font-size: 1.6em;
     margin-top: 2%;
 }
 
@@ -112,31 +109,78 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 1.38888889em;
     width: 77%;
     margin: 36% auto 0;
+    text-align: center;
+}
+
+.action button {
+    font-family: Showcard Gothic;
+    font-size: 1.079999999em;
+    font-weight: 100;
+    text-decoration: none;
+    border: 0;
+    padding: 0.55555556em 0.83333333em 0.45em 0.83333333em;
+    border-radius: 5px;
+    background: #FFB000;
+    color: white;
+    cursor: pointer;
 }
 
 .join_us {
     position: absolute;
     bottom: 7%;
-    margin: 0 auto;
-    left: 28.5%;
+    margin-top: 4%;
+    width: 100%;
+    text-align: center;
 }
 
+/*---------(sidebar) user submission section----------*/
+.user_sub {
+    position: absolute;
+    bottom: 7%;
+    width: 100%;
+}
+
+.user_sub > .action {
+    text-align: left;
+}
+
+.submission {
+    width: 100%;
+    display: block;
+    margin: 3% auto 0;
+    text-align: center;
+}
+
+.user {
+    width: 66%;
+    border: none;
+    border-radius: 5px;
+    padding: 0.55555556em 0.83333333em 0.55555556em 0.83333333em;
+    font-size: 1.1111111em;
+    font-weight: 100;
+}
+
+.email {
+    margin-top: 3%;
+}
+
+.user_sub > .join_us {
+    position: relative;
+}
 /*-------------------------------------------*/
 
 /*---------------join us button--------------*/
-
 .join_us button {
     font-size: 1.5em;
     font-weight: 100;
     text-decoration: none;
     border: 0;
     padding: 0.55555556em 0.83333333em 0.55555556em 0.83333333em;
-    border-radius: 5px;
+    border-radius: 0.2777778em;
     background: #0086FF;
     color: white;
     cursor: pointer;
 }
-
 /*--------------------------------------------*/
 
 /*vvvvvvvvvvvvvvvvvvvvvvvvv| Page One |vvvvvvvvvvvvvvvvvvvvvvvvvv*/
@@ -147,7 +191,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /*----------------header-------------------*/
-
 #title {
     color: white;
     text-shadow: 0 0 20px black;
@@ -174,11 +217,9 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 3.01888889em;
     text-shadow: 0 0 15px black;
 }
-
 /*------------------------------------------*/
 
 /*-----------join the adventure-------------*/
-
 .submit {
     padding: 0;
     position: relative;
@@ -244,11 +285,9 @@ h1, h2, h3, h4, h5, h6, p {
     margin-top: 0 !important;
     margin: 0;
 }
-
 /*--------------------------------------------*/
 
 /*------------------subtext-------------------*/
-
 .subtext {
     padding-top: 1.5%;
     font-size: 0.8em;
@@ -259,11 +298,9 @@ h1, h2, h3, h4, h5, h6, p {
 .subtext_hide {
     display: none;
 }
-
 /*--------------------------------------------*/
 
 /*-------------------social-------------------*/
-
 .social {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
@@ -331,11 +368,9 @@ h1, h2, h3, h4, h5, h6, p {
 .twitter span {
     vertical-align: middle;
 }
-
 /*--------------------------------------------*/
 
 /*------------------characters----------------*/
-
 #characters {
     width:39%;
     float:left;
@@ -348,7 +383,6 @@ h1, h2, h3, h4, h5, h6, p {
     position:absolute;
     left:-27.5%;
 }
-
 /*--------------------------------------------*/
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page One |^^^^^^^^^^^^^^^^^^^^^^^^^^*/
@@ -360,48 +394,430 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 /*----------------sidebar--------------*/
-
 #demo_button {
     margin-top: 43%;
-    text-align: center;
-
 }
-
-.action button {
-    font-size: 1.079999999em;
-    font-weight: 100;
-    text-decoration: none;
-    border: 0;
-    padding: 0.55555556em 0.83333333em 0.55555556em 0.83333333em;
-    border-radius: 5px;
-    background: #FF7900;
-    color: white;
-    cursor: pointer;
-}
-
-#canvas_container {
-    width: 100%;
-    height: 100%;
-    text-align:center;
-}
-
-#EpicGame {
-    width:100%;
-    height:100%;
-}
-
 /*--------------------------------------*/
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Two |^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
-/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Three |vvvvvvvvvvvvvvvvvvvvvvvvvv*/
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Three |vvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+
+#pageThree {
+    height: 100%;
+    color: white;
+}
+
+/*-----------------sidebar-----------------*/
+.customize_action {
+    padding: 0 0.5em;
+    margin: 30% auto 0;
+}
+
+.theme {
+    margin-top: 3.5%;
+}
+
+.theme button {
+    width: 100%;
+    padding: 0.55555556em 0 0.45em 0;
+    border: 0.1em solid white; /*when active*/
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.inactive {
+    background: #FFC85A !important;
+    border: none !important;
+}
+/*--------------------------------------*/
+
+/*-----------------content area----------------*/
+
+.content {
+    height: 100%;
+    margin: 0 4.8% 0 21.11111111%;
+    position: relative;
+    padding: 0;
+}
+
+.content_area {
+    margin: 0;
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    position: relative;
+}
+
+.customize_header {
+    width: 73%;
+    margin: 7% auto 0;
+    text-align: center;
+    font-weight: 100;
+    font-size: 1.111111111em;
+    padding: 0.43em 0.833333333em 0.55555555em 0.833333333em;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+}
+
+.left_header {
+    margin-top: 8.5%;
+    margin-bottom: 9%;
+}
+
+/*-----------------questions----------------*/
+.qBox {
+    font-size: 0.89666666em;
+    width: 73%;
+    margin: 2% auto 0;
+    line-height: 1.5;
+    box-shadow: 0 0 15px #262626;
+}
+
+.questions {
+    color: black;
+    padding: 0.55555556em 0.83333333em 0.6em 0.83333333em;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #969696;
+}
+
+.qBox > div {
+    padding: 0.38888889em 0.83333333em 0.55555556em 0.83333333em;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+}
+
+.qBox > div p {
+    color: #6B6B6B;
+    width: 49%;
+    display: inline-block;
+    margin: 0;
+    vertical-align: bottom;
+}
+
+.qBox > div span {
+    font-family: Avenir;
+}
+
+.qBox > p span {
+    font-family: Avenir;
+}
+
+.bottomQ {
+    padding-top: 2%;
+}
+
+.special {
+    vertical-align: top !important;
+}
+
+/*-----------------vocab--------------------*/
+.vocabulary {
+    height: 100%;
+
+}
+
+.hero {
+    position: absolute;
+    left: 16%;
+    top: 23%;
+}
+
+.monster {
+    position: absolute;
+    left: 40%;
+    top: 60.5%;
+}
+
+/*-------------------physics------------------*/
+.physics {
+    height: 100%;
+    background-image: url(../images/space_background.svg);
+    display: none;
+}
+
+.spaceship {
+    position: absolute;
+    left: -6%;
+    top: 19%;
+}
+
+.ufo {
+    position: absolute;
+    left: 45%;
+    top: 59%;
+}
+
+/*--------------------history----------------*/
+.history {
+    height: 100%;
+    display: none;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Three |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Four |vvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+
+#pageFour {
+    height: 100%;
+    color: white;
+}
+
+#pageFour > .content {
+    padding: 2.5% 0;
+}
+
+/*---------------report card-------------------*/
+.reportCard {
+    color: black;
+    background: white;
+    width: 85%;
+    height: 83%;
+    margin: 0 auto;
+    box-shadow: 0 0 15px black;
+    border: 0.22em solid white;
+}
+
+/*-------------------title------------------*/
+.title_box {
+    background: #2F3489;
+    color: white;
+    padding: 1em;
+}
+
+#lesson_name {
+    font-family: Showcard Gothic;
+    font-size: 1.85555555em;
+    display: inline-block;
+}
+
+#lesson_date {
+    font-size: 1.237222222m;
+    display: inline-block;
+    float: right;
+    margin-top: 0.8%;
+}
+
+#lesson_date span {
+    font-family: Avenir;
+}
+
+/*--------------------class----------------*/
+.class_names {
+    width: 20%;
+    height: 89.5%;
+    display: inline-block;
+    vertical-align: top;
+    overflow: scroll;
+    font-weight: 100;
+    background: #E2E2E2;
+}
+
+.grade_ind {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin: 0.2em 0.4em;
+    border-radius: 100%;
+    border: 1px solid #9B9B9B;
+}
+
+.name_container {
+    margin-top: 0.55em;
+}
+
+.class_names p {
+    width: 8em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.class_names p:hover {
+    font-weight: 500;
+    color: #2F3489;
+}
+
+.selected {
+    font-weight: 800 !important;
+    color: #2F3489 !important;
+    margin: 0.4em auto 0.4em !important;
+}
+
+/*--------------------metrics------------------*/
+.metrics {
+    width: 80%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.element {
+    display: inline-block;
+    width: 50%;
+    font-size: 0.9277777em;
+    font-weight: 100;
+    vertical-align: top;
+    padding: 1em 1.5em 0.1em 1.5em;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.metricTitle {
+    color: #2F3489;
+    font-weight: 500;
+}
+
+/*--------------top metrics----------------*/
+.meter_container {
+    display: inline-block;
+    width: 6em;
+    height: 6em;
+    vertical-align: middle;
+    margin: 1em 1.35em;
+    position: relative;
+    text-align: center;
+}
+
+.meter {
+    width: 6em;
+    height: 6em;
+    border-radius:50%;
+    border: 1px solid #666666;
+    webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.center_container {
+    position: absolute;
+    top: 1.1em;
+    width: 6em;
+}
+
+.meter_center {
+    width: 3.9em;
+    height: 3.9em;
+    margin: 0 auto;
+    background: #2D2D2D;
+    border-radius: 10em;
+}
+
+.meter_num {
+    font-size: 1.1em;
+    font-family: Avenir;
+    font-weight: 100;
+    text-align: center;
+    color: white;
+    width: 3.55em;
+    position: absolute;
+    top: 1.35em;
+}
+
+.meter_num span {
+    font-family: Avenir;
+    font-size: 1.1em;
+    font-weight: 100;
+}
+
+.stats {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main_percentage {
+    font-size: 1.5em;
+    font-family: Avenir;
+}
+
+.NQCstats {
+    margin-top: 1em;
+}
+
+.sub_percentage {
+    font-size: 1.2em;
+    font-weight: 100;
+    font-family: Avenir;
+    margin: 0.3em 0;
+}
+
+.sub_info {
+    font-size: 0.7em;
+    font-weight: 100;
+}
+
+/*------------------bottom metrics---------------*/
+.metricList {
+    margin-top: 0.5em;
+}
+
+.metricList p {
+    display: inline-block;
+    margin-top: 0.25em;
+    font-size: 1.111111em;
+    font-weight: 100;
+}
+
+.metricList span {
+    font-family: Avenir;
+    font-weight: 100 !important;
+}
+
+.qNum {
+    width: 3em;
+    vertical-align: top;
+}
+
+.TSC > .metricList p {
+    margin-top: 0.4em !important;
+}
+
+.top_name {
+    width: 10em;
+}
+
+.metricQ {
+    width: 12.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-inline-box !important;
+    display: -moz-inline-box !important;
+    display: inline-box !important;
+    -webkit-line-clamp: 1;
+    -moz-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Four |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Five |vvvvvvvvvvvvvvvvvvvvvvvvvvv*/
+
+#pageFive {
+    height: 100%;
+    color: white;
+}
+
+.share_topic p {
+    font-size: 0.87em !important;
+}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Five |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Three |vvvvvvvvvvvvvvvvvvvvvvvvvv
 
 #pageThree {
     height: 100%;
     position: relative;
 }
 
-/*---------------sidebar--------------*/
+/*---------------sidebar--------------
 
 .action p {
     width: 80%;
@@ -415,9 +831,9 @@ h1, h2, h3, h4, h5, h6, p {
     cursor: pointer;
 }
 
-/*-------------------------------------*/
+/*-------------------------------------
 
-/*--------------share------------------*/
+/*--------------share------------------
 
 .share_area {
     float: left;
@@ -487,7 +903,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*-------------------------------------*/
 
-/*--------------demo_area---------------*/
+/*--------------demo_area---------------
 
 .demo_area {
     float: left;
@@ -546,10 +962,10 @@ h1, h2, h3, h4, h5, h6, p {
 #correct::-webkit-input-placeholder {
    color: #37AD00;
 }
-#correct::-moz-placeholder { /* Firefox 18- */
+#correct::-moz-placeholder { /* Firefox 18-
    color: #37AD00;
 }
-#correct::-moz-placeholder {  /* Firefox 19+ */
+#correct::-moz-placeholder {  /* Firefox 19+
    color: #37AD00;
 }
 #correct::-ms-input-placeholder {
@@ -558,7 +974,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #correct {
     color: #37AD00;
-    font-weight: 400; /*normal*/
+    font-weight: 400; /*normal
 }
 
 #generate {
@@ -587,11 +1003,9 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Three |^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
-/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Four |vvvvvvvvvvvvvvvvvvvvvvvvvv*/
-
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Four |vvvvvvvvvvvvvvvvvvvvvvvvvv
 #pageFour {
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
@@ -650,13 +1064,14 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Four |^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
-/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Five |vvvvvvvvvvvvvvvvvvvvvvvvvv*/
+/*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Five |vvvvvvvvvvvvvvvvvvvvvvvvvv
+
 #pageFive {
     height: 100%;
     color: white;
 }
 
-/*------------corner logo------------------*/
+/*------------corner logo------------------
 
 #corner_logo {
     width: 24.92%;
@@ -686,16 +1101,16 @@ h1, h2, h3, h4, h5, h6, p {
     text-shadow: 0 0 5px black;
 }
 
-/*--------------------------------------------*/
+/*--------------------------------------------
 
 #main {
-    width: 97.54%; /*change to 100% if content feels off centered*/
+    width: 97.54%; /*change to 100% if content feels off centered
     height: 100%;
     text-align: center;
     padding-top: 5%;
 }
 
-/*------------------info boxes----------------*/
+/*------------------info boxes----------------
 
 .info {
     width: 25.55%;
@@ -738,7 +1153,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*--------------------------------------------*/
 
-/*-------------------arrows-------------------*/
+/*-------------------arrows-------------------
 
 .arrow_box {
     display: inline-block;
@@ -777,7 +1192,7 @@ h1, h2, h3, h4, h5, h6, p {
     padding-top: 29%;
 }
 
-/*-----------------info bottom----------------*/
+/*-----------------info bottom----------------
 
 #pageFive .bottom {
     margin-top: 26% !important;
@@ -785,7 +1200,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*--------------------------------------------*/
 
-/*-----------------screenshot-----------------*/
+/*-----------------screenshot-----------------
 
 #screenshot {
     text-align: center;
@@ -801,7 +1216,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /*--------------------------------------------*/
 
-/*-----------------join us box----------------*/
+/*-----------------join us box----------------
 
 .right .bottom {
     width: 74%;
@@ -814,7 +1229,7 @@ h1, h2, h3, h4, h5, h6, p {
     text-align: center;
 }
 
-.info_box .join_us{ /*cancels out formatting from other pages*/
+.info_box .join_us{ /*cancels out formatting from other pages
     position: relative !important;
     margin: 7% 0 6% 0 !important;
     left: 0 !important;

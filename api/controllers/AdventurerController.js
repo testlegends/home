@@ -48,7 +48,19 @@ module.exports = (function(){
                     code: code,
                     metric: req.body.metric,
                     topic: req.body.topic
-                }, res);
+                }, function (err, adventurer) {
+                    if (err) {
+                        console.log(err);
+                    }
+
+                    adventurer.count = adventurer.referrals.length;
+                    adventurer.status = 'newly_joined';
+
+                    return res.json({
+                        status: 'OK',
+                        data: adventurer
+                    });
+                });
             }
         });
     }
@@ -57,7 +69,16 @@ module.exports = (function(){
         var code = req.param('code');
 
         if (code) {
-            AdventurerService.getAdventurer(code, res);
+            AdventurerService.getAdventurer(code, function (err, adventurer) {
+                if (err) {
+                    console.log(err);
+                }
+
+                return res.json({
+                    status: 'OK',
+                    data: adventurer
+                });
+            });
         }
     }
 
@@ -65,7 +86,16 @@ module.exports = (function(){
         var code = req.param('code');
 
         if (code) {
-            AdventurerService.updateVisited(code, res);
+            AdventurerService.updateVisited(code, function (err, referrer) {
+                if (err) {
+                    console.log(err);
+                }
+
+                return res.json({
+                    status: 'OK',
+                    data: referrer
+                });
+            });
         }
     }
 

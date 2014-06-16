@@ -1,5 +1,5 @@
 function Monster(monster_index,queue,x,y){
-  console.log('Monster '+monster_index+' is called...');
+  //console.log('Monster '+monster_index+' is called...');
 
   // ------------------------
   // animation setup
@@ -386,13 +386,12 @@ Monster.prototype.answer_box = function (option_text) {
     stage.update();
     setTimeout( this.animate_monster_answer_box(option_text), 3000 );
   }else{
-    console.log('never here');
+    //console.log('never here');
     this.animate_monster_answer_box(option_text);
   }
-}
+};
 
 Monster.prototype.animate_monster_answer_box = function(option_text){
-  console.log('hello');
   var box_ui = new BoxUI();
   this.speechWord = option_text;
   this.speechBox = box_ui.draw_dialog_box(this.x+global_width*0.085,this.y-global_height*0.065,option_text);
@@ -403,7 +402,7 @@ Monster.prototype.animate_monster_answer_box = function(option_text){
 
   stage.addChild(this.speechBox);
   stage.update();
-}
+};
 
 // -----------------------
 // Life/Magic Bar

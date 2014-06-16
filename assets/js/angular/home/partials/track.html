@@ -1,0 +1,161 @@
+<div id="pageFour">
+    <div class="sidebar">
+        <div class="top_quote">
+            <h3>Track</h3>
+            <p>your students' <span>performance</span> and gain insights on their <span>learning.</span></p>
+        </div>
+
+        <div class="user_sub">
+            <div class="action">
+                <p><span>tell us</span> what metric you'd like to see:</p>
+            </div>
+            <div class="submission">
+                <textarea class="user metric" placeholder="i.e. average time per question" rows="4"></textarea>
+                <input class="user email" placeholder="email" />
+            </div>
+            <div class="join_us">
+                <button>Join us!</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="reportCard">
+            <div class="title_box">
+                <p id="lesson_name">Vocabulary, Lession 1-7</p>
+                <p id="lesson_date">September <span>3, 2014</span></p>
+            </div>
+            <div class="class_names">
+                <div class="name_container">
+                    <div class="grade_ind" id="CN0"></div><p class="selected">Class Average</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN1"></div><p>Danny A</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN2"></div><p>Michelle B</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN3"></div><p>Alex C</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN4"></div><p>Tim D</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN5"></div><p>Jason E</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN6"></div><p>Denise F</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN7"></div><p>Tiffany G</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN8"></div><p>Sarah H</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN9"></div><p>Dwayne I</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN10"></div><p>Nathan J</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN11"></div><p>Hubert K</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN12"></div><p>Jeff L</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN13"></div><p>Johan M</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN14"></div><p>Bianca N</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN15"></div><p>Chelsea O</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN16"></div><p>Alessia P</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN17"></div><p>Clifford Q</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN18"></div><p>Lorenzo R</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN19"></div><p>Arun S</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN20"></div><p>Robert T</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN21"></div><p>Max U</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN22"></div><p>Adi V</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN23"></div><p>Falco W</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN24"></div><p>Gabriella X</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN25"></div><p>Ricky Y</p>
+                </div>
+                <div class="name_container">
+                    <div class="grade_ind" id="CN26"></div><p>Billy Z</p>
+                </div>
+            </div><div class="metrics">
+                <div class="top element NQA">
+                    <p class="metricTitle">Number of Questions Answered</p>
+                    <div class="meter_container">
+                        <canvas id="QAmeter" class="meter"></canvas>
+                        <div class="center_container">
+                            <div class="meter_center">
+                                <p class="meter_num" id="answered_total"><span class="answered">50</span>/<span class="total">165</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <p class="main_percentage" id="answered_percentage">30.3%</p>
+                    </div>
+                </div><div class="top element NQC">
+                    <p class="metricTitle">Number of Questions Correct</p>
+                    <div class="meter_container">
+                        <canvas id="QCmeter" class="meter"></canvas>
+                        <div class="center_container">
+                            <div class="meter_center">
+                                <p class="meter_num" id="correct_answered"><span class="correct">43</span>/<span class="answered">50</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="NQCstats stats">
+                        <p class="main_percentage" id="correct_percentage">86.0%</p>
+                        <p class="sub_percentage" id="total_percentage">26.1%</p>
+                        <p class="sub_info">of all possible questions</p>
+                    </div>
+                </div><div class="bottom element MDC">
+                    <p class="metricTitle">Most Difficult Questions</p>
+                    <div class="drop_down"></div>
+                    <div class="metricList">
+                        <p class="qNum">Q<span id="question_num1">12</span></p><p class="metricQ" id="question1">Lorem ipsum something out of</p>
+                        <p class="qNum">Q<span id="question_num2">20</span></p><p class="metricQ" id="question2">Given that there is nothing more</p>
+                        <p class="qNum">Q<span id="question_num3">21</span></p><p class="metricQ" id="question3">The villagers were encouraged</p>
+                    </div>
+                </div><div class="bottom element TSC">
+                    <p class="metricTitle">Top Scores</p>
+                    <div class="drop_down"></div>
+                    <div class="metricList">
+                        <p class="top_name">Alex C</p><p><span>96.7%</span></p>
+                        <p class="top_name">Jeff L</p><p><span>94.7%</span></p>
+                        <p class="top_name">Hubert K</p><p><span>92.7%</span></p>
+                    </div>
+                </div><div class="bottom element chart">
+                    <div id="performance_chart" style="width: 700px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

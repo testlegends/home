@@ -11,20 +11,13 @@ var Q = require('q');
 
 module.exports = (function(){
 
-    function getAdventurer (code, res) {
+    function getAdventurer (code, done) {
         Adventurer.findOneByCode(code, function (err, adventurer) {
-            if (err) {
-                console.log(err);
-            }
-
-            return res.json({
-                status: 'OK',
-                data: adventurer
-            });
+            done(err, adventurer);
         });
     }
 
-    function addAdventurer (data, res) {
+    function addAdventurer (data, done) {
         Adventurer.create({
             email: data.email,
             code: data.code,
@@ -35,21 +28,11 @@ module.exports = (function(){
                 topic: data.topic
             }
         }, function (err, adventurer) {
-            if (err) {
-                console.log(err);
-            }
-
-            adventurer.count = adventurer.referrals.length;
-            adventurer.status = 'newly_joined';
-
-            return res.json({
-                status: 'OK',
-                data: adventurer
-            });
+            done(err, adventurer);
         });
     }
 
-    function updateReferrals (email, refCode) {
+    function updateReferrals (email, refCode, done) {
         Adventurer.findOneByCode(refCode, function (err, adventurer) {
             if (adventurer && adventurer.referrals.indexOf(email) === -1) {
                 adventurer.referrals.push(email);
@@ -60,7 +43,7 @@ module.exports = (function(){
         });
     }
 
-    function updateMetric (email, metric) {
+    function updateMetric (email, metric, done) {
         Adventurer.update({
             email: email
         }, {
@@ -72,7 +55,7 @@ module.exports = (function(){
         });
     }
 
-    function updateTopic (email, topic) {
+    function updateTopic (email, topic, done) {
         Adventurer.update({
             email: email
         }, {
@@ -84,22 +67,17 @@ module.exports = (function(){
         });
     }
 
-    function updateVisited (code, res) {
+    function updateVisited (code, done) {
         Adventurer.findOneByCode(code, function (err, referrer) {
             if (err) {
                 console.log(err);
+                done(err, null);
+                return;
             }
 
             referrer.visited++;
             referrer.save(function (err) {
-                if (err) {
-                    console.log(err);
-                }
-
-                return res.json({
-                    status: 'OK',
-                    data: referrer
-                });
+                done(err, referrer);
             });
         });
     }
