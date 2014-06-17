@@ -17,7 +17,19 @@ module.exports = (function(){
     };
 
     function sendWelcomeEmail (params, callback) {
+        var mailOptions = {
+            from: generalParams.admin_email,
+            to: params.email,
+            subject: '[' + generalParams.project_name + '] Thank you for Joining TestLegends!',
+            text: (function(){
+                var ref_url = process.env.PROJECT_URL + "/?ref=" + params.code;
+                var content = "Share the link to get referal points ";
 
+                return content + reset_url;
+            })()
+        };
+
+        Sendgrid.send(mailOptions, callback);
     }
 
     function sendResetPasswordEmail (params, callback) {

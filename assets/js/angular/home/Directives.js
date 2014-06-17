@@ -80,6 +80,7 @@ define(['angular', 'home/Services'], function (angular) {
                 link: function (scope) {
                     $('#join_on_demo').on('click', function(){
                         $('#pageTwo .submission').toggleClass('hidden');
+                        $('#pageTwo .submission input').focus();
 
                         $(this).unbind('click');
                         $(this).on('click', function () {
@@ -124,6 +125,7 @@ define(['angular', 'home/Services'], function (angular) {
                     });
                     $('#join_on_customize').on('click', function(){
                         $('#pageThree .submission').toggleClass('hidden');
+                        $('#pageTwo .submission input').focus();
 
                         $(this).unbind('click');
                         $(this).on('click', function(){

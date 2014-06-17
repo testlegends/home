@@ -53,6 +53,15 @@ module.exports = (function(){
                         console.log(err);
                     }
 
+                    EmailService.sendWelcomeEmail({
+                        email: adventurer.email,
+                        code: adventurer.code
+                    }, function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+
                     adventurer.count = adventurer.referrals.length;
                     adventurer.status = 'newly_joined';
 
