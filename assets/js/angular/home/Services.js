@@ -15,7 +15,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     $http.put('/adventurers', {
                         email: data.email,
                         ref: data.refCode,
-                        metric: data.metric,
+                        assessment: data.assessment,
                         topic: data.topic
                     }).success(function (response) {
                         if (response.status === 'OK') {
@@ -30,18 +30,36 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                         });
                     }
                 },
-                assessment: function (data, cb) {
+                share: function (code) {
+                    $('button.facebook').on('click', function(){
+                        var facebookShareUrl = 'http://www.facebook.com/dialog/feed?' +
+                            'app_id=1412582839022573' + '&' +
+                            'link=http://testlegends.herokuapp.com/?ref=' + code + '&' +
+                            'message=helloworld' + '&' +
+                            'display=popup' + '&' +
+                            'redirect_uri=http://testlegends.herokuapp.com/?close_window=true';
 
-                },
-                topic: function (data, cb) {
+                        window.open(facebookShareUrl, 'popUpWindow',
+                            'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
+                        );
+                    });
 
+                    $('button.twitter').on('click', function(){
+                        var twitterShareUrl = 'http://twitter.com/share?' +
+                            'text=hello' + '&' +
+                            'url=http://testlegends.herokuapp.com/?ref=' + code;
+
+                        window.open(twitterShareUrl, 'popUpWindow',
+                            'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
+                        );
+                    });
                 }
             };
         }])
 
         .factory('scores', [function () {
 
-            var scores = {
+            var scores_data = {
                 'Class Average':{
                     'correct':28,
                     'answered':43,
@@ -307,7 +325,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'history': [
                         ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
                     ]
-                },
+                }/*,
                 'Arun S':{
                     'correct':27,
                     'answered':37,
@@ -419,21 +437,21 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'history': [
                         ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
                     ]
-                }
+                }*/
             };
 
             return {
                 list: function () {
-                    return scores;
+                    return scores_data;
                 },
                 draw: function (name) {
-                    if (!name || !scores[name]) {
+                    if (!name || !scores_data[name]) {
                         name = 'Class Average';
                     }
 
                     var data = google.visualization.arrayToDataTable([
                         ['Number of Questions', 'Date']
-                    ].concat(scores[name].history));
+                    ].concat(scores_data[name].history));
 
                     var options = {
                         title: 'Performance Chart',
@@ -450,6 +468,26 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
 
                     var chart = new google.visualization.LineChart(document.getElementById('performance_chart'));
                     chart.draw(data, options);
+                },
+                percent_calculate: function (score) {
+                    var numSplit = score.split('/');
+                    var percentage = parseInt(numSplit[0]) / parseInt(numSplit[1]);
+                    return Math.round(percentage * 1000) / 10;
+                },
+                metrics_calculate: function (person) {
+                    $('.answered').text(person.answered);
+                    $('#answered_percentage').text(Math.round(person.answered / person.total * 1000) / 10 + '%');
+
+                    $('.correct').text(person.correct);
+                    $('#correct_percentage').text(Math.round(person.correct / person.answered * 1000) / 10 + '%');
+                    $('#total_percentage').text(Math.round(person.correct / person.total * 1000) / 10 + '%');
+
+                    $('#question_num1').text(person.question_num1);
+                    $('#question1').text(person.question1);
+                    $('#question_num2').text(person.question_num2);
+                    $('#question2').text(person.question2);
+                    $('#question_num3').text(person.question_num3);
+                    $('#question3').text(person.question3);
                 }
             };
         }]);

@@ -5,16 +5,30 @@
             <p>your students' <span>performance</span> and gain insights on their <span>learning.</span></p>
         </div>
 
+        <div class="social_hide social small">
+            <div class="social_text small">
+                <p>Thanks!</p>
+                <p>Your spot is reserved.</p>
+                <p class="social_subtext small">Tell your friends about TestLegends for a chance to win some awesome rewards!</p>
+            </div>
+            <button class="facebook share_button small">
+                <img src="images/facebook.png" />
+            </button>
+            <button class="twitter share_button small">
+                <img src="images/twitter.png" />
+            </button>
+        </div>
+
         <div class="user_sub">
             <div class="action">
                 <p><span>tell us</span> what metric you'd like to see:</p>
             </div>
             <div class="submission">
-                <textarea class="user metric" placeholder="i.e. average time per question" rows="4"></textarea>
-                <input class="user email" placeholder="email" />
+                <textarea class="user metric" ng-model="assessment" placeholder="i.e. average time per question" rows="4"></textarea>
+                <input class="user email" ng-model="email" placeholder="email" />
             </div>
             <div class="join_us">
-                <button>Join us!</button>
+                <button ng-click="joinWithAssessment()">Join us!</button>
             </div>
         </div>
     </div>
@@ -83,7 +97,7 @@
                 <div class="name_container">
                     <div class="grade_ind" id="CN18"></div><p>Lorenzo R</p>
                 </div>
-                <div class="name_container">
+                <!--div class="name_container">
                     <div class="grade_ind" id="CN19"></div><p>Arun S</p>
                 </div>
                 <div class="name_container">
@@ -106,7 +120,7 @@
                 </div>
                 <div class="name_container">
                     <div class="grade_ind" id="CN26"></div><p>Billy Z</p>
-                </div>
+                </div-->
             </div><div class="metrics">
                 <div class="top element NQA">
                     <p class="metricTitle">Number of Questions Answered</p>

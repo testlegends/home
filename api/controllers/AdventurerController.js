@@ -18,11 +18,11 @@ module.exports = (function(){
             }
 
             if (adventurers.length > 0) {
-                var metric = req.body.metric;
+                var assessment = req.body.assessment;
                 var topic = req.body.topic;
 
-                if (metric) {
-                    AdventurerService.updateMetric(email, metric);
+                if (assessment) {
+                    AdventurerService.updateAssessment(email, assessment);
                 }
 
                 if (topic) {
@@ -46,7 +46,7 @@ module.exports = (function(){
                 AdventurerService.addAdventurer({
                     email: email,
                     code: code,
-                    metric: req.body.metric,
+                    assessment: req.body.assessment,
                     topic: req.body.topic
                 }, function (err, adventurer) {
                     if (err) {

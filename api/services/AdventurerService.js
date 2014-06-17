@@ -24,7 +24,7 @@ module.exports = (function(){
             referrals: [],
             visited: 0,
             survey: {
-                metric: data.metric,
+                assessment: data.assessment,
                 topic: data.topic
             }
         }, function (err, adventurer) {
@@ -43,11 +43,11 @@ module.exports = (function(){
         });
     }
 
-    function updateMetric (email, metric, done) {
+    function updateAssessment (email, assessment, done) {
         Adventurer.update({
             email: email
         }, {
-            'survey.metric': metric
+            'survey.assessment': assessment
         }, function (err, adventurer) {
             if (err) {
                 console.log(err);
@@ -102,7 +102,7 @@ module.exports = (function(){
         addAdventurer: addAdventurer,
         getAdventurer: getAdventurer,
         updateReferrals: updateReferrals,
-        updateMetric: updateMetric,
+        updateAssessment: updateAssessment,
         updateTopic: updateTopic,
         updateVisited: updateVisited,
         uid: uid

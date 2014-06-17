@@ -9,11 +9,13 @@ require.config({
     baseUrl: '/js/angular',
     paths: {
         angular: '../vendor/angular/angular.min',
-        angularRoute: '../vendor/angular-route/angular-route.min'
+        angularRoute: '../vendor/angular-route/angular-route.min',
+        angularCookies: '../vendor/angular-cookies/angular-cookies.min'
     },
     shim: {
         angular: { exports: 'angular' },
-        angularRoute: ['angular']
+        angularRoute: ['angular'],
+        angularCookies: ['angular']
     }
 });
 

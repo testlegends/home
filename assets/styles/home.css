@@ -151,6 +151,10 @@ h1, h2, h3, h4, h5, h6, p {
     text-align: center;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .user {
     width: 66%;
     border: none;
@@ -309,6 +313,14 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 1.2em 0.1em 0.5em 0.1em;
 }
 
+.social.small {
+    width: 80%;
+    position: absolute;
+    bottom: 7%;
+    left: 10%;
+    background-color: transparent;
+}
+
 .social_hide {
     display: none;
 }
@@ -319,11 +331,21 @@ h1, h2, h3, h4, h5, h6, p {
     line-height: 1.3;
 }
 
-#social_subtext {
+.social_text.small p {
+    color: white;
+    font-size: 1em;
+}
+
+.social_text .social_subtext {
     font-size: 1.2em;
-    color: #FFB000;
+    color: #FFB000 !important;
     margin: 0.5em auto 0;
     width: 78%;
+}
+
+.social_subtext.small {
+    font-size: 0.8em;
+    width: 100%;
 }
 
 .share_button {
@@ -339,6 +361,10 @@ h1, h2, h3, h4, h5, h6, p {
     position: relative;
 }
 
+.share_button.small {
+    margin: 0.6em 0.5em 0 0;
+}
+
 .facebook {
     background-color: #3B5998;
 }
@@ -348,6 +374,11 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     vertical-align: middle;
     margin-right: 0.2em;
+}
+
+.facebook.small img {
+    width: 40%;
+    margin-right: 0;
 }
 
 .facebook span {
@@ -363,6 +394,11 @@ h1, h2, h3, h4, h5, h6, p {
     margin: 0;
     vertical-align: middle;
     margin-right: 0.3em;
+}
+
+.twitter.small img {
+    width: 40%;
+    margin-right: 0;
 }
 
 .twitter span {
@@ -620,6 +656,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .grade_ind {
     display: inline-block;
+    opacity: 0;
     width: 5px;
     height: 5px;
     margin: 0.2em 0.4em;
