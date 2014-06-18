@@ -9,10 +9,11 @@ require.config({
     baseUrl: '/js/angular',
     paths: {
         jquery: '../vendor/jquery/dist/jquery.min',
-        jqueryMouseWheel: '../vendor/jquery-mousewheel/jquery.mousewheel.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
-        keyboardjs: '../vendor/KeyboardJS/keyboard',
-        underscore: '../vendor/underscore/underscore',
+        fullpagejs: '../vendor/fullpage.js/jquery.fullPage.min',
+        //jqueryMouseWheel: '../vendor/jquery-mousewheel/jquery.mousewheel.min',
+        //keyboardjs: '../vendor/KeyboardJS/keyboard',
+        //underscore: '../vendor/underscore/underscore',
 
         // requirejs-plugins
         async: '../vendor/requirejs-plugins/src/async',
@@ -26,24 +27,49 @@ require.config({
         // markdownConverter : '../vendor/requirejs-plugins/lib/Markdown.Converter'
     },
     shim: {
-        jqueryMouseWheel: ['jquery'],
-        flowtype: ['jquery']
+        //jqueryMouseWheel: ['jquery'],
+        flowtype: ['jquery'],
+        fullpagejs: ['jquery']
     },
     priority: ['jquery']
 });
 
 require([
-    'keyboardjs',
-    'underscore',
+    //'keyboardjs',
+    //'underscore',
     'jquery',
-    'jqueryMouseWheel',
-    'flowtype'
-], function (keyboard, _) {
+    //'jqueryMouseWheel',
+    'flowtype',
+    'fullpagejs'
+], function (/*keyboard, _*/) {
     $(document).ready(function(){
         $('body').flowtype({
             fontRatio: 81
         });
 
+        $('#fullpage').fullpage({
+            easing: 'linear',
+            navigation: true,
+            navigationPosition: 'right',
+            navigationTooltips: ['Home', 'Demo', 'Customize', 'Track', 'Publish'],
+            //anchors: ['home', 'demo', 'customize', 'track', 'publish'],
+            scrollingSpeed: 500,
+            css3: true,
+            resize: false,
+
+            onLeave: function (index, nextIndex, direction) {
+                if (index === 1) {
+                    $('#pageTwo .sidebar').animate({
+                        left: '0'
+                    }, 800);
+                } else if (index === 2 && direction === 'up') {
+                    $('#pageTwo .sidebar').animate({
+                        left: '-22%'
+                    }, 800);
+                }
+            }
+        });
+/*
         var boxesY = [
             $('#box1').position().top,
             $('#box2').position().top,
@@ -132,5 +158,6 @@ require([
                 return false;
             }
         };
+*/
     });
 });

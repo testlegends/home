@@ -9,33 +9,36 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:400,300,500' />
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="js/vendor/fullpage.js/jquery.fullPage.css" />
 </head>
 
 <body onload="preload()">
-    <div id="box1" class="section">
-        <landing></landing>
-        <div id='canvas_container' >
-            <canvas id="EpicGame" width="2272" height="1280" style="width: 100%"></canvas>
+    <div id="fullpage">
+        <div id="box1" class="section">
+            <landing></landing>
+            <div id='canvas_container' >
+                <canvas id="EpicGame" width="2272" height="1280" style="width: 100%; position: relative; z-index: 100000;"></canvas>
+            </div>
+        </div>
+
+        <div id="box2" class="section">
+            <demo></demo>
+        </div>
+
+        <div id="box3" class="section">
+            <customize></customize>
+        </div>
+
+        <div id="box4" class="section">
+            <track></track>
+        </div>
+
+        <div id="box5" class="section">
+            <publish></publish>
         </div>
     </div>
 
-    <div id="box2" class="section">
-        <demo></demo>
-    </div>
-
-    <div id="box3" class="section">
-        <customize></customize>
-    </div>
-
-    <div id="box4" class="section">
-        <track></track>
-    </div>
-
-    <div id="box5" class="section">
-        <publish></publish>
-    </div>
-
-    <div id="breadcrumbs">
+    <!--div id="breadcrumbs">
         <div><div class="breadcrumbs breadcrumbs_filled"></div></div>
         <div><div class="breadcrumbs"></div></div>
         <div><div class="breadcrumbs"></div></div>
@@ -43,7 +46,7 @@
         <div><div class="breadcrumbs"></div></div>
     </div>
 
-    <div id="down_nav"></div>
+    <div id="down_nav"></div-->
 
     <script src="js/vendor/requirejs/require.js" data-main="js/angular/Home"></script>
     <script src="js/home.js"></script>

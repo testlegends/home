@@ -429,6 +429,10 @@ h1, h2, h3, h4, h5, h6, p {
     height: 100%;
 }
 
+#pageTwo .sidebar {
+    left: -22%;
+}
+
 /*----------------sidebar--------------*/
 #demo_button {
     margin-top: 43%;
