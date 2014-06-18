@@ -60,7 +60,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
         .factory('scores', [function () {
 
             var scores_data = {
-                'Class Average':{
+                'Class Average': {
                     'correct':28,
                     'answered':43,
                     'total':165,
@@ -444,7 +444,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                 list: function () {
                     return scores_data;
                 },
-                draw: function (name) {
+                drawChart: function (name) {
                     if (!name || !scores_data[name]) {
                         name = 'Class Average';
                     }
@@ -469,12 +469,98 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     var chart = new google.visualization.LineChart(document.getElementById('performance_chart'));
                     chart.draw(data, options);
                 },
-                percent_calculate: function (score) {
-                    var numSplit = score.split('/');
-                    var percentage = parseInt(numSplit[0]) / parseInt(numSplit[1]);
-                    return Math.round(percentage * 1000) / 10;
+                drawMeter: function (name) {
+                    if (!name || !scores_data[name]) {
+                        name = 'Class Average';
+                    }
+
+                    var person = scores_data[name];
+                    render_timer(person.answered, person.total, "QAmeter");
+                    render_timer(person.correct, person.answered, "QCmeter");
+
+                    function render_timer (remain_seconds, total_seconds, meter) {
+                        yellow_portion = Math.floor(parseFloat(total_seconds - remain_seconds) / parseFloat(total_seconds) * 360);
+                        white_portion = Math.floor(parseFloat(remain_seconds) / parseFloat(total_seconds) * 360);
+
+                        var data = [white_portion, yellow_portion];
+                        var colors = [["black", "black"], ["#666666", "#666666"]];
+
+                        colors = color_gradient(remain_seconds, total_seconds);
+
+                        canvas = document.getElementById(meter);
+                        var context = canvas.getContext("2d");
+
+                        for (var i = 0; i < data.length; i++) {
+                            drawSegment(canvas, context, i, data, colors[i]);
+                        }
+                    }
+
+                    function color_gradient (top, bottom) {
+                        var colorG = [["black", "black"], ["#666666", "#666666"]];
+                        if (top / bottom < 0.25) {
+                            colorG = [["#FF0000", "#DD0000"], ["#666666", "#666666"]];
+                        } else if (top / bottom < 0.5) {
+                            colorG = [["#FF9D00", "#FF7B00"], ["#666666", "#666666"]];
+                        } else if (top / bottom < 0.75) {
+                            colorG = [["#FFFF00", "#FFEC00"], ["#666666", "#666666"]];
+                        } else {
+                            colorG = [["#89FF00", "#13FF00"], ["#666666", "#666666"]];
+                        }
+                        return colorG;
+                    }
+
+                    function drawSegment (canvas, context, i, data, color) {
+                        context.save();
+                        var centerX = Math.floor(canvas.width / 2);
+                        var centerY = Math.floor(canvas.height / 2);
+                        radius = Math.floor(canvas.width / 2);
+
+                        // angle hack -> used to start at 45 deg
+                        // now it starts at 0 deg
+                        start_angle_input = sumTo(data, i) - 90;
+                        if (start_angle_input < 0) {
+                            start_angle_input = start_angle_input + 360;
+                        }
+
+                        var startingAngle = degreesToRadians(start_angle_input);
+                        var arcSize = degreesToRadians(data[i]);
+                        var endingAngle = startingAngle + arcSize;
+
+                        context.beginPath();
+                        context.moveTo(centerX, centerY);
+                        context.arc(centerX, centerY, radius, startingAngle, endingAngle, false);
+                        context.closePath();
+
+                        var my_gradient = context.createLinearGradient(0, 0, 0, 170);
+                        my_gradient.addColorStop(0, color[0]);
+                        my_gradient.addColorStop(1, color[1]);
+                        context.fillStyle = my_gradient;
+
+                        // context.fillStyle = colors[i];
+                        context.fill();
+
+                        context.restore();
+                    }
+
+                    function degreesToRadians (degrees) {
+                        return (degrees * Math.PI) / 180;
+                    }
+
+                    function sumTo (a, i) {
+                        var sum = 0;
+                        for (var j = 0; j < i; j++) {
+                            sum += a[j];
+                        }
+                        return sum;
+                    }
                 },
-                metrics_calculate: function (person) {
+                populateData: function (name) {
+                    if (!name || !scores_data[name]) {
+                        name = 'Class Average';
+                    }
+
+                    var person = scores_data[name];
+
                     $('.answered').text(person.answered);
                     $('#answered_percentage').text(Math.round(person.answered / person.total * 1000) / 10 + '%');
 

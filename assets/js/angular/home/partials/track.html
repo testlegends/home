@@ -41,86 +41,11 @@
             </div>
             <div class="class_names">
                 <div class="name_container">
-                    <div class="grade_ind" id="CN0"></div><p class="selected">Class Average</p>
+                    <div class="grade_ind"></div><p class="selected">Class Average</p>
                 </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN1"></div><p>Danny A</p>
+                <div class="name_container" ng-repeat="name in names(scores)" ng-if="name != 'Class Average'" ng-click="viewStudent(name, $event)">
+                    <div class="grade_ind"></div><p>{{name}}</p>
                 </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN2"></div><p>Michelle B</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN3"></div><p>Alex C</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN4"></div><p>Tim D</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN5"></div><p>Jason E</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN6"></div><p>Denise F</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN7"></div><p>Tiffany G</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN8"></div><p>Sarah H</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN9"></div><p>Dwayne I</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN10"></div><p>Nathan J</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN11"></div><p>Hubert K</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN12"></div><p>Jeff L</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN13"></div><p>Johan M</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN14"></div><p>Bianca N</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN15"></div><p>Chelsea O</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN16"></div><p>Alessia P</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN17"></div><p>Clifford Q</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN18"></div><p>Lorenzo R</p>
-                </div>
-                <!--div class="name_container">
-                    <div class="grade_ind" id="CN19"></div><p>Arun S</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN20"></div><p>Robert T</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN21"></div><p>Max U</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN22"></div><p>Adi V</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN23"></div><p>Falco W</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN24"></div><p>Gabriella X</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN25"></div><p>Ricky Y</p>
-                </div>
-                <div class="name_container">
-                    <div class="grade_ind" id="CN26"></div><p>Billy Z</p>
-                </div-->
             </div><div class="metrics">
                 <div class="top element NQA">
                     <p class="metricTitle">Number of Questions Answered</p>
