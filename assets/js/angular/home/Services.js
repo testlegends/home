@@ -490,6 +490,42 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     $('#question3').text(person.question3);
                 }
             };
+        }])
+
+        .factory('cities', [function () {
+            var cities = {
+                'San Francisco': {
+                    left: '6%',
+                    top: '42%',
+                    topic: 'Math'
+                },
+                'New York': {
+                    left: '81%',
+                    top: '27%',
+                    topic: 'Physics'
+                },
+                'Chicago': {
+                    left: '64%',
+                    top: '37%',
+                    topic: 'English'
+                },
+                'Los Angeles': {
+                    left: '11%',
+                    top: '60%',
+                    topic: 'History'
+                },
+                'Dallas': {
+                    left: '50%',
+                    top: '70%',
+                    topic: 'Math'
+                }
+            };
+
+            return {
+                list: function () {
+                    return cities;
+                }
+            };
         }]);
 
 });

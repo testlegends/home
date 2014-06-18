@@ -287,14 +287,13 @@ Monster.prototype.play_dead_out_and_puff = function(){
   stage.addChildAt(puff_back, stage.getChildIndex(p.dead_animation));
 
   stage.addChild(puff0,puff1,puff2,puff3,puff4);
-}
+};
 
 
 // ----------------------------
 // Mouse Hover Listener: didn't get removeEventListener doesn't work, otherwise I will use it.
 // ----------------------------
 Monster.prototype.monster_hover_in = function () {
-  console.log('hover in');
   var parent = this; // parent is monster scope we passed in
   if(this.isHoverListening===true){
     for(var i=0;i<monster_list.length;i++){
@@ -304,7 +303,7 @@ Monster.prototype.monster_hover_in = function () {
     parent.hide(parent.breath_animation);
     parent.show(parent.select_animation);
   }
-}
+};
 
 Monster.prototype.monster_hover_out = function () {
   var parent = this; // parent is monster scope we passed in
@@ -312,13 +311,13 @@ Monster.prototype.monster_hover_out = function () {
     parent.show(parent.breath_animation);
     parent.hide(parent.select_animation);
   }
-}
+};
 
 Monster.prototype.set_monster_hoverbility = function (action) {
   for(var i=0;i<monster_list.length;i++){
     monster_list[i].isHoverListening = action;
   }
-}
+};
 
 // ----------------------------
 // Animation Toggle(Hide/Show)

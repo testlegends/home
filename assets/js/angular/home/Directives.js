@@ -297,7 +297,7 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('publish', ['$location', 'adventurers', function ($location, adventurers) {
+        .directive('publish', ['$location', 'adventurers', 'cities', function ($location, adventurers, cities) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -315,6 +315,33 @@ define(['angular', 'home/Services'], function (angular) {
                             adventurers.share(data.code);
                         });
                     };
+
+                    $scope.cities = cities.list();
+                },
+                link: function (scope) {
+                    $(document).ready(function(){
+                        $.each(scope.cities, function (name, pos) {
+                            var city = $('<div />').addClass('cities').css({
+                                top: pos.top,
+                                left: pos.left
+                            }).html(name);
+
+                            $('#publish_map').append(city);
+                        });
+
+                        var curr = 1;
+                        setInterval(function(){
+                            var length = $('.cities').length;
+                            $('.cities').fadeOut();
+                            $('.cities:nth-child(' + curr + ')').fadeIn();
+
+                            if (curr > length) { // TODO not sure why is > instead of ===
+                                curr = 1;
+                            } else {
+                                curr++;
+                            }
+                        }, 2000);
+                    });
                 }
             };
         }]);

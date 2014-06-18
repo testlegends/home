@@ -25,7 +25,7 @@ module.exports = (function(){
                 var ref_url = process.env.PROJECT_URL + "/?ref=" + params.code;
                 var content = "Share the link to get referal points ";
 
-                return content + reset_url;
+                return content + ref_url;
             })()
         };
 

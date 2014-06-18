@@ -10,20 +10,20 @@ require.config({
     paths: {
         jquery: '../vendor/jquery/dist/jquery.min',
         jqueryMouseWheel: '../vendor/jquery-mousewheel/jquery.mousewheel.min',
+        flowtype: '../vendor/FlowType.JS/flowtype',
         keyboardjs: '../vendor/KeyboardJS/keyboard',
         underscore: '../vendor/underscore/underscore',
-        flowtype: '../vendor/FlowType.JS/flowtype',
 
         // requirejs-plugins
-        goog: '../vendor/requirejs-plugins/src/goog',
         async: '../vendor/requirejs-plugins/src/async',
-        font: '../vendor/requirejs-plugins/src/font',
-        image: '../vendor/requirejs-plugins/src/image',
-        json: '../vendor/requirejs-plugins/src/json',
-        noext: '../vendor/requirejs-plugins/src/noext',
-        mdown: '../vendor/requirejs-plugins/src/mdown',
+        goog: '../vendor/requirejs-plugins/src/goog',
         propertyParser : '../vendor/requirejs-plugins/src/propertyParser',
-        markdownConverter : '../vendor/requirejs-plugins/lib/Markdown.Converter'
+        // font: '../vendor/requirejs-plugins/src/font',
+        // image: '../vendor/requirejs-plugins/src/image',
+        // json: '../vendor/requirejs-plugins/src/json',
+        // noext: '../vendor/requirejs-plugins/src/noext',
+        // mdown: '../vendor/requirejs-plugins/src/mdown',
+        // markdownConverter : '../vendor/requirejs-plugins/lib/Markdown.Converter'
     },
     shim: {
         jqueryMouseWheel: ['jquery'],
@@ -41,7 +41,7 @@ require([
 ], function (keyboard, _) {
     $(document).ready(function(){
         $('body').flowtype({
-          fontRatio: 81
+            fontRatio: 81
         });
 
         var boxesY = [

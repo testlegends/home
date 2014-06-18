@@ -845,6 +845,20 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 0.87em !important;
 }
 
+#publish_map {
+    width: 100%;
+    position: relative;
+}
+
+#publish_map img {
+    width: 100%;
+}
+
+.cities {
+    position: absolute;
+    display: none;
+}
+
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Five |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
 /*vvvvvvvvvvvvvvvvvvvvvvvvv| Page Three |vvvvvvvvvvvvvvvvvvvvvvvvvv
