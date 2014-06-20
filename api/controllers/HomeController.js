@@ -10,7 +10,6 @@
 var Html = require('../helpers/HtmlHelper.js');
 var MobileDetect = require('mobile-detect');
 
-
 module.exports = (function(){
 
 	function index (req, res) {

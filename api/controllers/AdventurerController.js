@@ -42,6 +42,14 @@ module.exports = (function(){
                     AdventurerService.updateReferrals(email, refCode);
                 }
 
+                var email_format = /\S+@\S+\.\S+/;
+                if (!email || !email_format.test(email)) {
+                    return res.json({
+                        status: 'ERROR',
+                        msg: 'E-mail can not be empty'
+                    });
+                }
+
                 var code = AdventurerService.uid(6);
                 AdventurerService.addAdventurer({
                     email: email,
