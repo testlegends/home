@@ -41,9 +41,7 @@ define(['angular', 'home/Services'], function (angular) {
                             width: '21%'
                         }, 200, 'linear', function(){
                             $(this).html("Join");
-                            $('#email').attr({
-                                placeholder: "email"
-                            }).focus();
+                            $('#email').focus();
                         });
 
                         $(this).unbind("click");
@@ -52,7 +50,7 @@ define(['angular', 'home/Services'], function (angular) {
                                 email: $('#email').val(),
                                 refCode: $location.search().ref
                             }, function (data) {
-                                $scope.joined();
+                                scope.joined();
                                 $('.submit').addClass('submit_hide');
                                 $('.subtext').addClass('subtext_hide');
                                 $('.social').toggleClass('social_hide');

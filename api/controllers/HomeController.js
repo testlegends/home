@@ -8,13 +8,22 @@
  */
 
 var Html = require('../helpers/HtmlHelper.js');
+var MobileDetect = require('mobile-detect');
+
 
 module.exports = (function(){
 
 	function index (req, res) {
-        return res.view({
-            layout: 'layouts/home'
-        });
+		var md = new MobileDetect(req.headers['user-agent']);
+
+		if (md.mobile()) {
+			//return res.redirect('http://m.testlegends.com');
+			return res.redirect('http://testlegends-mobile.herokuapp.com');
+		} else {
+			return res.view({
+				layout: 'layouts/home'
+			});
+		}
 	}
 
     function docs (req, res) {
