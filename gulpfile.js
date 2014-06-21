@@ -2,7 +2,8 @@ var gulp = require('gulp');
 
 var paths = {
 	target: '.tmp/public',
-	assets: 'assets/**'
+	assets: 'assets/**',
+	assetsToWatch: ['assets/**', '!assets/js/vendor/**']
 };
 
 gulp.task('compileAssets', function () {
@@ -10,6 +11,8 @@ gulp.task('compileAssets', function () {
 		.pipe(gulp.dest(paths.target));
 });
 
-gulp.task('default', ['compileAssets']);
+gulp.task('watch', function () {
+	gulp.watch(paths.assetsToWatch, ['compileAssets']);
+});
 
-gulp.watch(paths.assets, ['default']);
+gulp.task('default', ['compileAssets', 'watch']);
