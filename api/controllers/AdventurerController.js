@@ -7,6 +7,8 @@
  * @created     :: 2014/05/20
  */
 
+var validator = require('validator');
+
 module.exports = (function(){
 
     function join (req, res) {
@@ -42,8 +44,7 @@ module.exports = (function(){
                     AdventurerService.updateReferrals(email, refCode);
                 }
 
-                var email_format = /\S+@\S+\.\S+/;
-                if (!email || !email_format.test(email)) {
+                if (!email || !validator.isEmail(email)) {
                     return res.json({
                         status: 'ERROR',
                         msg: 'E-mail can not be empty'
