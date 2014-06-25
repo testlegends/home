@@ -231,7 +231,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 #join {
     border: 0;
-    padding: 0.55555556em 0.83333333em 0.55555556em 0.83333333em;
+    padding: 0.55555556em 0.73333333em;
     border-radius: 5px;
     background: #0086FF;
     color: white;
@@ -433,6 +433,17 @@ h1, h2, h3, h4, h5, h6, p {
     background: #FFC85A !important;
     border: none !important;
 }
+
+.blinkOn {
+    background-color: #FFB000 !important;
+    border: none !important;
+}
+
+.blinkOff {
+    background-color: #FFC85A !important;
+    border: none !important;
+}
+
 /*--------------------------------------*/
 
 /*-----------------content area----------------*/

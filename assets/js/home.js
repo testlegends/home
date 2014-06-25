@@ -43,6 +43,7 @@ require([
             fontRatio: 81
         });
 
+        var dir = 'down';
         $('#fullpage').fullpage({
             easing: 'linear',
             navigation: true,
@@ -55,13 +56,20 @@ require([
 
             onLeave: function (index, nextIndex, direction) {
                 if (index === 1) {
+                    dir = 'down';
+                } else if (index === 2 && direction === 'up') {
+                    dir = 'up';
+                }
+            },
+            afterLoad: function (anchor, index) {
+                if (index === 2 && dir === 'down') {
                     $('#pageTwo .sidebar').animate({
                         left: '0'
-                    }, 800);
-                } else if (index === 2 && direction === 'up') {
+                    }, 500);
+                } else if (index === 1 && dir === 'up') {
                     $('#pageTwo .sidebar').animate({
                         left: '-22%'
-                    }, 800);
+                    }, 500);
                 }
             }
         });

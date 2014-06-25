@@ -24,12 +24,12 @@
     <div id="fullpage">
         <div id="box1" class="section">
             <landing></landing>
-            <div id='canvas_container' >
-                <canvas id="EpicGame" width="2272" height="1280" style="width: 100%; position: relative; z-index: 100000;"></canvas>
-            </div>
         </div>
 
         <div id="box2" class="section">
+            <div id='canvas_container' style="position: absolute; z-index: 100000; width: 100%">
+                <canvas id="EpicGame" width="2272" height="1280" style="width: 100%"></canvas>
+            </div>
             <demo></demo>
         </div>
 
@@ -74,7 +74,7 @@
 
     $(window).on("resize", function(){
         var ratio = 640/1136;
-        var update_w = window.innerWidth * 0.8;
+        var update_w = window.innerWidth;
         $('#canvas_container').css('width', update_w);
         $('#canvas_container').css('height', update_w*ratio);
         style_width = update_w;

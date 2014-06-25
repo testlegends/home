@@ -107,6 +107,46 @@ define(['angular', 'home/Services'], function (angular) {
 
                 },
                 link: function (scope) {
+                    var blinker = (function(){
+                        var timerInterval = null;
+                        var x = 0;
+                        var target = $('#physics button');
+
+                        function blink() {
+                            if (x === 0) {
+                                target.removeClass('blinkOff');
+                                target.addClass('blinkOn');
+                                x = 1;
+                            } else if (x === 1) {
+                                target.removeClass('blinkOn');
+                                target.addClass('blinkOff');
+                                x = 0;
+                            }
+                        }
+
+                        function startBlinking () {
+                            if (timerInterval === null) {
+                               timerInterval = setInterval(blink, 1000);
+                            }
+                        }
+
+                        function stopBlinking() {
+                            if (timerInterval !== null) {
+                                clearInterval(timerInterval);
+                                timerInterval = null;
+                            }
+                            target.removeClass('blinkOn');
+                            target.removeClass('blinkOff');
+                        }
+
+                        return {
+                            startBlinking: startBlinking,
+                            stopBlinking: stopBlinking
+                        };
+                    })();
+
+                    blinker.startBlinking();
+
                     $('#vocabulary').on('click', function(){
                         $('.vocabulary').show();
                         $('.physics').hide();
@@ -116,6 +156,7 @@ define(['angular', 'home/Services'], function (angular) {
                     });
 
                     $('#physics').on('click', function(){
+                        blinker.stopBlinking();
                         $('.physics').show();
                         $('.vocabulary').hide();
                         $('#physics button').removeClass('inactive');
