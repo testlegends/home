@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6, p {
     float: left;
     color: white;
     position: relative;
-    z-index: 3;
+    z-index: 300;
 }
 
 .sidebar p {
@@ -209,7 +209,7 @@ h1, h2, h3, h4, h5, h6, p {
     #width: 76.5%;
     width: 60%;
     height: 100%;
-    z-index: 2
+    z-index: 200
 }
 
 .submit_hide {
