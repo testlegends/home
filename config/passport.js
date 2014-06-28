@@ -46,7 +46,7 @@ var UserPasswordStrategy = (function(){
         var clientId = req.body.client_id;
         var self = this;
 
-        function verified(err, client, info) {
+        function verified (err, client, info) {
             if (err) { return self.error(err); }
             if (!client) { return self.fail(); }
             self.success(client, info);

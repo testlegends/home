@@ -28,7 +28,7 @@ require.config({
     shim: {
         flowtype: ['jquery'],
         fullpage: ['jquery'],
-        //fullpagejs: ['jquery', 'slimscroll']
+        //fullpage: ['jquery', 'slimscroll']
     },
     priority: ['jquery']
 });

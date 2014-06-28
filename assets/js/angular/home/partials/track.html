@@ -40,7 +40,7 @@
                 <p id="lesson_date">September <span>3, 2014</span></p>
             </div>
             <div class="class_names">
-                <div class="name_container">
+                <div class="name_container" ng-click="viewStudent('Class Average', $event)">
                     <div class="grade_ind"></div><p class="selected">Class Average</p>
                 </div>
                 <div class="name_container" ng-repeat="name in names(scores)" ng-if="name != 'Class Average'" ng-click="viewStudent(name, $event)">

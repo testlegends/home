@@ -34,10 +34,10 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     $('button.facebook').on('click', function(){
                         var facebookShareUrl = 'http://www.facebook.com/dialog/feed?' +
                             'app_id=1412582839022573' + '&' +
-                            'link=http://testlegends.herokuapp.com/?ref=' + code + '&' +
+                            'link=http://testlegends.com/?ref=' + code + '&' +
                             'message=helloworld' + '&' +
                             'display=popup' + '&' +
-                            'redirect_uri=http://testlegends.herokuapp.com/?close_window=true';
+                            'redirect_uri=http://testlegends.com/?close_window=true';
 
                         window.open(facebookShareUrl, 'popUpWindow',
                             'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
@@ -47,7 +47,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     $('button.twitter').on('click', function(){
                         var twitterShareUrl = 'http://twitter.com/share?' +
                             'text=hello' + '&' +
-                            'url=http://testlegends.herokuapp.com/?ref=' + code;
+                            'url=http://testlegends.com/?ref=' + code;
 
                         window.open(twitterShareUrl, 'popUpWindow',
                             'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
