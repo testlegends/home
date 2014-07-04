@@ -16,13 +16,31 @@ module.exports = (function(){
 		var md = new MobileDetect(req.headers['user-agent']);
 
 		if (md.mobile()) {
-			//return res.redirect('http://m.testlegends.com');
-			return res.redirect('http://testlegends-mobile.herokuapp.com');
+			return res.redirect('http://m.testlegends.com');
 		} else {
 			return res.view({
 				layout: 'layouts/home'
 			});
 		}
+	}
+
+	function trackr (req, res) {
+
+		TrackrService.save(req.body, function (err, data) {
+			if (err) {
+				console.log(err);
+				return res.json({
+					status: 'ERROR',
+					error: err
+				});
+			}
+
+			return res.json({
+				status: 'OK',
+				data: data
+			});
+		});
+
 	}
 
     function docs (req, res) {
@@ -31,6 +49,7 @@ module.exports = (function(){
 
     return {
         index: index,
+		trackr: trackr,
         docs: docs,
 
         _config: {}

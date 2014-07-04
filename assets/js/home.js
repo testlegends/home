@@ -11,23 +11,16 @@ require.config({
         jquery: '../vendor/jquery/dist/jquery.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
         fullpage: '../vendor/fullpage.js/jquery.fullPage.min',
+        debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',
+        trackr: '../trackr'
         //slimscroll: '../vendor/jquery.slimscroll/jquery.slimscroll.min',
-        //underscore: '../vendor/underscore/underscore',
-
-        // requirejs-plugins
-        async: '../vendor/requirejs-plugins/src/async',
-        goog: '../vendor/requirejs-plugins/src/goog',
-        propertyParser : '../vendor/requirejs-plugins/src/propertyParser',
-        // font: '../vendor/requirejs-plugins/src/font',
-        // image: '../vendor/requirejs-plugins/src/image',
-        // json: '../vendor/requirejs-plugins/src/json',
-        // noext: '../vendor/requirejs-plugins/src/noext',
-        // mdown: '../vendor/requirejs-plugins/src/mdown',
-        // markdownConverter : '../vendor/requirejs-plugins/lib/Markdown.Converter'
+        //underscore: '../vendor/underscore/underscore'
     },
     shim: {
         flowtype: ['jquery'],
         fullpage: ['jquery'],
+        debounce: ['jquery'],
+        trackr: ['jquery', 'debounce']
         //fullpage: ['jquery', 'slimscroll']
     },
     priority: ['jquery']
@@ -36,7 +29,9 @@ require.config({
 require([
     'jquery',
     'flowtype',
-    'fullpage'
+    'fullpage',
+    'debounce',
+    'trackr'
 ], function () {
     $(document).ready(function(){
         $('body').flowtype({
@@ -48,7 +43,7 @@ require([
             easing: 'linear',
             navigation: true,
             navigationPosition: 'right',
-            navigationTooltips: ['Home', 'Demo', 'Customize', 'Track', 'Publish'],
+            navigationTooltips: ['Home', 'Demo', 'Customize', 'Track', 'Publish', 'Sign Up'],
             //anchors: ['home', 'demo', 'customize', 'track', 'publish'],
             scrollingSpeed: 500,
             css3: true,
@@ -72,6 +67,19 @@ require([
                     }, 500);
                 }
             }
+        });
+
+        $.trackr({
+            name: 'TestLegends Home',
+            dbUrl: '/trackr',
+            trackers: [
+                { element: '#pageOne',   event: 'viewport' },
+                { element: '#pageTwo',   event: 'viewport' },
+                { element: '#pageThree', event: 'viewport' },
+                { element: '#pageFour',  event: 'viewport' },
+                { element: '#pageFive',  event: 'viewport' },
+                { url: '/adventurers',   event: 'ajax'}
+            ]
         });
     });
 });

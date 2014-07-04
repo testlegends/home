@@ -71,7 +71,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 27], ['Sep 8', 18], ['Sep 15', 20], ['Sep 22', 25],
+                        ['Sep 29', 32], ['Oct 6', 37], ['Oct 13', 39], ['Oct 20', 45],
+                        ['Oct 27', 65], ['Nov 3', 70], ['Nov 10', 86]
                     ]
                 },
                 'Danny A':{
@@ -85,7 +87,10 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 1660], ['90', 2030]
+                        ['Sep 1', 87], ['Sep 8', 73], ['Sep 15', 72], ['Sep 22', 68],
+                        ['Sep 29', 82], ['Oct 6', 73], ['Oct 13', 72], ['Oct 20', 78],
+                        ['Oct 27', 70], ['Nov 3', 86], ['Nov 10', 74]
+
                     ]
                 },
                 'Michelle B':{
@@ -99,7 +104,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 92], ['Sep 8', 75], ['Sep 15', 77], ['Sep 22', 83],
+                        ['Sep 29', 89], ['Oct 6', 88], ['Oct 13', 83], ['Oct 20', 88],
+                        ['Oct 27', 91], ['Nov 3', 88], ['Nov 10', 87.3]
                     ]
                 },
                 'Alex C':{
@@ -113,7 +120,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'40',
                     'question3':'While the school was not the',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 100], ['Sep 8', 92], ['Sep 15', 94], ['Sep 22', 97],
+                        ['Sep 29', 100], ['Oct 6', 96], ['Oct 13', 99], ['Oct 20', 98],
+                        ['Oct 27', 95], ['Nov 3', 100], ['Nov 10', 96.7]
                     ]
                 },
                 'Tim D':{
@@ -127,7 +136,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 80], ['Sep 8', 54], ['Sep 15', 68], ['Sep 22', 80],
+                        ['Sep 29', 85], ['Oct 6', 78], ['Oct 13', 73], ['Oct 20', 80],
+                        ['Oct 27', 65], ['Nov 3', 70], ['Nov 10', 78.3]
                     ]
                 },
                 'Jason E':{
@@ -141,7 +152,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 27], ['Sep 8', 18], ['Sep 15', 20], ['Sep 22', 35],
+                        ['Sep 29', 32], ['Oct 6', 37], ['Oct 13', 38], ['Oct 20', 39],
+                        ['Oct 27', 40], ['Nov 3', 49], ['Nov 10', 53.3]
                     ]
                 },
                 'Denise F':{
@@ -155,7 +168,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 34], ['Sep 8', 30], ['Sep 15', 40], ['Sep 22', 45],
+                        ['Sep 29', 50], ['Oct 6', 55], ['Oct 13', 57], ['Oct 20', 60],
+                        ['Oct 27', 65], ['Nov 3', 68], ['Nov 10', 81.4]
                     ]
                 },
                 'Tiffany G':{
@@ -169,7 +184,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 27], ['Sep 8', 18], ['Sep 15', 23], ['Sep 22', 27],
+                        ['Sep 29', 31], ['Oct 6', 25], ['Oct 13', 17], ['Oct 20', 18],
+                        ['Oct 27', 22], ['Nov 3', 23], ['Nov 10', 28.6]
                     ]
                 },
                 'Sarah H':{
@@ -183,7 +200,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 75], ['Sep 8', 67], ['Sep 15', 74], ['Sep 22', 70],
+                        ['Sep 29', 65], ['Oct 6', 68], ['Oct 13', 70], ['Oct 20', 75],
+                        ['Oct 27', 82], ['Nov 3', 85], ['Nov 10', 80.9]
                     ]
                 },
                 'Dwayne I':{
@@ -197,7 +216,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 11], ['Sep 8', 15], ['Sep 15', 18], ['Sep 22', 25],
+                        ['Sep 29', 25], ['Oct 6', 25], ['Oct 13', 25], ['Oct 20', 20],
+                        ['Oct 27', 20], ['Nov 3', 20], ['Nov 10', 20]
                     ]
                 },
                 'Nathan J':{
@@ -211,7 +232,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 10], ['Sep 8', 15], ['Sep 15', 20], ['Sep 22', 25],
+                        ['Sep 29', 28], ['Oct 6', 30], ['Oct 13', 45], ['Oct 20', 55],
+                        ['Oct 27', 62.3], ['Nov 3', 70], ['Nov 10', 65.4]
                     ]
                 },
                 'Hubert K':{
@@ -225,7 +248,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 50], ['Sep 8', 30], ['Sep 15', 40], ['Sep 22', 65],
+                        ['Sep 29', 70], ['Oct 6', 75], ['Oct 13', 85], ['Oct 20', 90],
+                        ['Oct 27', 90], ['Nov 3', 95], ['Nov 10', 92.7]
                     ]
                 },
                 'Jeff L':{
@@ -239,7 +264,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'40',
                     'question3':'While the school was not the',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 50], ['Sep 8', 60], ['Sep 15', 65], ['Sep 22', 68],
+                        ['Sep 29', 76], ['Oct 6', 70], ['Oct 13', 80], ['Oct 20', 85],
+                        ['Oct 27', 95], ['Nov 3', 100], ['Nov 10', 94.7]
                     ]
                 },
                 'Johan M':{
@@ -253,7 +280,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 27], ['Sep 8', 18], ['Sep 15', 20], ['Sep 22', 35],
+                        ['Sep 29', 32], ['Oct 6', 37], ['Oct 13', 38], ['Oct 20', 39],
+                        ['Oct 27', 40], ['Nov 3', 49], ['Nov 10', 41.7]
                     ]
                 },
                 'Bianca N':{
@@ -267,7 +296,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 10], ['Sep 8', 15], ['Sep 15', 20], ['Sep 22', 25],
+                        ['Sep 29', 28], ['Oct 6', 30], ['Oct 13', 45], ['Oct 20', 55],
+                        ['Oct 27', 62.3], ['Nov 3', 70], ['Nov 10', 69.2]
                     ]
                 },
                 'Chelsea O':{
@@ -281,7 +312,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 11], ['Sep 8', 15], ['Sep 15', 18], ['Sep 22', 25],
+                        ['Sep 29', 25], ['Oct 6', 25], ['Oct 13', 25], ['Oct 20', 20],
+                        ['Oct 27', 20], ['Nov 3', 20], ['Nov 10', 21.7]
                     ]
                 },
                 'Alessia P':{
@@ -295,7 +328,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 75], ['Sep 8', 67], ['Sep 15', 74], ['Sep 22', 70],
+                        ['Sep 29', 65], ['Oct 6', 68], ['Oct 13', 70], ['Oct 20', 75],
+                        ['Oct 27', 82], ['Nov 3', 85], ['Nov 10', 79.5]
                     ]
                 },
                 'Clifford Q':{
@@ -309,7 +344,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 75], ['Sep 8', 67], ['Sep 15', 74], ['Sep 22', 70],
+                        ['Sep 29', 65], ['Oct 6', 78], ['Oct 13', 60], ['Oct 20', 65],
+                        ['Oct 27', 72], ['Nov 3', 75], ['Nov 10', 76.1]
                     ]
                 },
                 'Lorenzo R':{
@@ -323,7 +360,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 11], ['Sep 8', 15], ['Sep 15', 18], ['Sep 22', 25],
+                        ['Sep 29', 25], ['Oct 6', 25], ['Oct 13', 25], ['Oct 20', 20],
+                        ['Oct 27', 20], ['Nov 3', 20], ['Nov 10', 24.2]
                     ]
                 }/*,
                 'Arun S':{
@@ -337,7 +376,9 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sep 1', 27], ['Sep 8', 18], ['Sep 15', 20], ['Sep 22', 25],
+                        ['Sep 29', 32], ['Oct 6', 37], ['Oct 13', 39], ['Oct 20', 45],
+                        ['Oct 27', 65], ['Nov 3', 70], ['Nov 10', 86]
                     ]
                 },
                 'Robert T':{
@@ -351,7 +392,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     'question_num3':'21',
                     'question3':'The villagers were encouraged',
                     'history': [
-                        ['60', 1000], ['70', 1170], ['80', 660], ['90', 1030]
+                        ['Sept 1', 30], ['Sept 8', 22], ['Sept 15', 54], ['Sept 22', 65]
                     ]
                 },
                 'Max U':{
@@ -450,11 +491,18 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     }
 
                     var data = google.visualization.arrayToDataTable([
-                        ['Number of Questions', 'Date']
+                        ['percentage correct (%)', 'Date']
                     ].concat(scores_data[name].history));
 
                     var options = {
                         title: 'Performance Chart',
+                        curveType: 'function',
+                        pointSize: 8,
+                        height: 270,
+                        colors: ['orange'],
+                        chartArea: {
+                            left: 80, width: '85%'
+                        },
                         legend: {
                             position: 'none'
                         },
@@ -462,7 +510,11 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                             title: 'Date'
                         },
                         vAxis: {
-                            title: 'Number of Questions'
+                            title: 'percentage correct (%)',
+                            viewWindow: {
+                                min: 0,
+                                max: 105
+                            }
                         }
                     };
 

@@ -5,30 +5,34 @@
             <p>your students' <span>performance</span> and gain insights on their <span>learning.</span></p>
         </div>
 
-        <div class="social_hide social small">
-            <div class="social_text small">
-                <p>Thanks!</p>
-                <p>Your spot is reserved.</p>
-                <p class="social_subtext small">Tell your friends about TestLegends for a chance to win some awesome rewards!</p>
+        <div class="social_hide small_social">
+            <div class="small_text">
+                <p class="small_headtext">Thanks!</p>
+                <p class="small_subtext">Help us spread the word:</p>
             </div>
-            <button class="facebook share_button small">
-                <img src="images/facebook.png" />
-            </button>
-            <button class="twitter share_button small">
-                <img src="images/twitter.png" />
-            </button>
+            <div class="button_sec">
+                <button class="facebook small_button">
+                    <img src="images/facebook_small.png" />
+                </button>
+                <button class="twitter small_button">
+                    <img src="images/twitter_small.png" />
+                </button>
+                <button class="mail small_button">
+                    <img src="images/email_small.png"/>
+                </button>
+            </div>
         </div>
 
         <div class="user_sub">
-            <div class="action">
-                <p><span>tell us</span> what metric you'd like to see:</p>
+            <div class="action assessments">
+                <p><span>tell us</span> the assessments you'd like to see:</p>
             </div>
             <div class="submission">
                 <textarea class="user metric" ng-model="assessment" placeholder="i.e. average time per question" rows="4"></textarea>
                 <input class="user email" ng-model="email" placeholder="email" />
             </div>
             <div class="join_us">
-                <button ng-click="joinWithAssessment()">Join us!</button>
+                <button ng-click="joinWithAssessment()">Get Early Access</button>
             </div>
         </div>
     </div>

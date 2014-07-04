@@ -17,7 +17,9 @@ module.exports.routes = {
 
     'GET /questions/:game'      : 'QuestionController.list',
 
-    'PUT /adventurers'            : 'AdventurerController.join',
-    'GET /adventurer/:code'       : 'AdventurerController.get',
-    'POST /adventurer/:code'      : 'AdventurerController.visited'
+    'PUT  /adventurers'         : 'AdventurerController.join',
+    'GET  /adventurer/:code'    : 'AdventurerController.get',
+    'POST /adventurer/:code'    : 'AdventurerController.visited',
+
+    'POST /trackr'              : 'HomeController.trackr'
 };

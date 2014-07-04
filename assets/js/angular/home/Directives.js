@@ -14,7 +14,7 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/landing.html',
-                controller: function ($scope) {
+                controller: ['$scope', function ($scope) {
                     $scope.joined = function () {
                         // join to submit, hide email inputs or join us buttons
                         $('#pageTwo .user_sub').hide();
@@ -24,7 +24,7 @@ define(['angular', 'home/Services'], function (angular) {
                         $('#pageFive .submission input').hide();
                         $('#pageFive .join_us button').text('Submit');
                     };
-                },
+                }],
                 link: function (scope) {
                     adventurers.visited($location.search().ref, function (data) { });
 
@@ -73,9 +73,9 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/demo.html',
-                controller: function ($scope) {
+                controller: ['$scope', function ($scope) {
 
-                },
+                }],
                 link: function (scope) {
                     $('#join_on_demo').on('click', function(){
                         $('#pageTwo .submission').toggleClass('hidden');
@@ -103,9 +103,9 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/customize.html',
-                controller: function ($scope) {
+                controller: ['$scope', function ($scope) {
 
-                },
+                }],
                 link: function (scope) {
                     var blinker = (function(){
                         var timerInterval = null;
@@ -190,7 +190,7 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/track.html',
-                controller: function ($scope) {
+                controller: ['$scope', function ($scope) {
                     $scope.scores = scores.list();
 
                     // Work around to prevent data to be sorted
@@ -219,7 +219,7 @@ define(['angular', 'home/Services'], function (angular) {
                             adventurers.share(data.code);
                         });
                     };
-                },
+                }],
                 link: function () {
                     scores.drawChart();
                     scores.drawMeter();
@@ -233,7 +233,7 @@ define(['angular', 'home/Services'], function (angular) {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/publish.html',
-                controller: function ($scope) {
+                controller: ['$scope', function ($scope) {
                     $scope.cities = cities.list();
 
                     $scope.joinWithTopic = function () {
@@ -248,7 +248,7 @@ define(['angular', 'home/Services'], function (angular) {
                             adventurers.share(data.code);
                         });
                     };
-                },
+                }],
                 link: function (scope) {
                     $(document).ready(function(){
                         $.each(scope.cities, function (name, pos) {
@@ -274,6 +274,20 @@ define(['angular', 'home/Services'], function (angular) {
                             }
                         }, 2000);
                     });
+                }
+            };
+        }])
+
+        .directive('signup', ['$location', 'adventurers', function ($location, adventurers) {
+            return {
+                restrict: 'E',
+                replace: true,
+                templateUrl: '/js/angular/home/partials/signup.html',
+                controller: ['$scope', function ($scope) {
+
+                }],
+                link: function (scope) {
+
                 }
             };
         }]);
