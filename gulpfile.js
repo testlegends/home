@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var rjs = require('gulp-requirejs');
 var uglifyJs = require('gulp-uglify');
-var uglifyCss = require('gulp-cssmin');
+var minifyCSS = require('gulp-cssmin');
 var concat = require('gulp-concat');
 
 var paths = {
@@ -37,7 +37,7 @@ gulp.task('uglifyJs', function () {
 gulp.task('minifyCSS', function () {
 	gulp.src(cssFiles)
 		.pipe(concat('home.min.css'))
-        .pipe(uglifyCss())
+        .pipe(minifyCSS())
         .pipe(gulp.dest(paths.target + '/styles'));
 });
 

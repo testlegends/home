@@ -12,9 +12,18 @@ module.exports = (function(){
     var tableName = 'trackr';
 
     var attributes = {
+        trackrId: {
+            type: 'string'
+        },
         name: {
             type: 'string'
         },
+        eventHistory: {
+            type: 'array'
+        },
+        userAgent: {
+            type: 'string'
+        }
     };
 
     if (process.env.NODE_ENV === 'development') {

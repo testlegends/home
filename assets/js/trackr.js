@@ -1,5 +1,5 @@
 /**
- * Tracker Plugin
+ * Trackr Plugin
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/06/24
@@ -19,7 +19,8 @@
         $(document).ajaxSuccess(function(event, xhr, settings){
             if ($.inArray(settings.url, ajaxUrls) !== -1) {
                 save({
-                    event: 'ajax'
+                    event: 'ajax',
+                    elem: null
                 }, cb);
             }
         });
@@ -74,8 +75,6 @@
     }
 
     function save (data, cb) {
-        cb(data);
-
         $.ajax({
             global: false,
             type: 'POST',
@@ -83,7 +82,8 @@
             data: {
                 name: trackrAppName,
                 info: {
-                    event: data.event
+                    event: data.event,
+                    elem: data.elem
                 }
             }
         }).done(function(response){
@@ -94,7 +94,6 @@
     }
 
     $.trackr = function (config) {
-
         if (!config.dbUrl) {
             console.log('Need baseUrl');
             return false;
@@ -116,7 +115,7 @@
 
             if (!tracker.callback) {
                 tracker.callback = function () {
-                    console.log('logged ' + tracker.element);
+                    //console.log('logged ' + tracker.element);
                 };
             }
 

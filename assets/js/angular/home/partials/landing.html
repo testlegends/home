@@ -4,7 +4,7 @@
         <h2>Transform your homework into an epic adventure game.</h2>
         <div class="submit">
             <p>sign up for early access to TestLegends</p>
-            <input type="email" id="email" placeholder="email" /><button id="join">Join</button>
+            <input type="email" ng-model="email" placeholder="email" /><button id="join" ng-click="join()">Join</button>
         </div>
 
         <!-- <div class="subtext">
@@ -13,19 +13,18 @@
 
         <div class="social_hide social">
             <div class="social_text">
-                <p>Thanks!</p>
-                <p class="social_subtext">Help us spread the word:</p>
+                <p>Thanks! <span class="social_subtext">Help us spread the word:</span></p>
             </div>
             <button class="facebook share_button">
-                <img src="images/facebook.png" />
+                <img src="images/facebook.png" title="Facebook" />
                 <span>Share</span>
             </button>
             <button class="twitter share_button">
-                <img src="images/twitter.png" />
+                <img src="images/twitter.png" title="Twitter"/>
                 <span>Tweet</span>
             </button>
             <button class="mail share_button">
-                <img />
+                <img src="images/email.png" title="E-mail" />
                 <span>Email</span>
             </button>
         </div>

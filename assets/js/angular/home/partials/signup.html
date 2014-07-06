@@ -14,8 +14,26 @@
                 <p>Sign up for early access to TestLegends</p>
             </div>
             <div id="inputs">
-                <input type="email" placeholder="email" /><button type="submit">Join</button>
+                <input type="email" ng-model="email" placeholder="email" /><button ng-click="join()">Join</button>
             </div>
+        </div>
+
+        <div class="social_hide social">
+            <div class="social_text">
+                <p>Thanks! <span class="social_subtext">Help us spread the word:</span></p>
+            </div>
+            <button class="facebook share_button">
+                <img src="images/facebook.png" title="Facebook" />
+                <span>Share</span>
+            </button>
+            <button class="twitter share_button">
+                <img src="images/twitter.png" title="Twitter"/>
+                <span>Tweet</span>
+            </button>
+            <button class="mail share_button">
+                <img src="images/email.png" title="E-mail" />
+                <span>Email</span>
+            </button>
         </div>
     </div>
 

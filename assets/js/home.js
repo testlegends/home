@@ -38,7 +38,7 @@ require([
             fontRatio: 81
         });
 
-        var dir = 'down';
+        var dir = null;
         $('#fullpage').fullpage({
             easing: 'linear',
             navigation: true,
@@ -50,20 +50,25 @@ require([
             resize: false,
 
             onLeave: function (index, nextIndex, direction) {
-                if (index === 1) {
-                    dir = 'down';
-                } else if (index === 2 && direction === 'up') {
-                    dir = 'up';
+                dir = direction;
+                if (index === 1 && nextIndex === 2 && dir === 'down') {
+                    $('#pageTwo .sidebar').animate({
+                        left: '-22%'
+                    }, 0);
+                } else if (index === 6 && nextIndex === 5 && dir === 'up') {
+                    $('#pageFive .sidebar').animate({
+                        left: '-22%'
+                    }, 0);
                 }
             },
             afterLoad: function (anchor, index) {
-                if (index === 2 && dir === 'down') {
+                if (index === 2 && dir === 'down')  {
                     $('#pageTwo .sidebar').animate({
                         left: '0'
                     }, 500);
-                } else if (index === 1 && dir === 'up') {
-                    $('#pageTwo .sidebar').animate({
-                        left: '-22%'
+                } else  if (index === 5 && dir === 'up') {
+                    $('#pageFive .sidebar').animate({
+                        left: '0'
                     }, 500);
                 }
             }

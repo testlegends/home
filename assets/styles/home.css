@@ -1,3 +1,4 @@
+/* Source: http://fonts.googleapis.com/css?family=Raleway:400,300,500 */
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
@@ -349,17 +350,17 @@ h1, h2, h3, h4, h5, h6, p {
 .social_text p {
     font-weight: 100;
     font-size: 1.45em;
+    margin-bottom: 3%;
 }
 
 .social_text .social_subtext {
-    font-size: 1.2em;
+    font-size: 0.8em;
     color: #FFB000 !important;
-    margin: 1% auto 3%;
 }
 
 .share_button {
     display: inline-block;
-    padding: 0.5em;
+    padding: 0.65em 0.5em;
     border-radius: 3px;
     margin: 0 0.8em;
     border: 0;
@@ -973,6 +974,11 @@ h1, h2, h3, h4, h5, h6, p {
     bottom: 0;
     top: 0;
     vertical-align: middle;
+}
+
+#centering .social {
+    width: 35.5%;
+    text-align: center;
 }
 
 #signup {

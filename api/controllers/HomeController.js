@@ -25,6 +25,23 @@ module.exports = (function(){
 	}
 
 	function trackr (req, res) {
+		if (!req.body) {
+			return res.json({
+				status: 'ERROR',
+				error: 'No data received'
+			});
+		}
+
+		var trackrId = req.session.trackrId;
+		if (!trackrId) {
+			trackrId = TrackrService.uid();
+			req.session.trackrId = trackrId;
+		}
+
+		var trackrData = sails.util.merge(req.body, {
+			id: trackrId,
+			userAgent: req.headers['user-agent']
+		});
 
 		TrackrService.save(req.body, function (err, data) {
 			if (err) {

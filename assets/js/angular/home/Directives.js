@@ -15,14 +15,29 @@ define(['angular', 'home/Services'], function (angular) {
                 replace: true,
                 templateUrl: '/js/angular/home/partials/landing.html',
                 controller: ['$scope', function ($scope) {
+                    $scope.join = function () {
+                        adventurers.join({
+                            email: $scope.email,
+                            refCode: $location.search().ref
+                        }, function (data) {
+                            $scope.joined();
+                            adventurers.share(data.code);
+                        });
+                    };
+
                     $scope.joined = function () {
-                        // join to submit, hide email inputs or join us buttons
+                        $('#pageOne .submit').hide();
+                        $('#pageOne .social_hide').removeClass('social_hide');
                         $('#pageTwo .user_sub').hide();
+                        $('#pageTwo .social_hide').removeClass('social_hide');
                         $('#pageThree .user_sub').hide();
+                        $('#pageThree .social_hide').removeClass('social_hide');
                         $('#pageFour .submission input').hide();
                         $('#pageFour .join_us button').text('Submit');
                         $('#pageFive .submission input').hide();
                         $('#pageFive .join_us button').text('Submit');
+                        $('#pageSix #signup').hide();
+                        $('#pageSix .social_hide').removeClass('social_hide');
                     };
                 }],
                 link: function (scope) {
@@ -32,38 +47,6 @@ define(['angular', 'home/Services'], function (angular) {
                     if ($location.search().close_window === 'true') {
                         window.close();
                     }
-
-                    $('#join').on('click', function(e){
-                        $('.submit').addClass('submit_box');
-                        $(this).addClass('join_with_input');
-                        $(this).html("&nbsp;");
-                        $(this).animate({
-                            width: '21%'
-                        }, 200, 'linear', function(){
-                            $(this).html("Join");
-                            $('#email').focus();
-                        });
-
-                        $(this).unbind("click");
-                        $(this).on('click', function(){
-                            adventurers.join({
-                                email: $('#email').val(),
-                                refCode: $location.search().ref
-                            }, function (data) {
-                                scope.joined();
-                                $('.submit').addClass('submit_hide');
-                                $('.subtext').addClass('subtext_hide');
-                                $('.social').toggleClass('social_hide');
-                                adventurers.share(data.code);
-
-                                if (data.status === 'newly_joined') {
-                                    // show thank you
-                                } else {
-                                    // show referrals count
-                                }
-                            });
-                        });
-                    });
                 }
             };
         }])
@@ -284,7 +267,7 @@ define(['angular', 'home/Services'], function (angular) {
                 replace: true,
                 templateUrl: '/js/angular/home/partials/signup.html',
                 controller: ['$scope', function ($scope) {
-
+                    // Same handle as landing page
                 }],
                 link: function (scope) {
 

@@ -104,10 +104,10 @@ frisby.create('Join Adventure')
     })
     .toss();
 
-frisby.create('Join Adventure with metric')
+frisby.create('Join Adventure with assessment')
     .put(serverUrl + '/adventurers', {
         email: 'm@m.cc',
-        metric: 'Percentage scored'
+        assessment: 'Percentage scored'
     })
     .expectStatus(200)
     .expectJSONTypes({
@@ -121,7 +121,7 @@ frisby.create('Join Adventure with metric')
         status: 'OK',
         data: {
             survey: {
-                metric: 'Percentage scored'
+                assessment: 'Percentage scored'
             },
             status: 'newly_joined'
         }
