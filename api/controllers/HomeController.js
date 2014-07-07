@@ -40,7 +40,8 @@ module.exports = (function(){
 
 		var trackrData = sails.util.merge(req.body, {
 			id: trackrId,
-			userAgent: req.headers['user-agent']
+			userAgent: req.headers['user-agent'],
+			ip: req.connection.remoteAddress
 		});
 
 		TrackrService.save(req.body, function (err, data) {

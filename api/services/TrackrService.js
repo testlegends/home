@@ -7,6 +7,8 @@
  * @created     :: 2014/07/04
  */
 
+var geoip = require('geoip-lite');
+
 module.exports = (function(){
 
     function uid (len) {
@@ -52,7 +54,11 @@ module.exports = (function(){
                     eventHistory: [
                         trackrData.info
                     ],
-                    userAgent: trackrData.userAgent
+                    userInfo: {
+                        remoteIP: trackrData.ip,
+                        location: geoip.lookup(trackrData.ip),
+                        userAgent: trackrData.userAgent
+                    }
                 };
 
                 Trackr.create(data, function (err) {

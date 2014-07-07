@@ -17,11 +17,16 @@ var paths = {
 	]
 };
 
-var cssFiles = [
-	'assets/styles/reset.css',
-	'assets/styles/home.css',
-	'assets/js/vendor/fullpage.js/jquery.fullPage.css'
-];
+var cssFiles = {
+	landing: [
+		'assets/styles/reset.css',
+		'assets/styles/home.css',
+		'assets/js/vendor/fullpage.js/jquery.fullPage.css'
+	],
+	main: [
+		'assets/styles/style.css'
+	]
+};
 
 gulp.task('uglifyJs', function () {
 	rjs({
@@ -35,10 +40,15 @@ gulp.task('uglifyJs', function () {
 });
 
 gulp.task('minifyCSS', function () {
-	gulp.src(cssFiles)
+	gulp.src(cssFiles.landing)
 		.pipe(concat('home.min.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(paths.target + '/styles'));
+
+	gulp.src(cssFiles.main)
+		.pipe(concat('style.min.css'))
+		.pipe(minifyCSS())
+		.pipe(gulp.dest(paths.target + '/styles'));
 });
 
 gulp.task('compileAssets', function () {

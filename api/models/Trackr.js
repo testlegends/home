@@ -21,8 +21,8 @@ module.exports = (function(){
         eventHistory: {
             type: 'array'
         },
-        userAgent: {
-            type: 'string'
+        userInfo: {
+            type: 'json'
         }
     };
 

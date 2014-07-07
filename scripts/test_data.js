@@ -5,6 +5,8 @@
  * @created     :: 2014/05/21
  */
 
+var ObjectID = require('mongodb').ObjectID;
+
 module.exports = {
 
     adventurers_test: [
@@ -22,7 +24,7 @@ module.exports = {
                     browser: 'Chrome'
                 }
             },
-            _id: "537c0713e478890b0037d97a",
+            _id: new ObjectID("537c0713e478890b0037d97a"),
         }
     ],
 
@@ -36,7 +38,7 @@ module.exports = {
                 domain: "app.testlegends.com"
             },
             icon: "",
-            _id: "536c7df8fe3a9bf0fa000216"
+            _id: new ObjectID("536c7df8fe3a9bf0fa000216")
         },
         {
             name: "TestLegends Build",
@@ -47,7 +49,7 @@ module.exports = {
                 domain: "build.testlegends.com"
             },
             icon: "",
-            _id: "53562b9335e2e5c84c0001fa"
+            _id: new ObjectID("53562b9335e2e5c84c0001fa")
         }
     ],
 
