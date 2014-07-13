@@ -8,6 +8,8 @@ var paths = {
 	target: '.tmp/public',
 	assets: [
 		'assets/**',
+		'!assets/js/home.js',
+		'!assets/js/trackr.js',
 		'!assets/js/angular/**/*.js',
 		'!assets/styles/*.css'
 	],
@@ -37,6 +39,15 @@ gulp.task('uglifyJs', function () {
 	})
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
+
+	rjs({
+		baseUrl: "assets/js/angular",
+		name: "../home",
+		mainConfigFile: "assets/js/home.js",
+		out: "home.min.js"
+	})
+	.pipe(uglifyJs())
+	.pipe(gulp.dest(paths.target + '/js'));
 });
 
 gulp.task('minifyCSS', function () {

@@ -5,9 +5,14 @@
  * @created     :: 2014/05/12
  */
 
-define(['angular', 'home/Services'], function (angular) {
+define([
+    'angular',
+    'home/Services',
+    'game/services/Global',
+    'game/services/Main'
+], function (angular) {
 
-    return angular.module('Home.directives', ['Home.services'])
+    return angular.module('Home.directives', ['Home.services', 'Game.services'])
 
         .directive('landing', ['$location', 'adventurers', function ($location, adventurers) {
             return {
@@ -51,13 +56,18 @@ define(['angular', 'home/Services'], function (angular) {
             };
         }])
 
-        .directive('demo', ['$location', 'adventurers', function ($location, adventurers) {
+        .directive('demo', ['$location', 'adventurers', 'Global', 'Main', function ($location, adventurers, Global, Main) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/demo.html',
                 controller: ['$scope', function ($scope) {
+                    $scope.init = function () {
+                        Global.canvas = document.getElementById('EpicGame');
+                        Global.game.Main = new Main();
+                    };
 
+                    $scope.init();
                 }],
                 link: function (scope) {
                     $('#join_on_demo').on('click', function(){

@@ -8,9 +8,15 @@
 require.config({
     baseUrl: '/js/angular',
     paths: {
+        underscore: '../vendor/underscore/underscore',
         angular: '../vendor/angular/angular.min',
         angularRoute: '../vendor/angular-route/angular-route.min',
         angularCookies: '../vendor/angular-cookies/angular-cookies.min',
+
+        easeljs: '../vendor/easeljs/lib/easeljs-0.7.1.combined',
+        tweenjs: '../vendor/TweenJS/lib/tweenjs-0.5.1.combined',
+        //soundjs: '../vendor/SoundJS/lib/soundjs-0.5.2.combined',
+        preloadjs: '../vendor/PreloadJS/lib/preloadjs-0.4.1.combined',
 
         // requirejs-plugins
         async: '../vendor/requirejs-plugins/src/async',
@@ -26,7 +32,9 @@ require.config({
     shim: {
         angular: { exports: 'angular' },
         angularRoute: ['angular'],
-        angularCookies: ['angular']
+        angularCookies: ['angular'],
+        easel: { exports: 'createjs' },
+        tween: { deps: ['easel'], exports: 'Tween' }
     }
 });
 

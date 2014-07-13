@@ -15,7 +15,7 @@ module.exports.session = {
     // Session secret is automatically generated when your new app is created
     // Replace at your own risk in production-- you will invalidate the cookies of your users,
     // forcing them to log in again.
-    secret: 'c3e649fee969e6c9fc07eaba2a4b973a'
+    secret: 'c3e649fee969e6c9fc07eaba2a4b973a',
 
 
     // In production, uncomment the following lines to set up a shared redis session store
@@ -45,11 +45,11 @@ module.exports.session = {
     // Optional Values:
     //
     // # Note: url will override other connection settings
-    // url: 'mongodb://user:pass@host:port/database/collection',
+    url: process.env.MONGOHQ_URL + '/sessions',
     //
     // username: '',
     // password: '',
-    // auto_reconnect: false,
+    auto_reconnect: true,
     // ssl: false,
     // stringify: true
 

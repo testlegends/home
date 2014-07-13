@@ -44,7 +44,7 @@ require([
             navigation: true,
             navigationPosition: 'right',
             navigationTooltips: ['Home', 'Demo', 'Customize', 'Track', 'Publish', 'Sign Up'],
-            //anchors: ['home', 'demo', 'customize', 'track', 'publish'],
+            //anchors: ['home', 'demo', 'customize', 'track', 'publish', 'signup'],
             scrollingSpeed: 500,
             css3: true,
             resize: false,

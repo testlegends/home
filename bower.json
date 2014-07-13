@@ -27,6 +27,10 @@
     "validator-js": "~3.16.0",
     "FlowType.JS": "*",
     "fullpage.js": "~2.0.7",
-    "jquery-throttle-debounce": "*"
+    "jquery-throttle-debounce": "*",
+    "easeljs": "*",
+    "PreloadJS": "*",
+    "SoundJS": "*",
+    "TweenJS": "*"
   }
 }
