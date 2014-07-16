@@ -137,6 +137,7 @@ define([
             // Animation
             // --------------------
             p.move_and_swing_swords = function (e) {
+                
                 // set target monster
                 var target_monster = e.target_monster;
                 this.set_target_monster(target_monster);
@@ -148,7 +149,7 @@ define([
 
                 if (this.targetMonster === Global.game.monster_list[2]) {
                     var hero_idx = Global.game.main.getChildIndex(Global.game.monster_list[3]);
-                    Global.game.main.setChildIndex(this,hero_idx - 1);
+                    Global.game.main.setChildIndex(this,hero_idx);
                 }
 
                 // -- show hero move
@@ -192,10 +193,10 @@ define([
             };
 
             p.return_to_original_pos = function(){
-                // stop hero attack after 1 iteration
-                var targetM = this.targetMonster;
 
-                // show hero move
+                this.moveSprite.x = this.AttackSprite.x;
+                this.moveSprite.y = this.AttackSprite.y;
+
                 this.hide(this.AttackSprite);
                 this.show(this.moveSprite);
 
@@ -308,6 +309,10 @@ define([
                         // dec in health
                         fuck_this.hp_bar.update_bar(fuck_this.life_percentage,fuck_this.life_percentage-0.25,fuck_this.hp_bar.colorsets.life_bar_lightred);
                         fuck_this.life_percentage = fuck_this.life_percentage - 0.25;
+
+                        if (fuck_this.life_percentage === 0) {
+                            Global.game.main.game_over_handler();
+                        }
 
                         //------------------------
                         // HACK - Dangerous Hack Applied Here

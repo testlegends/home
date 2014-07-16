@@ -15,8 +15,8 @@ define(['game/constants'], function (gameConstants) {
                 IDLE: 'idle',
                 START: 'start',
                 ACTION: 'action',
-                GAME_OVER_WIN: 'game over',
-                GAME_OVER_LOSS: 'win'
+                WIN: 'win',
+                LOSE: 'lose'
             };
         }]);
 });

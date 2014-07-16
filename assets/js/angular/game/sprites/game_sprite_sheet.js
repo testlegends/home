@@ -14,7 +14,7 @@ define([
     return gameSprites
 
         .factory('GameSprite', ['Global', function (Global) {
-            var scale_idx = 3;
+            var scale_idx = 1.5;
             var data = {
                 "images": ["sprites/game_sprite_sheet.png"],
                 "frames": [

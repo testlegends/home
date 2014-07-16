@@ -17,29 +17,37 @@ define([
             var data = {
                 "images": ["sprites/special_effects_sprite_sheet.png"],
                 "frames": [
-                    [504,298,388,388],
-                    [2,2,388,388],
-                    [894,298,500,294],
-                    [894,2,500,294],
-                    [504,688,500,294],
-                    [2,688,500,294],
-                    [392,2,500,294],
-                    [2,392,500,294]
+                    [3670, 2088, 388, 388],
+                    [3280, 2088, 388, 388],
+                    [2, 1284, 2272, 1280],
+                    [2276, 2, 1660, 900],
+                    [2778, 1866, 500, 294],
+                    [2276, 1866, 500, 294],
+                    [3498, 1792, 500, 294],
+                    [3498, 1496, 500, 294],
+                    [3498, 1200, 500, 294],
+                    [3498, 904, 500, 294],
+                    [2568, 2162, 290, 290],
+                    [2276, 2162, 290, 290],
+                    [2, 2, 2272, 1280],
+                    [2276, 904, 1220, 960]
                 ],
                 "animations": {
                     "hit_red":[0],
                     "hit_white":[1],
-                    "puff0":[2],
-                    "puff1":[3],
-                    "puff2":[4],
-                    "puff3":[5],
-                    "puff4":[6],
-                    "puff_back":[7]
-                },
-                "texturepacker": [
-                    "SmartUpdateHash: $TexturePacker:SmartUpdate:8417356aba5a338f728a2a7ded46dd30:946bf83c4ccb65bffe7432b15d3d163b:4e903d96d316f5b813639bdaaf93d125$",
-                    "Created with TexturePacker (http://www.texturepacker.com) for EaselJS"
-                ]
+                    "lose-mock":[2],
+                    "lose":[3],
+                    "puff0":[4],
+                    "puff1":[5],
+                    "puff2":[6],
+                    "puff3":[7],
+                    "puff4":[8],
+                    "puff_back":[9],
+                    "star1":[10],
+                    "star2":[11],
+                    "win-mock":[12],
+                    "win":[13]
+                }
             };
 
             Global.game.assets.specialEffectsSpriteSheet = new createjs.SpriteSheet(data);

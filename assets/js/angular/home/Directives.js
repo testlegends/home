@@ -7,10 +7,11 @@
 
 define([
     'angular',
+    'underscore',
     'home/Services',
     'game/services/Global',
     'game/services/Main'
-], function (angular) {
+], function (angular, _) {
 
     return angular.module('Home.directives', ['Home.services', 'Game.services'])
 
@@ -297,30 +298,47 @@ define([
                     };
                 }],
                 link: function (scope) {
-                    $(document).ready(function(){
-                        $.each(scope.cities, function (name, pos) {
-                            var city = $('<div />').addClass('cities').css({
-                                top: pos.top,
-                                left: pos.left
-                            }).html(name);
+                    var bubblr = (function () {
+                        var bubbleTpl = _.template('<div class="cities"><img src="<%= avatar %>" />' +
+                            '<div class="city-topic"><%= topic %></div><div class="city-name"><%= city %></div>' +
+                            '<div class="triangle"></div></div>');
+
+                        function addBubble (name, data) {
+                            var city = $(bubbleTpl({
+                                city: name,
+                                avatar: data.avatar,
+                                topic: data.topic
+                            })).css({
+                                top: data.top,
+                                left: data.left
+                            });
 
                             $('#publish_map').append(city);
-                        });
+                        }
 
-                        var curr = 1;
-                        setInterval(function(){
-                            var length = $('.cities').length;
-                            $('.cities').fadeOut();
-                            $('.cities:nth-child(' + curr + ')').fadeIn();
+                        return {
+                            addBubble: addBubble
+                        };
+                    })();
 
-                            // TODO not sure why is > instead of ===
-                            if (curr > length) {
-                                curr = 1;
-                            } else {
-                                curr++;
-                            }
-                        }, 2000);
+                    $.each(scope.cities, function (name, pos) {
+                        bubblr.addBubble(name, pos);
                     });
+
+                    // var curr = 1;
+                    // setInterval(function(){
+                    //     var length = $('.cities').length;
+                    //     $('.city-topic, .city-name').css({ visibility: 'hidden' });
+                    //     $('.cities:nth-child(' + curr + ') .city-topic').css({ visibility: 'visible' });
+                    //     $('.cities:nth-child(' + curr + ') .city-name').css({ visibility: 'visible'});
+                    //
+                    //     // TODO not sure why is > instead of ===
+                    //     if (curr > length) {
+                    //         curr = 1;
+                    //     } else {
+                    //         curr++;
+                    //     }
+                    // }, 1500);
                 }
             };
         }])

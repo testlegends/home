@@ -13,39 +13,44 @@ define(['game/services'], function (gameServices) {
         .factory('Questions', [function () {
             var data = [
                 {
-                    Question: "On 11th december 1936 the king ________d in favor of his brother, the Duke of York, who became George VI.",
-                    Answer  : 'abdicate',
-                    Options : ['abdicate', 'aberration', 'abash', 'abhor']
+                    Question: "The mastermind behind the website hoped to live a(n) ________ life once the site made him a millionaire.",
+                    Answer  : 'opulent',
+                    Options : ['opulent', 'reiterate', 'insidious', 'tentative']
                 },
                 {
-                    Question: "We should all _____ the illegal importing of fish, as they pose a great risk of disease to our existing fish stocks.",
-                    Answer  : 'abhor',
-                    Options : ['abdicate', 'aberration', 'abash', 'abhor']
+                    Question: "Definition: conforming to moral and ethical principles.",
+                    Answer  : 'virtuous',
+                    Options : ['pragmatic', 'virtuous', 'virtuality', 'pragmatize']
                 },
                 {
-                    Question: "Naturally, I was rather _____ed at the prospect of meeting a couple who have taken such an interest in me and the college.",
-                    Answer  : 'abash',
-                    Options : ['abdicate', 'aberration', 'abash', 'abhor']
+                    Question: "Studying for school in the 21st century was no longer _________ to paper and pen.",
+                    Answer  : 'confined',
+                    Options : ['managed', 'confirmed', 'confined', 'all of the above']
                 },
                 {
-                    Question: "Far from being an __________, advancing technology today is more like the new normal.",
-                    Answer  : 'aberration',
-                    Options : ['abate', 'abhor', 'aberration', 'abdicate']
+                    Question: "Definition: to give intellectual light to; instruct; impart knowledge to",
+                    Answer  : 'enlighten',
+                    Options : ['complex', 'delight', 'perplex', 'enlighten']
                 },
                 {
-                    Question: "The villagers would rather support the council's objective of delivering 500 affordable homes whilst minimizing effort on ultimately ________ schemes that might never be completed.",
-                    Answer  : 'abortive',
-                    Options : ['abdicate', 'abortive', 'abhor', 'abstract']
+                    Question: "What is the acceleration due to gravity on Earty?",
+                    Answer  : '9.81 m/s<sup>2</sup>',
+                    Options : ['6.67 x 10^-11', '9.81 m/s<sup>2</sup>', 'the same as on the sun', 'all of the above']
                 },
                 {
-                    Question: "This ________ beginner's guide to tic tac toe is designed so simple that even a caveman could use it.",
-                    Answer  : 'absolute',
-                    Options : ['absolute', 'absolve', 'abysmal', 'aberration']
+                    Question: "Which choice below is not a source of light?",
+                    Answer  : 'Chloressence',
+                    Options : ['Fluorescence', 'Bioluminescence', 'Chemiluminescence', 'Chloressence']
                 },
                 {
-                    Question: "Mr. Jobling stood wringing his hands helplessly, his flaccid features expressive of ______ despair.",
-                    Answer  : 'abject',
-                    Options : ['abject', 'abdicate', 'abate', 'abnegate']
+                    Question: "The formation of frost is an example of:",
+                    Answer  : 'evaporation',
+                    Options : ['condensation', 'evaporation', 'deposition', 'melting point']
+                },
+                {
+                    Question: "Which of these is a scalar quantity?",
+                    Answer  : 'speed',
+                    Options : ['velocity', 'acceleration', 'displacement', 'speed']
                 }
             ];
 

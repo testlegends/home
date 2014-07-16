@@ -9,7 +9,9 @@ define([
     'game/services',
     'game/services/Global',
     'game/services/AssetManager',
-    'game/services/Game',
+    'game/states/Game',
+    'game/states/GameLose',
+    'game/states/GameWin',
     'game/elements/Preloader',
     'game/constants/Events',
     'game/constants/GameStates',
@@ -19,7 +21,7 @@ define([
 
     return gameServices
 
-        .factory('Main', ['Global' ,'AssetManager', 'Game', 'Preloader', 'Events', 'GameStates', function (Global, AssetManager, Game, Preloader, Events, GameStates) {
+        .factory('Main', ['Global' ,'AssetManager', 'Game', 'GameLose', 'GameWin', 'Preloader', 'Events', 'GameStates', function (Global, AssetManager, Game, GameLose, GameWin, Preloader, Events, GameStates) {
 
             var Main = function () {
                 this.initialize();
@@ -61,6 +63,7 @@ define([
 
             p.onGameReady = function () {
                 createjs.Ticker.on(Events.TICK, this.onTick, this);
+                createjs.Ticker.setFPS(40);
                 this.changeState(GameStates.START);
                 this.onTick();
             };
@@ -77,8 +80,11 @@ define([
                     case GameStates.START:
                         this.currentGameStateFunction = this.gameStateStart;
                         break;
-                    case GameStates.ACTION:
-                        this.currentGameStateFunction = this.gameStateAction;
+                    case GameStates.WIN:
+                        this.currentGameStateFunction = this.gameStateWin;
+                        break;
+                    case GameStates.LOSE:
+                        this.currentGameStateFunction = this.gameStateLose;
                         break;
                     case GameStates.IDLE:
                         this.currentGameStateFunction = this.gameStateIdle;
@@ -87,7 +93,7 @@ define([
             };
 
             p.gameStateStart = function () {
-                var scene = new Game();
+                var scene = new Game(this);
                 Global.stage.addChild(scene);
 
                 this.disposeCurrentScene();
@@ -96,10 +102,25 @@ define([
                 this.changeState(GameStates.IDLE);
             };
 
-            // not used yet
-            p.gameStateAction = function () {
+            p.gameStateWin = function () {
+                var scene = new GameWin();
+                Global.stage.addChild(scene);
 
-            };
+                this.disposeCurrentScene()
+                this.currentScene = scene;
+
+                this.changeState(GameStates.IDLE);
+            }
+
+            p.gameStateLose = function () {
+                var scene = new GameLose();
+                Global.stage.addChild(scene);
+
+                this.disposeCurrentScene()
+                this.currentScene = scene;
+
+                this.changeState(GameStates.IDLE);
+            }
 
             p.gameStateIdle = function () {
 

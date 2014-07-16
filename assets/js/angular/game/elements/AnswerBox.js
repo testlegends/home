@@ -81,9 +81,6 @@ define([
                 var group = new createjs.Container();
                 group.addChild(s);
                 group.addChild(txt);
-
-                Global.stage.addChild(group);
-                Global.stage.update();
                 return group;
             };
 

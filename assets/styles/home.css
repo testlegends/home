@@ -1222,13 +1222,47 @@ h1, h2, h3, h4, h5, h6, p {
     position: relative;
 }
 
-#publish_map img {
+#publish_map > img {
     width: 100%;
 }
 
 .cities {
     position: absolute;
-    display: none;
+    width: 300px;
+}
+
+.city-topic {
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 0 3px black;
+}
+
+.city-name {
+    font-size: 0.6em;
+    line-height: 2;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+.cities img {
+    float: left;
+    border-radius: 25px;
+    margin-right: 5px;
+    border: 2px solid white;
+    height: 30px;
+    width: 30px;
+}
+
+.cities .triangle {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 8px solid white;
+    margin-left: 12px;
+    margin-top: -8px;
+    position: relative;
+    z-index: 10000;
 }
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Five |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/

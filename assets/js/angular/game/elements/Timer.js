@@ -45,23 +45,19 @@ define([
             // ------------------------------------
             p.main_timer_loop = function () {
                 // Time run out
-                /*
-                if (question_remain_time === 0) {
-
-                    for (var i = 0; i < monster_list.length; i++) {
-                        var ans_word = question_manager.current_question_text.Answer;
-                        if (ans_word === monster_list[i].speechWord) {
-                            hero.hide(hero.breath_animation);
-                            hero.show(hero.move_animation);
-                            monster_list[i].hide(monster_list[i].breath_animation);
-                            monster_list[i].dodge_animation_attack();
+                if(this.question_remain_time===0 && this.timer_activate_flag===1){
+                    this.stop_timer();
+                    for(var i=0;i<Global.game.monster_list.length;i++){
+                        var ans_word = Global.game.question.current_question_text.Answer;
+                        if(ans_word===Global.game.monster_list[i].answer_box.answer_text){
+                            Global.game.hero_obj.hide(Global.game.hero_obj.breathingSprite);
+                            Global.game.hero_obj.show(Global.game.hero_obj.moveSprite);
+                            Global.game.monster_list[i].hide(Global.game.monster_list[i].breathingSprite);
+                            Global.game.monster_list[i].dodge_animation_attack();
                         }
                     }
-
-                    reset_timer();
+                    this.reset_timer();
                 }
-                */
-                // only deduct time if time flag is 1
 
                 if (this.timer_activate_flag === 1) {
                     // deduct time

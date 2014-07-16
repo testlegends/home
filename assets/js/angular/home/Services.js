@@ -632,30 +632,47 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
 
         .factory('cities', [function () {
             var cities = {
-                'San Francisco': {
-                    left: '6%',
-                    top: '42%',
-                    topic: 'Math'
+                'San Francisco, CA': {
+                    topic: 'Math - Gr. 2, Fractions',
+                    avatar: 'images/teachers/anthony.jpg',
+                    top: '40%',
+                    left: '3%'
                 },
-                'New York': {
-                    left: '81%',
-                    top: '27%',
-                    topic: 'Physics'
+                'New York, NY': {
+                    topic: 'Gr 8 Science',
+                    avatar: 'images/teachers/regine.jpg',
+                    top: '26.5%',
+                    left: '87.5%'
                 },
-                'Chicago': {
-                    left: '64%',
-                    top: '37%',
-                    topic: 'English'
+                'Chicago, IL': {
+                    topic: 'English, Jane Eyre hwk',
+                    avatar: 'images/teachers/emily.jpg',
+                    top: '31%',
+                    left: '64%'
                 },
-                'Los Angeles': {
-                    left: '11%',
-                    top: '60%',
-                    topic: 'History'
+                'Los Angeles, CA': {
+                    topic: 'Spanish, beginner prep',
+                    avatar: 'images/teachers/jason.jpg',
+                    top: '55.5%',
+                    left: '8%'
                 },
-                'Dallas': {
-                    left: '50%',
-                    top: '70%',
-                    topic: 'Math'
+                'Dallas, TX': {
+                    topic: 'Earth and Space Science',
+                    avatar: 'images/teachers/albert.jpg',
+                    top: '66%',
+                    left: '50%'
+                },
+                'Denver, CO': {
+                    topic: 'Environmental Studies',
+                    avatar: 'images/teachers/chris.jpg',
+                    top: '41%',
+                    left: '35%'
+                },
+                'Atlanta, GA': {
+                    topic: 'Penguins',
+                    avatar: 'images/teachers/alyx.jpg',
+                    top: '58%',
+                    left: '73%'
                 }
             };
 
