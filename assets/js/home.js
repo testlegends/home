@@ -8,7 +8,7 @@
 require.config({
     baseUrl: '/js/angular',
     paths: {
-        jquery: '../vendor/jQuery/dist/jquery.min',
+        jquery: '../vendor/jquery/dist/jquery.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
         fullpage: '../vendor/fullpage.js/jquery.fullPage.min',
         debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',

@@ -37,7 +37,7 @@ gulp.task('uglifyJs', function () {
 		mainConfigFile: "assets/js/angular/Home.js",
 		out: "home.min.js"
 	})
-	// .pipe(uglifyJs())
+	.pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
 
 	rjs({
