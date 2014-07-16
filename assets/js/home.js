@@ -8,13 +8,12 @@
 require.config({
     baseUrl: '/js/angular',
     paths: {
-        jquery: '../vendor/jquery/dist/jquery.min',
+        jquery: '../vendor/jQuery/dist/jquery.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
         fullpage: '../vendor/fullpage.js/jquery.fullPage.min',
         debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',
         trackr: '../trackr'
-        //slimscroll: '../vendor/jquery.slimscroll/jquery.slimscroll.min',
-        //underscore: '../vendor/underscore/underscore'
+        //slimscroll: '../vendor/jquery.slimscroll/jquery.slimscroll.min'
     },
     shim: {
         flowtype: ['jquery'],
@@ -44,7 +43,7 @@ require([
             navigation: true,
             navigationPosition: 'right',
             navigationTooltips: ['Home', 'Demo', 'Customize', 'Track', 'Publish', 'Sign Up'],
-            //anchors: ['home', 'demo', 'customize', 'track', 'publish', 'signup'],
+            // anchors: ['home', 'demo', 'customize', 'track', 'publish', 'signup'],
             scrollingSpeed: 500,
             css3: true,
             resize: false,
@@ -59,6 +58,12 @@ require([
                     $('#pageFive .sidebar').animate({
                         left: '-22%'
                     }, 0);
+                }
+
+                if (nextIndex === 1 || nextIndex === 6) {
+                    $('#follow').show();
+                } else {
+                    $('#follow').hide();
                 }
             },
             afterLoad: function (anchor, index) {

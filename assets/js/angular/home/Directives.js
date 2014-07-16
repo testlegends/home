@@ -66,8 +66,6 @@ define([
                         Global.canvas = document.getElementById('EpicGame');
                         Global.game.Main = new Main();
                     };
-
-                    $scope.init();
                 }],
                 link: function (scope) {
                     $('#join_on_demo').on('click', function(){
@@ -86,6 +84,54 @@ define([
                                 adventurers.share(data.code);
                             });
                         });
+                    });
+                    $('#demo_button').on('click', function(){
+                        $('#pageTwo .sidebar').hide();
+                        $('#demo').hide();
+                        $('.welcome').show();
+                        /*deactivate canvas here*/
+                        $('#EpicGame').hide();
+                    });
+                    $('.skip').on('click', function(){
+                        $('.welcome').hide();
+                        $('.knight').hide();
+                        $('.question_timer').hide();
+                        $('.monsters').hide();
+                        $('.health').hide();
+                        $('#pageTwo .sidebar').show();
+                        $('#EpicGame').show();
+                        scope.init();
+                    });
+                    $('.restart').on('click', function(){
+                        $('#pageTwo .sidebar').hide();
+                        $('.welcome').show();
+                        $('.rumble').hide();
+                    });
+                    $('.welcome .play').on('click', function(){
+                        $('.knight').show();
+                        $('.welcome').hide();
+                    });
+                    $('.knight .next').on('click', function(){
+                        $('.question_timer').show();
+                        $('.knight').hide();
+                    });
+                    $('.question_timer .next').on('click', function(){
+                        $('.monsters').show();
+                        $('.question_timer').hide();
+                    });
+                    $('.monsters .next').on('click', function(){
+                        $('.health').show();
+                        $('.monsters').hide();
+                    });
+                    $('.health .next').on('click', function(){
+                        $('.rumble').show();
+                        $('.health').hide();
+                    });
+                    $('.rumble .play').on('click', function(){
+                        $('.rumble').hide();
+                        $('#pageTwo .sidebar').show();
+                        $('#EpicGame').show();
+                        scope.init();
                     });
                 }
             };
@@ -142,6 +188,8 @@ define([
 
                     $('#vocabulary').on('click', function(){
                         $('.vocabulary').show();
+                        $('.hero').addClass('faderight_hero');
+                        $('.monster').addClass('fadeleft_monster');
                         $('.physics').hide();
                         $('#physics button').addClass('inactive');
                         $('#history button').addClass('inactive');
@@ -151,7 +199,13 @@ define([
                     $('#physics').on('click', function(){
                         blinker.stopBlinking();
                         $('.physics').show();
+                        $('.spaceship').addClass('faderight_space');
+                        $('.ufo').addClass('fadeleft_ufo');
                         $('.vocabulary').hide();
+                        $('.q1').addClass('qFade');
+                        $('.q2').addClass('qFade fade_q2');
+                        $('.q3').addClass('qFade fade_q3');
+                        $('.q4').addClass('qFade fade_q4');
                         $('#physics button').removeClass('inactive');
                         $('#history button').addClass('inactive');
                         $('#vocabulary button').addClass('inactive');
@@ -280,7 +334,6 @@ define([
                     // Same handle as landing page
                 }],
                 link: function (scope) {
-
                 }
             };
         }]);

@@ -7,15 +7,11 @@
 
 define([
     'angular',
-    'home/Controller',
-    'home/Directives',
-    'home/Routes'
+    'home/Directives'
 ], function (angular) {
     'use strict';
 
     return angular.module('Home', [
-        'Home.controllers',
-        'Home.directives',
-        'Home.routes'
+        'Home.directives'
     ]);
 });

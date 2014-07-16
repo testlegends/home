@@ -52,7 +52,7 @@
         $(el).on(event, function(e){
             e.preventDefault();
             save({
-                event: 'click/keyup/keydown/touch/etc',
+                event: event,
                 elem: el.element
             }, cb);
         });

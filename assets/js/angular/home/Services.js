@@ -269,7 +269,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                         ['Oct 27', 95], ['Nov 3', 100], ['Nov 10', 94.7]
                     ]
                 },
-                'Johan M':{
+                'Adi M':{
                     'correct':15,
                     'answered':36,
                     'total':165,
@@ -285,7 +285,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                         ['Oct 27', 40], ['Nov 3', 49], ['Nov 10', 41.7]
                     ]
                 },
-                'Bianca N':{
+                'Arun N':{
                     'correct':18,
                     'answered':26,
                     'total':165,
@@ -491,7 +491,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                     }
 
                     var data = google.visualization.arrayToDataTable([
-                        ['percentage correct (%)', 'Date']
+                        ['Date', 'score (%)']
                     ].concat(scores_data[name].history));
 
                     var options = {

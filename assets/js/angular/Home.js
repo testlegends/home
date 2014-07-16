@@ -33,8 +33,9 @@ require.config({
         angular: { exports: 'angular' },
         angularRoute: ['angular'],
         angularCookies: ['angular'],
+
         easel: { exports: 'createjs' },
-        tween: { deps: ['easel'], exports: 'Tween' }
+        tween: ['easel']
     }
 });
 
