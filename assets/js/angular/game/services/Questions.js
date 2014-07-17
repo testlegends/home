@@ -33,7 +33,7 @@ define(['game/services'], function (gameServices) {
                     Options : ['complex', 'delight', 'perplex', 'enlighten']
                 },
                 {
-                    Question: "What is the acceleration due to gravity on Earty?",
+                    Question: "What is the acceleration due to gravity on Earth?",
                     Answer  : '9.81 m/s^2',
                     Options : ['6.67 x 10^-11', '9.81 m/s^2', 'the same as on the sun', 'all of the above']
                 },

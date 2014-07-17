@@ -17,20 +17,22 @@
     "tests"
   ],
   "dependencies": {
-    "angular-cookies": "~1.2.18",
+    "angular": "~1.2.20",
+    "angular-route": "~1.2.20",
+    "angular-cookies": "~1.2.20",
     "angular-loading-bar": "~0.3.0",
-    "angular-route": "~1.2.15",
+    "jquery": "~2.1.1",
+    "jquery-throttle-debounce": "*",
+    "fullpage.js": "~2.0.7",
+    "toastr": "~2.0.1",
+    "underscore": "~1.6.0",
     "requirejs": "~2.1.11",
     "requirejs-plugins": "~1.0.2",
-    "underscore": "~1.6.0",
-    "toastr": "~2.0.1",
     "validator-js": "~3.16.0",
     "FlowType.JS": "*",
-    "fullpage.js": "~2.0.7",
-    "jquery-throttle-debounce": "*",
     "easeljs": "*",
+    "TweenJS": "*",
     "PreloadJS": "*",
-    "SoundJS": "*",
-    "TweenJS": "*"
+    "SoundJS": "*"
   }
 }

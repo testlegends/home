@@ -523,6 +523,10 @@ h1, h2, h3, h4, h5, h6, p {
     /*-webkit-animation-name: stop;*/
 }
 
+#preload-play-hover {
+    background: url(../images/go_hover.png) no-repeat -9999px -9999px;
+}
+
 .rumble .tutorial_info p {
     width: 22%;
     font-size: 2.5em;
@@ -550,6 +554,22 @@ h1, h2, h3, h4, h5, h6, p {
 
 .health .overlay {
     background-image: url(../images/health.png);
+}
+
+#preload-knight {
+    background: url(../images/knight.png) no-repeat -9999px -9999px;
+}
+
+#preload-question_timer {
+    background: url(../images/question.png) no-repeat -9999px -9999px;
+}
+
+#preload-monsters {
+    background: url(../images/monsters.png) no-repeat -9999px -9999px;
+}
+
+#preload-health {
+    background: url(../images/health.png) no-repeat -9999px -9999px;
 }
 
 /*-------------------next-------------------*/
@@ -592,6 +612,10 @@ h1, h2, h3, h4, h5, h6, p {
 
 .next:hover {
     background-image: url(../images/next_hover.png);
+}
+
+#preload-next-hover {
+    background: url(../images/next_hover.png) no-repeat -9999px -9999px;
 }
 /*------------------------------------------*/
 
