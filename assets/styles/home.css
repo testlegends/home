@@ -1228,7 +1228,18 @@ h1, h2, h3, h4, h5, h6, p {
 
 .cities {
     position: absolute;
-    width: 300px;
+    width: 350px;
+}
+
+.pins {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+.city-text {
+    display: inline-block;
+    vertical-align: top;
 }
 
 .city-topic {
@@ -1245,9 +1256,8 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .cities img {
-    float: left;
     border-radius: 25px;
-    margin-right: 5px;
+    margin: 0 5px 5px 0;
     border: 2px solid white;
     height: 30px;
     width: 30px;
@@ -1260,9 +1270,7 @@ h1, h2, h3, h4, h5, h6, p {
 	border-right: 5px solid transparent;
 	border-top: 8px solid white;
     margin-left: 12px;
-    margin-top: -8px;
-    position: relative;
-    z-index: 10000;
+    margin-top: -10px;
 }
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Five |^^^^^^^^^^^^^^^^^^^^^^^^^^^*/

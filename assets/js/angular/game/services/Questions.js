@@ -34,8 +34,8 @@ define(['game/services'], function (gameServices) {
                 },
                 {
                     Question: "What is the acceleration due to gravity on Earty?",
-                    Answer  : '9.81 m/s<sup>2</sup>',
-                    Options : ['6.67 x 10^-11', '9.81 m/s<sup>2</sup>', 'the same as on the sun', 'all of the above']
+                    Answer  : '9.81 m/s^2',
+                    Options : ['6.67 x 10^-11', '9.81 m/s^2', 'the same as on the sun', 'all of the above']
                 },
                 {
                     Question: "Which choice below is not a source of light?",
@@ -44,7 +44,7 @@ define(['game/services'], function (gameServices) {
                 },
                 {
                     Question: "The formation of frost is an example of:",
-                    Answer  : 'evaporation',
+                    Answer  : 'deposition',
                     Options : ['condensation', 'evaporation', 'deposition', 'melting point']
                 },
                 {

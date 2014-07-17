@@ -348,7 +348,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                         ['Sep 29', 65], ['Oct 6', 78], ['Oct 13', 60], ['Oct 20', 65],
                         ['Oct 27', 72], ['Nov 3', 75], ['Nov 10', 76.1]
                     ]
-                },
+                }/*,
                 'Lorenzo R':{
                     'correct':8,
                     'answered':33,
@@ -364,7 +364,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                         ['Sep 29', 25], ['Oct 6', 25], ['Oct 13', 25], ['Oct 20', 20],
                         ['Oct 27', 20], ['Nov 3', 20], ['Nov 10', 24.2]
                     ]
-                }/*,
+                },
                 'Arun S':{
                     'correct':27,
                     'answered':37,

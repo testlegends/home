@@ -299,9 +299,9 @@ define([
                 }],
                 link: function (scope) {
                     var bubblr = (function () {
-                        var bubbleTpl = _.template('<div class="cities"><img src="<%= avatar %>" />' +
-                            '<div class="city-topic"><%= topic %></div><div class="city-name"><%= city %></div>' +
-                            '<div class="triangle"></div></div>');
+                        var bubbleTpl = _.template('<div class="cities"><div class="pins"><img src="<%= avatar %>" /><div class="triangle"></div></div>' +
+                            '<div class="city-text"><div class="city-topic"><%= topic %></div><div class="city-name"><%= city %></div></div>' +
+                            '</div>');
 
                         function addBubble (name, data) {
                             var city = $(bubbleTpl({
@@ -324,21 +324,6 @@ define([
                     $.each(scope.cities, function (name, pos) {
                         bubblr.addBubble(name, pos);
                     });
-
-                    // var curr = 1;
-                    // setInterval(function(){
-                    //     var length = $('.cities').length;
-                    //     $('.city-topic, .city-name').css({ visibility: 'hidden' });
-                    //     $('.cities:nth-child(' + curr + ') .city-topic').css({ visibility: 'visible' });
-                    //     $('.cities:nth-child(' + curr + ') .city-name').css({ visibility: 'visible'});
-                    //
-                    //     // TODO not sure why is > instead of ===
-                    //     if (curr > length) {
-                    //         curr = 1;
-                    //     } else {
-                    //         curr++;
-                    //     }
-                    // }, 1500);
                 }
             };
         }])
@@ -352,8 +337,8 @@ define([
                     // Same handle as landing page
                 }],
                 link: function (scope) {
+
                 }
             };
         }]);
-
 });
