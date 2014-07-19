@@ -17,14 +17,22 @@ module.exports = {
             referals: [
                 "hubert.pt.ka@gmail.com"
             ],
-            meta: {
-                user_agent: {
-                    device: 'iPhone',
-                    os: 'iOS X',
-                    browser: 'Chrome'
-                }
+            survey: {
+                assessment: 'Simple metrics',
+                topic: 'Calculus for AP'
             },
-            _id: new ObjectID("537c0713e478890b0037d97a"),
+            _id: new ObjectID("537c0713e478890b0037d97a")
+        },
+        {
+            email: "hubert.pt.ka@gmail.com",
+            code: "Ei2MmQ",
+            visited: 2,
+            referals: [],
+            survey: {
+                assessment: 'Metric for student attendence',
+                topic: 'Social Science for gr 10'
+            },
+            _id: new ObjectID("537c0713e478890b0f3028c3")
         }
     ],
 
@@ -32,7 +40,7 @@ module.exports = {
         {
             name: "TestLegends App",
             clientSecret: "9532e520710b03bc7fd827fe4094240cd578a658195c3bba8c3520d8386a405a",
-            userId: "1",
+            userId: "abcdef1234567890deadbeef",
             redirectURI: {
                 protocol: "http",
                 domain: "app.testlegends.com"
@@ -43,7 +51,7 @@ module.exports = {
         {
             name: "TestLegends Build",
             clientSecret: "cc560cac675ef6cfe06328b05882d8f7a09dfbbf9d1f63a4208e5ac2953c49a6",
-            userId: "1",
+            userId: "abcdef1234567890deadbeef",
             redirectURI: {
                 protocol: "http",
                 domain: "build.testlegends.com"
@@ -62,60 +70,17 @@ module.exports = {
             role: "admin",
             games: [],
             payments: [],
-            _id: "1"
+            _id: new ObjectID("abcdef1234567890deadbeef")
+        },
+        {
+            name: "Test User",
+            email: "a@a.cc",
+            password: "$2a$10$z8pa3ARMJyhMNOBKJ/XZcO2y4lbFxHosPkMpI5xAy0F2fc4UN7P5C",
+            password_reset_key: null,
+            role: "admin",
+            games: [],
+            payments: [],
+            _id: new ObjectID("53562b9335e2098c4c0001fa")
         }
-    ],
-
-    /*
-    demo_questions_test: [
-        {
-            game: 'Physics',
-            content: "What is the acceleration due to gravity on Earth?",
-            options: {
-                correct: "9.81 m/s^2",
-                wrong: [
-                    { text: "6.67x10-11 m^3kg^-1s^-2" },
-                    { text: "the same as on the Sun" },
-                    { text: "all of the above" }
-                ]
-            }
-        },
-        {
-            game: 'English',
-            content: "When did Christopher Columbus first land on the shores of America?",
-            options: {
-                correct: "July 4, 1776 AD",
-                wrong: [
-                    { text: "Jan 1, 0 AD" },
-                    { text: "Oct 12, 1492 AD" },
-                    { text: "in the 14th century" }
-                ]
-            }
-        },
-        {
-            game: 'Game of Thrones',
-            content: "What does the character Jon Snow from Game of Thrones know?",
-            options: {
-                correct: "Nothing",
-                wrong: [
-                    { text: "Hodor!" },
-                    { text: "Valar Morghulis" },
-                    { text: "don't be related to Sean Bean's character" }
-                ]
-            }
-        },
-        {
-            game: 'Physics',
-            content: "if n=8, which of the following is equivalent to xn2 + xn + x?",
-            options: {
-                correct: "8(x^2 + x + 1)",
-                wrong: [
-                    { text: "8(x^2 + 1)" },
-                    { text: "8(x^2 + x + 1)" },
-                    { text: "8(x + 1)^2" }
-                ]
-            }
-        }
-    ]*/
-
+    ]
 };

@@ -137,7 +137,7 @@ define([
             // Animation
             // --------------------
             p.move_and_swing_swords = function (e) {
-                
+
                 // set target monster
                 var target_monster = e.target_monster;
                 this.set_target_monster(target_monster);
@@ -342,15 +342,15 @@ define([
                 Global.game.main.removeChild(this.hitRedSprite);
                 Global.game.main.removeChild(this.hitWhiteSprite);
 
-                this.hitRedSprite.x = 100;
-                this.hitRedSprite.y = 200;
+                this.hitRedSprite.x = -100;
+                this.hitRedSprite.y = -200;
                 this.hitRedSprite.rotation = -110;
                 this.hitRedSprite.alpha = 1;
                 this.hitRedSprite.scaleX = 0.5;
                 this.hitRedSprite.scaleY = 0.5;
 
-                this.hitWhiteSprite.x = 100;
-                this.hitWhiteSprite.y = 200;
+                this.hitWhiteSprite.x = -100;
+                this.hitWhiteSprite.y = -200;
                 this.hitWhiteSprite.rotation = -110;
                 this.hitWhiteSprite.alpha = 1;
                 this.hitWhiteSprite.scaleX = 0.5;
@@ -363,15 +363,15 @@ define([
                 Global.game.main.removeChild(this.hitRedSprite);
                 this.removeChild(this.hitWhiteSprite);
 
-                this.hitRedSprite.x = 100;
-                this.hitRedSprite.y = 200;
+                this.hitRedSprite.x = -100;
+                this.hitRedSprite.y = -200;
                 this.hitRedSprite.rotation = -110;
                 this.hitRedSprite.alpha = 1;
                 this.hitRedSprite.scaleX = 0.5;
                 this.hitRedSprite.scaleY = 0.5;
 
-                this.hitWhiteSprite.x = 100;
-                this.hitWhiteSprite.y = 200;
+                this.hitWhiteSprite.x = -100;
+                this.hitWhiteSprite.y = -200;
                 this.hitWhiteSprite.rotation = -110;
                 this.hitWhiteSprite.alpha = 1;
                 this.hitWhiteSprite.scaleX = 0.5;

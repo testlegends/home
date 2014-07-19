@@ -32,10 +32,6 @@ module.exports = (function(){
 
         survey: {
             type: 'json'
-        },
-
-        meta: {
-            type: 'json'
         }
     };
 

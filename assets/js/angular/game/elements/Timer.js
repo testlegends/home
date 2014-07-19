@@ -30,6 +30,7 @@ define([
 
             p.Container_initialize = p.initialize;
             p.initialize = function (x, y) {
+                Global.game.timer = this;
                 this.Container_initialize();
                 this.set_question_box_position(x, y);
                 setInterval(this.main_timer_loop.bind(this), 1000);
@@ -83,9 +84,7 @@ define([
             };
 
             // ------------------------------------
-
             // Canvas Timer
-
             // ------------------------------------
             p.render_timer = function (remain_seconds, total_seconds) {
 
@@ -110,7 +109,6 @@ define([
                 s.y = main_y + base_radius;
 
                 group.addChild(s);
-
 
                 // ----------------
                 // Inner circle for the clock
@@ -191,7 +189,6 @@ define([
             p.degreesToRadians = function (degrees) {
                 return degrees * Math.PI / 180;
             };
-
 
             p.sumTo = function (a, i) {
                 var sum = 0;

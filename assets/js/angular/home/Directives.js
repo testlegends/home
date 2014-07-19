@@ -67,18 +67,6 @@ define([
                         Global.canvas = document.getElementById('EpicGame');
                         Global.game.Main = new Main();
                     };
-
-                    $scope.destroy = function () {
-                        Global = {
-                            game: {
-                                assets: {},
-                                monster_list: [],
-                                scale_idx: 1
-                            },
-                            stage: {},
-                            canvas: null
-                        };
-                    };
                 }],
                 link: function (scope) {
                     $('#join_on_demo').on('click', function(){
@@ -340,17 +328,19 @@ define([
             };
         }])
 
-        .directive('signup', ['$location', 'adventurers', function ($location, adventurers) {
+        .directive('signup', [function () {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/home/partials/signup.html',
-                controller: ['$scope', function ($scope) {
-                    // Same handle as landing page
-                }],
-                link: function (scope) {
+                templateUrl: '/js/angular/home/partials/signup.html'
+            };
+        }])
 
-                }
+        .directive('followUs', [function () {
+            return {
+                restrict: 'E',
+                replace: true,
+                templateUrl: '/js/angular/home/partials/followus.html'
             };
         }]);
 });

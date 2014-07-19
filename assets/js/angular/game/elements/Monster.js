@@ -413,9 +413,7 @@ define([
             // ----------------------------
             // Mouse Hover Listener: didn't get removeEventListener doesn't work, otherwise I will use it.
             // ----------------------------
-
             p.monster_hover_in = function () {
-              console.log('hover in');
               var parent = this; // parent is monster scope we passed in
               if(this.isHoverListening===true){
                 for(var i=0;i<Global.game.monster_list.length;i++){

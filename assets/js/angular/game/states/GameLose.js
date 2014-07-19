@@ -47,7 +47,7 @@ define([
                 // this.lose_bg.alpha = 0.8;
                 // this.addChild(this.lose_bg);
 
-                this.lose.x = Global.canvas.width*0.46;
+                this.lose.x = Global.canvas.width*0.56;
                 this.lose.y = Global.canvas.height*0.4;
                 this.lose.scaleX = 0.1;
                 this.lose.scaleY = 0.1;
@@ -55,7 +55,7 @@ define([
                 this.addChild(this.lose);
 
                 var tween = createjs.Tween.get(this.lose)
-                .to({alpha:1.0,scaleX:0.85,scaleY:0.85,x:Global.canvas.width*0.185,y:Global.canvas.height*0.14},300);
+                .to({alpha:1.0,scaleX:0.85,scaleY:0.85,x:Global.canvas.width*0.285,y:Global.canvas.height*0.14},300);
             }
 
             return GameLose;

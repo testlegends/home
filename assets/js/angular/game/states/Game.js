@@ -23,7 +23,6 @@ define([
         .factory('Game', ['Global', 'Hero', 'Monster', 'QuestionBox', 'Timer', 'GameStates', function (Global, Hero, Monster, QuestionBox, Timer, GameStates) {
 
             var Game = function (Main) {
-                console.log(Main);
                 this.Main = Main;
                 this.initialize();
             };
@@ -78,16 +77,18 @@ define([
                 // hide everything
                 var that = this;
                 var tween = createjs.Tween.get(Global.game.hero_obj).to({ alpha: 0 }, 1000);
-                var tween = createjs.Tween.get(Global.game.question).to({alpha:0},1000);
-                var tween = createjs.Tween.get(Global.game.timer).to({alpha:0},1000).call(function(){
+                var tween = createjs.Tween.get(Global.game.question).to({ alpha:0 }, 1000);
+                var tween = createjs.Tween.get(Global.game.timer).to({ alpha: 0 }, 1000).call(function(){
                     that.Main.changeState(GameStates.LOSE);
                 })
-                for(var i=0;i<Global.game.monster_list.length;i++){
+                for (var i = 0; i < Global.game.monster_list.length; i++) {
                     var tween = createjs.Tween.get(Global.game.monster_list[i]).to({alpha:0},1000);
                 }
             }
 
             p.win_handler = function(){
+                // disable timer
+                Global.game.timer.timer_activate_flag = 0;
 
                 // hide everything
                 var that = this;
@@ -96,11 +97,10 @@ define([
                 var tween = createjs.Tween.get(Global.game.timer).to({alpha:0},1000).call(function(){
                     that.Main.changeState(GameStates.WIN);
                 })
-                for(var i=0;i<Global.game.monster_list.length;i++){
+                for (var i = 0; i < Global.game.monster_list.length; i++) {
                     var tween = createjs.Tween.get(Global.game.monster_list[i]).to({alpha:0},1000);
                 }
             }
-
 
             return Game;
         }]);
