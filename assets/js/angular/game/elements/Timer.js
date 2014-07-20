@@ -33,7 +33,7 @@ define([
                 Global.game.timer = this;
                 this.Container_initialize();
                 this.set_question_box_position(x, y);
-                setInterval(this.main_timer_loop.bind(this), 1000);
+                this.interval_holder = setInterval(this.main_timer_loop.bind(this), 1000);
             };
 
             p.set_question_box_position = function (x, y) {
@@ -84,10 +84,11 @@ define([
             };
 
             // ------------------------------------
+
             // Canvas Timer
+
             // ------------------------------------
             p.render_timer = function (remain_seconds, total_seconds) {
-
                 var main_x = 0;
                 var main_y = 0;
                 var base_radius = 89 / Global.game.scale_idx;
@@ -109,6 +110,7 @@ define([
                 s.y = main_y + base_radius;
 
                 group.addChild(s);
+
 
                 // ----------------
                 // Inner circle for the clock
@@ -189,6 +191,7 @@ define([
             p.degreesToRadians = function (degrees) {
                 return degrees * Math.PI / 180;
             };
+
 
             p.sumTo = function (a, i) {
                 var sum = 0;

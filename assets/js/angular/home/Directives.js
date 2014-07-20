@@ -10,10 +10,11 @@ define([
     'underscore',
     'home/Services',
     'game/services/Global',
-    'game/services/Main'
+    'game/services/Main',
+    'game/constants/GameStates'
 ], function (angular, _) {
 
-    return angular.module('Home.directives', ['Home.services', 'Game.services'])
+    return angular.module('Home.directives', ['Home.services', 'Game.services', 'Game.constants'])
 
         .directive('landing', ['$location', 'adventurers', function ($location, adventurers) {
             return {
@@ -57,7 +58,7 @@ define([
             };
         }])
 
-        .directive('demo', ['$location', 'adventurers', 'Global', 'Main', function ($location, adventurers, Global, Main) {
+        .directive('demo', ['$location', 'adventurers', 'Global', 'Main', 'GameStates', function ($location, adventurers, Global, Main, GameStates) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -66,6 +67,11 @@ define([
                     $scope.init = function () {
                         Global.canvas = document.getElementById('EpicGame');
                         Global.game.Main = new Main();
+                    };
+
+                    $scope.restart = function(){
+                        clearInterval(Global.game.timer.interval_holder);
+                        Global.game.Main.changeState(GameStates.START);
                     };
                 }],
                 link: function (scope) {
@@ -86,53 +92,39 @@ define([
                             });
                         });
                     });
-                    $('#demo_button').on('click', function(){
-                        $('#pageTwo .sidebar').hide();
-                        $('#demo').hide();
-                        $('.welcome').show();
-                        /*deactivate canvas here*/
-                        $('#EpicGame').hide();
-                    });
-                    $('.skip').on('click', function(){
-                        $('.welcome').hide();
-                        $('.knight').hide();
-                        $('.question_timer').hide();
-                        $('.monsters').hide();
-                        $('.health').hide();
-                        $('#pageTwo .sidebar').show();
+                    $('#demo_button button').on('click', function(){
+                        $('.tutorial').hide();
+                        $('.demo_point').hide();
                         $('#EpicGame').show();
                         scope.init();
+                        $(this).html('Replay');
+                        $(this).unbind('click').click(function(){
+                            scope.restart();
+                        });
                     });
-                    $('.restart').on('click', function(){
-                        $('#pageTwo .sidebar').hide();
-                        $('.welcome').show();
-                        $('.rumble').hide();
+                    $('.sel1').hover(function(){
+                        $('.box1').css({
+                            opacity: 1
+                        });
+                        $('.box2, .box3').css({
+                            opacity: 0.3
+                        });
                     });
-                    $('.welcome .play').on('click', function(){
-                        $('.knight').show();
-                        $('.welcome').hide();
+                    $('.sel2').hover(function(){
+                        $('.box2').css({
+                            opacity: 1
+                        });
+                        $('.box1, .box3').css({
+                            opacity: 0.3
+                        });
                     });
-                    $('.knight .next').on('click', function(){
-                        $('.question_timer').show();
-                        $('.knight').hide();
-                    });
-                    $('.question_timer .next').on('click', function(){
-                        $('.monsters').show();
-                        $('.question_timer').hide();
-                    });
-                    $('.monsters .next').on('click', function(){
-                        $('.health').show();
-                        $('.monsters').hide();
-                    });
-                    $('.health .next').on('click', function(){
-                        $('.rumble').show();
-                        $('.health').hide();
-                    });
-                    $('.rumble .play').on('click', function(){
-                        $('.rumble').hide();
-                        $('#pageTwo .sidebar').show();
-                        $('#EpicGame').show();
-                        scope.init();
+                    $('.sel3').hover(function(){
+                        $('.box3').css({
+                            opacity: 1
+                        });
+                        $('.box1, .box2').css({
+                            opacity: 0.3
+                        });
                     });
                 }
             };
@@ -147,58 +139,18 @@ define([
 
                 }],
                 link: function (scope) {
-                    var blinker = (function(){
-                        var timerInterval = null;
-                        var x = 0;
-                        var target = $('#physics button');
-
-                        function blink() {
-                            if (x === 0) {
-                                target.removeClass('blinkOff');
-                                target.addClass('blinkOn');
-                                x = 1;
-                            } else if (x === 1) {
-                                target.removeClass('blinkOn');
-                                target.addClass('blinkOff');
-                                x = 0;
-                            }
-                        }
-
-                        function startBlinking () {
-                            if (timerInterval === null) {
-                               timerInterval = setInterval(blink, 1000);
-                            }
-                        }
-
-                        function stopBlinking() {
-                            if (timerInterval !== null) {
-                                clearInterval(timerInterval);
-                                timerInterval = null;
-                            }
-                            target.removeClass('blinkOn');
-                            target.removeClass('blinkOff');
-                        }
-
-                        return {
-                            startBlinking: startBlinking,
-                            stopBlinking: stopBlinking
-                        };
-                    })();
-
-                    blinker.startBlinking();
-
                     $('#vocabulary').on('click', function(){
+                        $('.cus_point').hide();
                         $('.vocabulary').show();
                         $('.hero').addClass('faderight_hero');
                         $('.monster').addClass('fadeleft_monster');
                         $('.physics').hide();
                         $('#physics button').addClass('inactive');
-                        $('#history button').addClass('inactive');
                         $('#vocabulary button').removeClass('inactive');
                     });
 
                     $('#physics').on('click', function(){
-                        blinker.stopBlinking();
+                        $('.cus_point').hide();
                         $('.physics').show();
                         $('.spaceship').addClass('faderight_space');
                         $('.ufo').addClass('fadeleft_ufo');
@@ -208,7 +160,6 @@ define([
                         $('.q3').addClass('qFade fade_q3');
                         $('.q4').addClass('qFade fade_q4');
                         $('#physics button').removeClass('inactive');
-                        $('#history button').addClass('inactive');
                         $('#vocabulary button').addClass('inactive');
                     });
 

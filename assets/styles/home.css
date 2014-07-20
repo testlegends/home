@@ -426,81 +426,26 @@ h1, h2, h3, h4, h5, h6, p {
 
 #pageTwo {
     height: 100%;
+    position: relative;
 }
-
 
 /*----------------sidebar--------------*/
 #demo_button {
     margin-top: 43%;
-}
-/*--------------------------------------*/
-
-#demo {
-    height: 100%;
-    background-image: url(../images/demo.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    font-size: 2.5em;
 }
 
-.tutorial {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
-
-/*----------------welcome/rumble------------*/
-.tutorial_center {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    margin: auto;
-    bottom: 0;
-    top: 0;
-    vertical-align: middle;
-}
-
-.tutorial span {
-    font-family: Showcard Gothic;
-    font-size: 1.3em;
-}
-
-.tutorial_title p {
-    font-family: Showcard Gothic;
-    font-size: 7em;
-    color: #FFB000;
-}
-
-.tutorial_info {
-    margin-top: 2%;
-}
-
-.tutorial_info p {
-    font-family: Showcard Gothic;
-    font-size: 2em;
-    color: white;
-    width: 32%;
-    text-align: left;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.play {
-    background-image: url(../images/go.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 123px;
-    width: 132px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 1%;
-    cursor: pointer;
-    -webkit-animation-name: thumb;
+.point {
+    margin-top: 10px;
+    height: 142;
+    width: 72px;
+    -webkit-animation-name: point_up;
     -webkit-animation-duration: 0.8s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-direction: alternate;
     -webkit-animation-play-state: running;
-    animation-name: thumb;
+    animation-name: point_up;
     animation-duration: 0.8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -508,146 +453,77 @@ h1, h2, h3, h4, h5, h6, p {
     animation-play-state: running;
 }
 
-@-webkit-keyframes thumb {
-    0% {-webkit-transform: rotate(-2deg); transform: rotate(-2deg); -ms-transform: rotate(-2deg);}
-    100% {-webkit-transform: rotate(2deg); transform: rotate(2deg); -ms-transform: rotate(2deg);}
+@-webkit-keyframes point_up {
+    0% {margin-top: 10px;}
+    100% {margin-top: 20px;}
 }
 
-@keyframes thumb {
-    0% {-webkit-transform: rotate(-2deg); transform: rotate(-2deg); -ms-transform: rotate(-2deg);}
-    100% {-webkit-transform: rotate(2deg); transform: rotate(2deg); -ms-transform: rotate(2deg);}
+@keyframes point_up {
+    0% {margin-top: 10px;}
+    100% {margin-top: 20px;}
 }
-
-.play:hover {
-    background-image: url(../images/go_hover.png);
-    /*-webkit-animation-name: stop;*/
-}
-
-#preload-play-hover {
-    background: url(../images/go_hover.png) no-repeat -9999px -9999px;
-}
-
-.rumble .tutorial_info p {
-    width: 22%;
-    font-size: 2.5em;
-    padding-top: 2%;
-}
-/*------------------------------------------*/
+/*-----------------tutorial---------------------*/
 .overlay {
     height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.knight .overlay {
-    background-image: url(../images/knight.png);
+.box1 {
+    background-image: url(../images/tutorial-knight.png);
 }
 
-.question_timer .overlay {
-    background-image: url(../images/question.png);
+.box2 {
+    background-image: url(../images/tutorial-question.png);
+    opacity: 0.3;
 }
 
-.monsters .overlay {
-    background-image: url(../images/monsters.png);
+.box3 {
+    background-image: url(../images/tutorial-monsters.png);
+    opacity: 0.3;
 }
 
-.health .overlay {
-    background-image: url(../images/health.png);
+.selector {
+    position: absolute;
+    z-index: 20000;
+}
+
+.sel1 {
+    height: 39%;
+    width: 17%;
+    top: 29%;
+    left: 27%;
+}
+
+.sel2 {
+    height: 17%;
+    width: 46%;
+    top: 2%;
+    left: 35%;
+}
+
+.sel3 {
+    height: 60%;
+    width: 29.5%;
+    top: 22%;
+    left: 59.5%;
 }
 
 #preload-knight {
-    background: url(../images/knight.png) no-repeat -9999px -9999px;
+    background: url(../images/tutorial-knight.png) no-repeat -9999px -9999px;
 }
 
 #preload-question_timer {
-    background: url(../images/question.png) no-repeat -9999px -9999px;
+    background: url(../images/tutorial-question.png) no-repeat -9999px -9999px;
 }
 
 #preload-monsters {
-    background: url(../images/monsters.png) no-repeat -9999px -9999px;
-}
-
-#preload-health {
-    background: url(../images/health.png) no-repeat -9999px -9999px;
-}
-
-/*-------------------next-------------------*/
-.finger {
-    position: absolute;
-    top: 10%;
-    right: 5%;
-}
-
-.next {
-    background-image: url(../images/next.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 75px;
-    width: 145px;
-    cursor: pointer;
-    -webkit-animation-name: point;
-    -webkit-animation-duration: 0.8s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-play-state: running;
-    animation-name: point;
-    animation-duration: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: running;
-}
-
-@-webkit-keyframes point {
-    0% {margin-left:0%;}
-    100% {margin-left:5%;}
-}
-
-@keyframes point {
-    0% {margin-left:0%;}
-    100% {margin-left:5%;}
-}
-
-.next:hover {
-    background-image: url(../images/next_hover.png);
-}
-
-#preload-next-hover {
-    background: url(../images/next_hover.png) no-repeat -9999px -9999px;
-}
-/*------------------------------------------*/
-
-/*---------------skip/restart---------------*/
-.skip {
-    position: absolute;
-    bottom: 5%;
-    width: 100%;
-}
-
-.skip p {
-    color: rgba(255,255,255,0.5);
-    cursor: pointer;
-    width: 10%;
-    margin: 0 auto;
-}
-
-.skip p:hover {
-    color: white;
-}
-
-.restart p {
-    width: 11%;
-}
-/*------------------------------------------*/
-
-.welcome, .rumble {
-    background-color: rgba(0,0,0,0.85);
-}
-
-.welcome, .knight, .question_timer, .monsters, .health, .rumble {
-    display: none;
+    background: url(../images/tutorial-monsters.png) no-repeat -9999px -9999px;
 }
 
 /*^^^^^^^^^^^^^^^^^^^^^^^^^| Page Two |^^^^^^^^^^^^^^^^^^^^^^^^^^*/
@@ -663,6 +539,7 @@ h1, h2, h3, h4, h5, h6, p {
 .customize_action {
     padding: 0 0.5em;
     margin: 30% auto 0;
+    text-align: center;
 }
 
 .theme {
@@ -679,17 +556,6 @@ h1, h2, h3, h4, h5, h6, p {
     background: #FFC85A !important;
     border: 0.1em solid #FFC85A !important;
 }
-
-.blinkOn {
-    background-color: #FFB000 !important;
-    border: 0.1em solid #FFB000 !important;
-}
-
-.blinkOff {
-    background-color: #FFC85A !important;
-    border: 0.1em solid #FFC85A !important;
-}
-
 /*--------------------------------------*/
 
 /*-----------------content area----------------*/

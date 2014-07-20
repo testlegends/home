@@ -63,7 +63,7 @@ define([
 
             p.onGameReady = function () {
                 createjs.Ticker.on(Events.TICK, this.onTick, this);
-                //createjs.Ticker.setFPS(40);
+                createjs.Ticker.setFPS(40);
                 this.changeState(GameStates.START);
                 this.onTick();
             };

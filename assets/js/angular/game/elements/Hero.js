@@ -25,14 +25,6 @@ define([
 
             var p = Hero.prototype = new createjs.Container();
 
-            // --------------------
-            // HealthBar
-            // --------------------
-            p.hp_bar = null;
-            p.life_percentage = 0;
-            p.mp_bar = null;
-            p.magic_percentage = 0;
-
             p.targetMonster = null;
 
             p.Container_initialize = p.initialize;
@@ -84,21 +76,16 @@ define([
 
             p.setHeroHealthBar = function () {
                 this.hp_bar = new StatusBar('life');
-                this.mp_bar = new StatusBar('magic');
 
                 // setup x,y
                 this.hp_bar.x = 170 / Global.game.scale_idx;
                 this.hp_bar.y = 450 / Global.game.scale_idx;
-                this.mp_bar.x = 170 / Global.game.scale_idx;
-                this.mp_bar.y = 480 / Global.game.scale_idx;
 
-                this.addChild(this.hp_bar, this.mp_bar);
+                this.addChild(this.hp_bar);
 
                 // animate init health
                 this.hp_bar.update_bar(0, 1, this.hp_bar.colorsets.life_bar_lightred);
-                this.mp_bar.update_bar(0, 1, this.hp_bar.colorsets.magic_bar_lightblue);
                 this.life_percentage = 1;
-                this.magic_percentage = 1;
             };
 
             p.show = function (selected_bitmap_animation) {
@@ -126,10 +113,8 @@ define([
             p.toggle_status_bar = function (action) {
                 if (action === 'show') {
                     createjs.Tween.get(this.hp_bar).to({ alpha: 1 }, 300);
-                    createjs.Tween.get(this.mp_bar).to({ alpha: 1 }, 300);
                 } else if (action === 'hide') {
                     createjs.Tween.get(this.hp_bar).to({ alpha: 0 }, 300);
-                    createjs.Tween.get(this.mp_bar).to({ alpha: 0 }, 300);
                 }
             };
 

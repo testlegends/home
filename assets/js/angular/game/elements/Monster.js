@@ -413,6 +413,7 @@ define([
             // ----------------------------
             // Mouse Hover Listener: didn't get removeEventListener doesn't work, otherwise I will use it.
             // ----------------------------
+
             p.monster_hover_in = function () {
               var parent = this; // parent is monster scope we passed in
               if(this.isHoverListening===true){

@@ -6,7 +6,8 @@
         </div>
 
         <div class="action" id="demo_button">
-            <button>Start Demo</button>
+            <button>PLAY</button>
+            <img class="point demo_point" src="images/point.png" />
         </div>
 
         <div class="social_hide small_social">
@@ -37,77 +38,13 @@
         </div>
     </div>
 
-    <div id="demo"></div>
-
-    <div class="tutorial welcome">
-        <div class="tutorial_center">
-            <div class="tutorial_title">
-                <p>Welcome!</p>
-            </div>
-            <div class="tutorial_info">
-                <p><span>L</span>ets take a <span>Q</span>uick <span>T</span>our before playing</p>
-                <div class="play"></div>
-            </div>
-        </div>
-        <div class="skip">
-            <p>skip Quick Tour</p>
-        </div>
-    </div>
-
-    <div class="tutorial knight">
-        <div class="overlay"></div>
-        <div class="finger">
-            <div class="next"></div>
-        </div>
-        <div class="skip">
-            <p>skip Quick Tour</p>
-        </div>
-    </div>
-
-    <div class="tutorial question_timer">
-        <div class="overlay"></div>
-        <div class="finger">
-            <div class="next"></div>
-        </div>
-        <div class="skip">
-            <p>skip Quick Tour</p>
-        </div>
-    </div>
-
-    <div class="tutorial monsters">
-        <div class="overlay"></div>
-        <div class="finger">
-            <div class="next"></div>
-        </div>
-        <div class="skip">
-            <p>skip Quick Tour</p>
-        </div>
-    </div>
-
-    <div class="tutorial health">
-        <div class="overlay"></div>
-        <div class="finger">
-            <div class="next"></div>
-        </div>
-        <div class="skip">
-            <p>skip Quick Tour</p>
-        </div>
-    </div>
-
-    <div class="tutorial rumble">
-        <div class="tutorial_center">
-            <div class="tutorial_title">
-                <p>That's it!</p>
-            </div>
-            <div class="tutorial_info">
-                <p><span>L</span>ets <span>R</span>umble</p>
-                <div class="play"></div>
-            </div>
-        </div>
-        <div class="skip restart">
-            <p>restart Quick Tour</p>
-        </div>
-        <div class="tutorial_back"></div>
+    <div class="tutorial">
+        <div class="sel1 selector"></div>
+        <div class="sel2 selector"></div>
+        <div class="sel3 selector"></div>
+        <div class="box1 overlay"></div>
+        <div class="box2 overlay"></div>
+        <div class="box3 overlay"></div>
     </div>
 
     <div id='canvas_container' style="position: absolute; z-index: 100; width: 100%">
@@ -115,9 +52,6 @@
     </div>
 
     <div id="preload-knight"></div>
+    <div id="preload-question"></div>
     <div id="preload-monsters"></div>
-    <div id="preload-health"></div>
-    <div id="preload-question_timer"></div>
-    <div id="preload-play-hover"></div>
-    <div id="preload-next-hover"></div>
 </div>

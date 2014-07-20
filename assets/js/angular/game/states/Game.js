@@ -38,6 +38,7 @@ define([
 
                 Global.game.main = this;
 
+                Global.game.monster_list = [];
                 //console.log('creating monsters...');
                 this.createMonster(1, Global.canvas.width * 0.55  * Global.game.scale_idx, Global.canvas.height * 0.28  * Global.game.scale_idx);
                 this.createMonster(2, Global.canvas.width * 0.67  * Global.game.scale_idx, Global.canvas.height * 0.38  * Global.game.scale_idx);
@@ -73,17 +74,27 @@ define([
                 this.addChild(question, timer);
             };
 
+
+            // used in game restart
+            p.createQuestionsOnly = function(){
+              var question = new QuestionBox(Global.canvas.width * 0.28 * Global.game.scale_idx, Global.canvas.height * 0.042 * Global.game.scale_idx);
+              Global.game.question = question;
+              this.addChild(question);
+            }
+
             p.game_over_handler = function(){
                 // hide everything
                 var that = this;
                 var tween = createjs.Tween.get(Global.game.hero_obj).to({ alpha: 0 }, 1000);
-                var tween = createjs.Tween.get(Global.game.question).to({ alpha:0 }, 1000);
-                var tween = createjs.Tween.get(Global.game.timer).to({ alpha: 0 }, 1000).call(function(){
+                var tween = createjs.Tween.get(Global.game.question).to({alpha:0},1000);
+                var tween = createjs.Tween.get(Global.game.timer).to({alpha:0},1000).call(function(){
                     that.Main.changeState(GameStates.LOSE);
                 })
-                for (var i = 0; i < Global.game.monster_list.length; i++) {
+                for(var i=0;i<Global.game.monster_list.length;i++){
                     var tween = createjs.Tween.get(Global.game.monster_list[i]).to({alpha:0},1000);
                 }
+
+                clearInterval(Global.game.timer.interval_holder);
             }
 
             p.win_handler = function(){
@@ -97,9 +108,11 @@ define([
                 var tween = createjs.Tween.get(Global.game.timer).to({alpha:0},1000).call(function(){
                     that.Main.changeState(GameStates.WIN);
                 })
-                for (var i = 0; i < Global.game.monster_list.length; i++) {
+                for(var i=0;i<Global.game.monster_list.length;i++){
                     var tween = createjs.Tween.get(Global.game.monster_list[i]).to({alpha:0},1000);
                 }
+
+                clearInterval(Global.game.timer.interval_holder);
             }
 
             return Game;
