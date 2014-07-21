@@ -14,6 +14,13 @@ module.exports = (function(){
     function join (req, res) {
         var email = req.body.email;
 
+        if (!email || !validator.isEmail(email)) {
+            return res.json({
+                status: 'ERROR',
+                msg: 'E-mail invalid'
+            });
+        }
+
         Adventurer.findByEmail(email, function (err ,adventurers) {
             if (err) {
                 console.log(err);
@@ -42,13 +49,6 @@ module.exports = (function(){
                 var refCode = req.body.ref;
                 if (refCode) {
                     AdventurerService.updateReferrals(email, refCode);
-                }
-
-                if (!email || !validator.isEmail(email)) {
-                    return res.json({
-                        status: 'ERROR',
-                        msg: 'E-mail can not be empty'
-                    });
                 }
 
                 var code = AdventurerService.uid(6);

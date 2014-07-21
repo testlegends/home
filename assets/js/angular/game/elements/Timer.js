@@ -57,7 +57,6 @@ define([
                             Global.game.monster_list[i].dodge_animation_attack();
                         }
                     }
-                    this.reset_timer();
                 }
 
                 if (this.timer_activate_flag === 1) {
@@ -84,9 +83,7 @@ define([
             };
 
             // ------------------------------------
-
             // Canvas Timer
-
             // ------------------------------------
             p.render_timer = function (remain_seconds, total_seconds) {
                 var main_x = 0;
@@ -180,18 +177,11 @@ define([
                 g.moveTo(centerX, centerY);
                 g.arc(centerX, centerY, radius, startingAngle, endingAngle, false);
                 g.closePath();
-
-                // var s = new Shape(g);
-                // s.x = x;
-                // s.y = y;
-                // stage.addChild(s);
-                // stage.update();
             };
 
             p.degreesToRadians = function (degrees) {
                 return degrees * Math.PI / 180;
             };
-
 
             p.sumTo = function (a, i) {
                 var sum = 0;

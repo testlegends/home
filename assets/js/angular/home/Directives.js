@@ -33,16 +33,9 @@ define([
                     };
 
                     $scope.joined = function () {
+                        console.log('joined');
                         $('#pageOne .submit').hide();
                         $('#pageOne .social_hide').removeClass('social_hide');
-                        $('#pageTwo .user_sub').hide();
-                        $('#pageTwo .social_hide').removeClass('social_hide');
-                        $('#pageThree .user_sub').hide();
-                        $('#pageThree .social_hide').removeClass('social_hide');
-                        $('#pageFour .submission input').hide();
-                        $('#pageFour .join_us button').text('Submit');
-                        $('#pageFive .submission input').hide();
-                        $('#pageFive .join_us button').text('Submit');
                         $('#pageSix #signup').hide();
                         $('#pageSix .social_hide').removeClass('social_hide');
                     };
@@ -54,11 +47,18 @@ define([
                     if ($location.search().close_window === 'true') {
                         window.close();
                     }
+
+                    $('#pageOne input[type=email]').on('keyup', function (e) {
+                        var code = (e.keyCode ? e.keyCode : e.which);
+                        if (code === 13) {
+                            scope.join();
+                        }
+                    });
                 }
             };
         }])
 
-        .directive('demo', ['$location', 'adventurers', 'Global', 'Main', 'GameStates', function ($location, adventurers, Global, Main, GameStates) {
+        .directive('demo', ['Global', 'Main', 'GameStates', function (Global, Main, GameStates) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -69,29 +69,20 @@ define([
                         Global.game.Main = new Main();
                     };
 
-                    $scope.restart = function(){
+                    $scope.restart = function () {
+                        Global.game.timer.timer_activate_flag = 0;
                         clearInterval(Global.game.timer.interval_holder);
+
+                        Global.game.main.removeChild(Global.game.hero_obj);
+                        for (var i = 0; i < Global.game.monster_list.length; i++) {
+                            Global.game.main.removeChild(Global.game.monster_list[i]);
+                        }
+
+                        Global.game.Main.changeState(GameStates.LOSE);
                         Global.game.Main.changeState(GameStates.START);
                     };
                 }],
                 link: function (scope) {
-                    $('#join_on_demo').on('click', function(){
-                        $('#pageTwo .submission').toggleClass('hidden');
-                        $('#pageTwo .submission input').focus();
-
-                        $(this).unbind('click');
-                        $(this).on('click', function () {
-                            adventurers.join({
-                                email: scope.email,
-                                refCode: $location.search().ref
-                            }, function (data) {
-                                scope.joined();
-                                $('#pageTwo .user_sub').hide();
-                                $('#pageTwo .social').show();
-                                adventurers.share(data.code);
-                            });
-                        });
-                    });
                     $('#demo_button button').on('click', function(){
                         $('.tutorial').hide();
                         $('.demo_point').hide();
@@ -102,42 +93,27 @@ define([
                             scope.restart();
                         });
                     });
-                    $('.sel1').hover(function(){
-                        $('.box1').css({
-                            opacity: 1
-                        });
-                        $('.box2, .box3').css({
-                            opacity: 0.3
-                        });
+                    $('.sel1, .sel1a').hover(function(){
+                        $('.box1').css({ opacity: 1 });
+                        $('.box2, .box3').css({ opacity: 0.3 });
                     });
-                    $('.sel2').hover(function(){
-                        $('.box2').css({
-                            opacity: 1
-                        });
-                        $('.box1, .box3').css({
-                            opacity: 0.3
-                        });
+                    $('.sel2, .sel2a').hover(function(){
+                        $('.box2').css({ opacity: 1 });
+                        $('.box1, .box3').css({ opacity: 0.3 });
                     });
                     $('.sel3').hover(function(){
-                        $('.box3').css({
-                            opacity: 1
-                        });
-                        $('.box1, .box2').css({
-                            opacity: 0.3
-                        });
+                        $('.box3').css({ opacity: 1 });
+                        $('.box1, .box2').css({ opacity: 0.3 });
                     });
                 }
             };
         }])
 
-        .directive('customize', ['$location', 'adventurers', function ($location, adventurers) {
+        .directive('customize', [function () {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/customize.html',
-                controller: ['$scope', function ($scope) {
-
-                }],
                 link: function (scope) {
                     $('#vocabulary').on('click', function(){
                         $('.cus_point').hide();
@@ -162,29 +138,11 @@ define([
                         $('#physics button').removeClass('inactive');
                         $('#vocabulary button').addClass('inactive');
                     });
-
-                    $('#join_on_customize').on('click', function(){
-                        $('#pageThree .submission').toggleClass('hidden');
-                        $('#pageTwo .submission input').focus();
-
-                        $(this).unbind('click');
-                        $(this).on('click', function(){
-                            adventurers.join({
-                                email: scope.email,
-                                refCode: $location.search().ref
-                            }, function (data) {
-                                scope.joined();
-                                $('#pageThree .user_sub').hide();
-                                $('#pageThree .social').show();
-                                adventurers.share(data.code);
-                            });
-                        });
-                    });
                 }
             };
         }])
 
-        .directive('track', ['$location', 'adventurers', 'scores', function ($location, adventurers, scores) {
+        .directive('track', ['scores', function (scores) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -205,19 +163,6 @@ define([
                         scores.drawMeter(name);
                         scores.populateData(name);
                     };
-
-                    $scope.joinWithAssessment = function () {
-                        adventurers.join({
-                            email: $scope.email,
-                            refCode: $location.search().ref,
-                            assessment: $scope.assessment
-                        }, function (data) {
-                            $scope.joined();
-                            $('#pageFour .user_sub').hide();
-                            $('#pageFour .social').show();
-                            adventurers.share(data.code);
-                        });
-                    };
                 }],
                 link: function () {
                     scores.drawChart();
@@ -227,26 +172,13 @@ define([
             };
         }])
 
-        .directive('publish', ['$location', 'adventurers', 'cities', function ($location, adventurers, cities) {
+        .directive('publish', ['cities', function (cities) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/publish.html',
                 controller: ['$scope', function ($scope) {
                     $scope.cities = cities.list();
-
-                    $scope.joinWithTopic = function () {
-                        adventurers.join({
-                            email: $scope.email,
-                            refCode: $location.search().ref,
-                            topic: $scope.topic
-                        }, function (data) {
-                            $scope.joined();
-                            $('#pageFive .user_sub').hide();
-                            $('#pageFive .social').show();
-                            adventurers.share(data.code);
-                        });
-                    };
                 }],
                 link: function (scope) {
                     var bubblr = (function () {
@@ -283,7 +215,15 @@ define([
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/home/partials/signup.html'
+                templateUrl: '/js/angular/home/partials/signup.html',
+                link: function (scope) {
+                    $('#pageSix input[type=email]').on('keyup', function (e) {
+                        var code = (e.keyCode ? e.keyCode : e.which);
+                        if (code === 13) {
+                            scope.join();
+                        }
+                    });
+                }
             };
         }])
 
@@ -291,7 +231,35 @@ define([
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/home/partials/followus.html'
+                templateUrl: '/js/angular/home/partials/followUs.html'
+            };
+        }])
+
+        .directive('signupAndShare', [function () {
+            return {
+                restrict: 'E',
+                replace: true,
+                templateUrl: '/js/angular/home/partials/signupAndShare.html',
+                link: function (scope) {
+                    $('.join_on_sidebar').on('click', function () {
+                        $('.point').hide();
+                        $(this).parent().parent().find('input').removeClass('hidden').focus();
+                        $(this).parent().parent().find('input').on('keyup', function (e) {
+                            // TODO: If hit enter, this will be called 4 times, need to improve it
+                            var code = (e.keyCode ? e.keyCode : e.which);
+                            if (code === 13) {
+                                $(this).parent().next().find('button').click();
+                            }
+                        });
+
+                        $(this).unbind('click');
+                        $(this).on('click', function () {
+                            $('.user_sub').hide();
+                            $('.social_hide').removeClass('social_hide');
+                            scope.join();
+                        });
+                    });
+                }
             };
         }]);
 });

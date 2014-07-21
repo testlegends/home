@@ -83,6 +83,9 @@ define([
             }
 
             p.game_over_handler = function(){
+                // disable timer
+                Global.game.timer.timer_activate_flag = 0;
+
                 // hide everything
                 var that = this;
                 var tween = createjs.Tween.get(Global.game.hero_obj).to({ alpha: 0 }, 1000);
@@ -114,6 +117,7 @@ define([
 
                 clearInterval(Global.game.timer.interval_holder);
             }
+
 
             return Game;
         }]);

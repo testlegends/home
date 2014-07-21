@@ -39,11 +39,6 @@ define([
               this.addChild(shape);
             }
 
-            this.win_bg = null;
-            this.win = null;
-            this.yellow_stars = null;
-            this.dark_stars = null;
-
             p.createWinLoseSprite = function () {
               // create
               this.win_bg = new createjs.Sprite(Global.game.assets.specialEffectsSpriteSheet,'win-mock');

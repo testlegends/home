@@ -122,6 +122,8 @@ define([
             // Animation
             // --------------------
             p.move_and_swing_swords = function (e) {
+                // stop timer
+                Global.game.timer.timer_activate_flag = 0;
 
                 // set target monster
                 var target_monster = e.target_monster;
