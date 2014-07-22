@@ -17,6 +17,7 @@
     font-weight: 500;
     src: local('Raleway Medium'), local('Raleway-Medium'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/CcKI4k9un7TZVWzRVT-T873hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
+
 /* Source: http://fonts.googleapis.com/css?family=Lato:300,400,700 */
 @font-face {
   font-family: 'Lato';
@@ -39,7 +40,12 @@
 
 @font-face {
     font-family: 'Showcard Gothic';
-    src: url(../fonts/SHOWG.TTF);
+    src: url('../fonts/showg-webfont.eot');
+    src: url('../fonts/showg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/showg-webfont.woff') format('woff'),
+         url('../fonts/showg-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 * {
@@ -521,6 +527,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 14.5%;
     top: 13em;
     left: 27%;
+    background-color: transparent; /** Hack for IE.  http://stackoverflow.com/questions/1534141/jquery-nested-tags-and-hover-not-working-in-ie **/
 }
 
 .sel1a {
@@ -528,6 +535,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 3%;
     top: 30em;
     left: 41%;
+    background-color: transparent;
 }
 
 .sel2 {
@@ -535,6 +543,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 46%;
     top: 0.9em;
     left: 35%;
+    background-color: transparent;
 }
 
 .sel2a {
@@ -542,6 +551,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 17.5%;
     top: 8.5em;
     left: 41.5%;
+    background-color: transparent;
 }
 
 .sel3 {
@@ -549,6 +559,7 @@ h1, h2, h3, h4, h5, h6, p {
     width: 29.5%;
     top: 9.5em;
     left: 59.5%;
+    background-color: transparent;
 }
 
 #preload-knight {

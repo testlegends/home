@@ -24,7 +24,7 @@
                 }, cb);
             }
         });
-    }
+    }o0
 
     function trackViewport () {
         $(window).bind('mousewheel wheel',  $.debounce(250, checkViewport));
@@ -49,13 +49,27 @@
     }
 
     function handleEvent (el, event, cb) {
-        $(el).on(event, function(e){
-            e.preventDefault();
-            save({
-                event: event,
-                elem: el.element
-            }, cb);
-        });
+        // wait for AngularJS to finish loading the templates
+        setTimeout(function(){
+            $(el).on(event, function(e){
+                e.preventDefault();
+
+                if (event === 'keyup') {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+                    if (code === 13) {
+                        save({
+                            event: event,
+                            elem: el.element
+                        }, cb);
+                    }
+                } else {
+                    save({
+                        event: event,
+                        elem: el.element
+                    }, cb);
+                }
+            });
+        }, 10000);
     }
 
     function isElementInViewport (el) {

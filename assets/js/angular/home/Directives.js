@@ -33,7 +33,6 @@ define([
                     };
 
                     $scope.joined = function () {
-                        console.log('joined');
                         $('#pageOne .submit').hide();
                         $('#pageOne .social_hide').removeClass('social_hide');
                         $('#pageSix #signup').hide();

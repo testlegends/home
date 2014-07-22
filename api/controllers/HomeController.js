@@ -44,7 +44,7 @@ module.exports = (function(){
 			ip: req.connection.remoteAddress
 		});
 
-		TrackrService.save(req.body, function (err, data) {
+		TrackrService.save(trackrData, function (err, data) {
 			if (err) {
 				console.log(err);
 				return res.json({

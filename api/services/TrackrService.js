@@ -38,6 +38,8 @@ module.exports = (function(){
                 cb(err, null);
             }
 
+            trackrData.info.timestamp = Date.now();
+
             if (data) {
                 data.eventHistory.push(trackrData.info);
                 data.save(function (err) {

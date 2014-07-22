@@ -32,7 +32,7 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                 },
                 share: function (code) {
                     $('button.facebook').on('click', function(){
-                        var facebookShareUrl = 'http://www.facebook.com/dialog/feed?' +
+                        var facebookShareUrl = 'https://www.facebook.com/dialog/feed?' +
                             'app_id=1412582839022573' + '&' +
                             'link=http://testlegends.com/?ref=' + code + '&' +
                             'message=helloworld' + '&' +

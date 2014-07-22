@@ -65,6 +65,10 @@ require([
                 } else {
                     $('#follow').hide();
                 }
+
+                if (nextIndex === 2) {
+                    $('#EpicGame').show();
+                }
             },
             afterLoad: function (anchor, index) {
                 if (index === 2 && dir === 'down')  {
@@ -75,6 +79,10 @@ require([
                     $('#pageFive .sidebar').animate({
                         left: '0'
                     }, 500);
+                }
+
+                if (index === 3) {
+                    $('#EpicGame').hide();
                 }
             }
         });
@@ -88,6 +96,15 @@ require([
                 { element: '#pageThree', event: 'viewport' },
                 { element: '#pageFour',  event: 'viewport' },
                 { element: '#pageFive',  event: 'viewport' },
+                { element: '.sel1, .sel1a', event: 'mouseenter' },
+                { element: '.sel2, .sel2a', event: 'mouseenter' },
+                { element: '.sel3', event: 'mouseenter' },
+                { element: '#join', event: 'click' }, // Join in page 1
+                { element: '#join', event: 'keyup' }, // Join in page 1
+                { element: '#signup button', event: 'click' }, // Join in page 6
+                { element: '#signup button', event: 'keyup' }, // Join in page 6
+                { element: '#follow button:first', event: 'click' }, // Follow on FB
+                { element: '#follow button:last', event: 'click' }, // Follow on Twitter
                 { url: '/adventurers',   event: 'ajax'}
             ]
         });
