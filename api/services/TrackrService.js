@@ -74,8 +74,19 @@ module.exports = (function(){
         });
     }
 
+    function list (cb) {
+        Trackr.find().done(function (err, data) {
+            if (err) {
+                cb(err, null);
+            }
+
+            cb(null, data);
+        });
+    }
+
     return {
+        uid: uid,
         save: save,
-        uid: uid
+        list: list
     };
 })();

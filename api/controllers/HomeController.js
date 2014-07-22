@@ -61,14 +61,27 @@ module.exports = (function(){
 
 	}
 
-    function docs (req, res) {
+    function trackrView (req, res) {
+		TrackrService.list(function (err, data) {
+			if (err) {
+				console.log(err);
+				return res.json({
+					status: 'ERROR',
+					err: err
+				});
+			}
 
+			return res.json({
+				status: 'OK',
+				data: data
+			})
+		});
     }
 
     return {
         index: index,
 		trackr: trackr,
-        docs: docs,
+        trackrView: trackrView,
 
         _config: {}
     };

@@ -59,13 +59,13 @@
                     if (code === 13) {
                         save({
                             event: event,
-                            elem: el.element
+                            elem: el
                         }, cb);
                     }
                 } else {
                     save({
                         event: event,
-                        elem: el.element
+                        elem: el
                     }, cb);
                 }
             });
