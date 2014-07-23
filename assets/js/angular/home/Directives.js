@@ -245,8 +245,17 @@ define([
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/signupAndShare.html',
+                scope: {
+                    pageNumber: '@page',
+                    join: '='
+                },
+                controller: ['$scope', function ($scope) {
+                    $scope.pageTwo = 'pageTwo';
+                    $scope.pageThree = 'pageThree';
+                    $scope.pageFour = 'pageFour';
+                    $scope.pageFive = 'pageFive';
+                }],
                 link: function (scope, elem, attrs) {
-                    scope.pageNumber = attrs.page;
                     $('.join_on_sidebar.submitJoin').hide();
 
                     $('.join_on_sidebar.showJoinBox.' + attrs.page).on('click', function () {

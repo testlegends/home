@@ -24,7 +24,7 @@
                 }, cb);
             }
         });
-    }o0
+    }
 
     function trackViewport () {
         $(window).bind('mousewheel wheel',  $.debounce(300, checkViewport));
@@ -32,7 +32,7 @@
             var code = (e.keyCode ? e.keyCode : e.which);
             if (code === 40 || code === 38) {
                 // wait until the events is finished
-                setTimeout(checkViewport, 1000);
+                setTimeout(checkViewport, 750);
             }
         }));
 
