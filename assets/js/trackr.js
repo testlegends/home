@@ -31,7 +31,7 @@
         $(window).keyup($.debounce(250, function (e) {
             var code = (e.keyCode ? e.keyCode : e.which);
             if (code === 40 || code === 38) {
-                // wait until the events is finished
+                // For fullpage.js, wait until the events is finished
                 setTimeout(checkViewport, 750);
             }
         }));
@@ -156,4 +156,11 @@
         trackViewport();
     };
 
+    /** For fullpage.js since the scroll timer above is not accurate **/
+    $.trackr.logPage = function (currentPageIndex) {
+        save({
+            event: 'viewport',
+            elem: 'page ' + currentPageIndex
+        }, function () {});
+    };
 })(jQuery);

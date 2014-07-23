@@ -158,7 +158,7 @@ define([
                 call(function(){
                     var isAnswerCorrect = Global.game.question.did_user_get_it_right(target_monster);
                     if(isAnswerCorrect){
-                        Trackr.questionAnswered(targetM.answer_box.answer_text, true);
+                        Trackr.questionAnswered(target_monster.answer_box.answer_text, true);
 
                         // -- hide monster select animation
                         target_monster.hide(target_monster.selectSprite);

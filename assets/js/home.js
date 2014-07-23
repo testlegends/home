@@ -10,14 +10,14 @@ require.config({
     paths: {
         jquery: '../vendor/jquery/dist/jquery.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
-        fullpage: '../vendor/fullpage.js/jquery.fullPage.min',
+        fullpage: '../vendor/fullpage.js/jquery.fullPage',
         debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',
         trackr: '../trackr'
         //slimscroll: '../vendor/jquery.slimscroll/jquery.slimscroll.min'
     },
     shim: {
         flowtype: ['jquery'],
-        fullpage: ['jquery'],
+        fullpage: ['jquery', 'trackr'],
         debounce: ['jquery'],
         trackr: ['jquery', 'debounce']
         //fullpage: ['jquery', 'slimscroll']
@@ -91,11 +91,12 @@ require([
             name: 'TestLegends Home',
             dbUrl: '/trackr',
             trackers: [
-                { element: '#pageOne',   event: 'viewport' },
-                { element: '#pageTwo',   event: 'viewport' },
-                { element: '#pageThree', event: 'viewport' },
-                { element: '#pageFour',  event: 'viewport' },
-                { element: '#pageFive',  event: 'viewport' },
+                // { element: '#pageOne',   event: 'viewport' },
+                // { element: '#pageTwo',   event: 'viewport' },
+                // { element: '#pageThree', event: 'viewport' },
+                // { element: '#pageFour',  event: 'viewport' },
+                // { element: '#pageFive',  event: 'viewport' },
+                // { element: '#pageSix',  event: 'viewport' },
                 { element: '.sel1, .sel1a', event: 'mouseenter' },
                 { element: '.sel2, .sel2a', event: 'mouseenter' },
                 { element: '.sel3', event: 'mouseenter' },
