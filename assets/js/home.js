@@ -101,8 +101,23 @@ require([
                 { element: '.sel3', event: 'mouseenter' },
                 { element: '#join', event: 'click' }, // Join in page 1
                 { element: '#join', event: 'keyup' }, // Join in page 1
+                { element: '.join_on_sidebar.showJoinBox.pageTwo', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'keyup' },
+                { element: '.join_on_sidebar.showJoinBox.pageThree', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageThree', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageThree', event: 'keyup' },
+                { element: '.join_on_sidebar.showJoinBox.pageFour', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageFour', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageFour', event: 'keyup' },
+                { element: '.join_on_sidebar.showJoinBox.pageFive', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageFive', event: 'click' },
+                { element: '.join_on_sidebar.submitJoin.pageFive', event: 'keyup' },
                 { element: '#signup button', event: 'click' }, // Join in page 6
                 { element: '#signup button', event: 'keyup' }, // Join in page 6
+                { element: '#demo_button', event: 'click' },
+                { element: '#vocabulary button', event: 'click' },
+                { element: '#physics button', event: 'click' },
                 { element: '#follow button:first', event: 'click' }, // Follow on FB
                 { element: '#follow button:last', event: 'click' }, // Follow on Twitter
                 { url: '/adventurers',   event: 'ajax'}

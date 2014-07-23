@@ -27,7 +27,7 @@
     }o0
 
     function trackViewport () {
-        $(window).bind('mousewheel wheel',  $.debounce(250, checkViewport));
+        $(window).bind('mousewheel wheel',  $.debounce(300, checkViewport));
         $(window).keyup($.debounce(250, function (e) {
             var code = (e.keyCode ? e.keyCode : e.which);
             if (code === 40 || code === 38) {
@@ -69,7 +69,7 @@
                     }, cb);
                 }
             });
-        }, 10000);
+        }, 8000);
     }
 
     function isElementInViewport (el) {
@@ -88,6 +88,11 @@
         );
     }
 
+    /** Source: https://developer.mozilla.org/en-US/docs/Web/API/Window.location **/
+    function queryStrings (sVar) {
+        return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+    }
+
     function save (data, cb) {
         $.ajax({
             global: false,
@@ -95,6 +100,8 @@
             url: trackrApiUrl,
             data: {
                 name: trackrAppName,
+                userCategory: queryStrings('cat'),
+                refCode: queryStrings('ref'),
                 info: {
                     event: data.event,
                     elem: data.elem

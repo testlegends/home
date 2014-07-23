@@ -24,6 +24,12 @@ module.exports = (function(){
 		}
 	}
 
+	function share (req, res) {
+		return res.view({
+			layout: 'layouts/share'
+		});
+	}
+
 	function trackr (req, res) {
 		if (!req.body) {
 			return res.json({
@@ -80,6 +86,7 @@ module.exports = (function(){
 
     return {
         index: index,
+		share: share,
 		trackr: trackr,
         trackrView: trackrView,
 

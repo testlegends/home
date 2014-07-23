@@ -9,6 +9,7 @@ define([
     'game/elements',
     'game/elements/StatusBar',
     'game/services/Global',
+    'game/services/Trackr',
     'game/constants/Events',
     'easeljs',
     'tweenjs'
@@ -17,7 +18,7 @@ define([
 
     return gameElements
 
-        .factory('Hero', ['Global', 'StatusBar', 'Events', function (Global, StatusBar, Events) {
+        .factory('Hero', ['Global', 'Trackr', 'StatusBar', 'Events', function (Global, Trackr, StatusBar, Events) {
 
             var Hero = function (x, y) {
                 this.initialize(x, y);
@@ -157,6 +158,8 @@ define([
                 call(function(){
                     var isAnswerCorrect = Global.game.question.did_user_get_it_right(target_monster);
                     if(isAnswerCorrect){
+                        Trackr.questionAnswered(targetM.answer_box.answer_text, true);
+
                         // -- hide monster select animation
                         target_monster.hide(target_monster.selectSprite);
                         target_monster.show(target_monster.preouchSprite);
@@ -167,6 +170,8 @@ define([
                         this_hero.show(this_hero.preAttackSprite);
 
                     }else{
+                        Trackr.questionAnswered(targetM.answer_box.answer_text, false);
+
                         // -- hide monster select animation
                         target_monster.hide(target_monster.selectSprite);
                         target_monster.show(target_monster.dodgeSprite);

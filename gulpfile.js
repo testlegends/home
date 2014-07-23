@@ -25,6 +25,9 @@ var cssFiles = {
 		'assets/styles/home.css',
 		'assets/js/vendor/fullpage.js/jquery.fullPage.css'
 	],
+	share: [
+		'assets/styles/share.css'
+	],
 	main: [
 		'assets/styles/style.css'
 	]
@@ -36,6 +39,15 @@ gulp.task('uglifyJs', function () {
 		name: "Home",
 		mainConfigFile: "assets/js/angular/Home.js",
 		out: "home.min.js"
+	})
+	.pipe(uglifyJs())
+	.pipe(gulp.dest(paths.target + '/js/angular'));
+
+	rjs({
+		baseUrl: "assets/js/angular",
+		name: "Share",
+		mainConfigFile: "assets/js/angular/Share.js",
+		out: "share.min.js"
 	})
 	.pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
@@ -55,6 +67,11 @@ gulp.task('minifyCSS', function () {
 		.pipe(concat('home.min.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(paths.target + '/styles'));
+
+	gulp.src(cssFiles.share)
+		.pipe(concat('share.min.css'))
+		.pipe(minifyCSS())
+		.pipe(gulp.dest(paths.target + '/styles'));
 
 	gulp.src(cssFiles.main)
 		.pipe(concat('style.min.css'))

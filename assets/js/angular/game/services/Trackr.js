@@ -23,9 +23,11 @@ define(['game/services'], function (gameServices) {
                 }
             })();
 
-            function questionAnswered (answer) {
+            function questionAnswered (answer, correct) {
+                answer += correct ? '_true' : '_false';
+
                 var data = {
-                    name: appName;
+                    name: appName,
                     info: {
                         event: 'Game',
                         elem: answer

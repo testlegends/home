@@ -11,6 +11,7 @@
 module.exports.routes = {
 
     '/': 'HomeController.index',
+    '/share': 'HomeController.share',
 
     'GET /user/login'           : 'UserController.loginForm',
     '/user/reset_password/:key' : 'UserController.reset_password',
@@ -19,6 +20,6 @@ module.exports.routes = {
     'GET  /adventurer/:code'    : 'AdventurerController.get',
     'POST /adventurer/:code'    : 'AdventurerController.visited',
 
-    'GET  /trackr/view'        : 'HomeController.trackrView',
+    'GET  /trackr/view'         : 'HomeController.trackrView',
     'POST /trackr'              : 'HomeController.trackr'
 };

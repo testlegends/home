@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <!--Meta Data for Open Graph-->
+    <meta property="og:title" content="TestLegends - School Reimagined." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://m.testlegends.com/images/normal.png" />
+    <meta property="og:url" content="http://testlegends.com/" />
+    <meta property="og:site_name" content="TestLegends" />
+    <meta property="og:description" content="School reimagined!" />
+
+    <title>TestLegends</title>
+
+    <link rel="stylesheet" href="styles/share.min.css" />
+</head>
+
+<body>
+    <div ng-view></div>
+
+    <script src="js/vendor/requirejs/require.js" data-main="js/angular/share.min"></script>
+
+    <%- partial('../partials/google_analytics') %>
+</body>
+
+</html>

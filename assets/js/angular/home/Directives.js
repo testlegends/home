@@ -104,6 +104,12 @@ define([
                         $('.box3').css({ opacity: 1 });
                         $('.box1, .box2').css({ opacity: 0.3 });
                     });
+
+                    if (/msie/.test(navigator.userAgent.toLowerCase())) {
+                        $('#canvas_container, #EpicGame').css({
+                            'height': '100%'
+                        });
+                    }
                 }
             };
         }])
@@ -239,24 +245,28 @@ define([
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/signupAndShare.html',
-                link: function (scope) {
-                    $('.join_on_sidebar').on('click', function () {
+                link: function (scope, elem, attrs) {
+                    scope.pageNumber = attrs.page;
+                    $('.join_on_sidebar.submitJoin').hide();
+
+                    $('.join_on_sidebar.showJoinBox.' + attrs.page).on('click', function () {
                         $('.point').hide();
                         $(this).parent().parent().find('input').removeClass('hidden').focus();
                         $(this).parent().parent().find('input').on('keyup', function (e) {
-                            // TODO: If hit enter, this will be called 4 times, need to improve it
                             var code = (e.keyCode ? e.keyCode : e.which);
                             if (code === 13) {
-                                $(this).parent().next().find('button').click();
+                                $('.join_on_sidebar.submitJoin.' + attrs.page).click();
                             }
                         });
 
-                        $(this).unbind('click');
-                        $(this).on('click', function () {
-                            $('.user_sub').hide();
-                            $('.social_hide').removeClass('social_hide');
-                            scope.join();
-                        });
+                        $(this).hide();
+                        $('.join_on_sidebar.submitJoin.' + attrs.page).show();
+                    });
+
+                    $('.join_on_sidebar.submitJoin.' + attrs.page).on('click', function () {
+                        $('.user_sub').hide();
+                        $('.social_hide').removeClass('social_hide');
+                        scope.join();
                     });
                 }
             };
