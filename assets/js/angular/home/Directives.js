@@ -34,9 +34,9 @@ define([
 
                     $scope.joined = function () {
                         $('#pageOne .submit').hide();
-                        $('#pageOne .social_hide').removeClass('social_hide');
                         $('#pageSix #signup').hide();
-                        $('#pageSix .social_hide').removeClass('social_hide');
+                        $('.user_sub').hide();
+                        $('.social_hide').removeClass('social_hide');
                     };
                 }],
                 link: function (scope) {
@@ -247,7 +247,7 @@ define([
                 templateUrl: '/js/angular/home/partials/signupAndShare.html',
                 scope: {
                     pageNumber: '@page',
-                    join: '='
+                    join: '&'
                 },
                 controller: ['$scope', function ($scope) {
                     $scope.pageTwo = 'pageTwo';
@@ -258,13 +258,13 @@ define([
                 link: function (scope, elem, attrs) {
                     $('.join_on_sidebar.submitJoin').hide();
 
-                    $('.join_on_sidebar.showJoinBox.' + attrs.page).on('click', function () {
+                    $('.join_on_sidebar.showJoinBox').on('click', function () {
                         $('.point').hide();
                         $(this).parent().parent().find('input').removeClass('hidden').focus();
                         $(this).parent().parent().find('input').on('keyup', function (e) {
                             var code = (e.keyCode ? e.keyCode : e.which);
                             if (code === 13) {
-                                $('.join_on_sidebar.submitJoin.' + attrs.page).click();
+                                $('.join_on_sidebar.submitJoin').click();
                             }
                         });
 
@@ -272,7 +272,7 @@ define([
                         $('.join_on_sidebar.submitJoin.' + attrs.page).show();
                     });
 
-                    $('.join_on_sidebar.submitJoin.' + attrs.page).on('click', function () {
+                    $('.join_on_sidebar.submitJoin').on('click', function () {
                         $('.user_sub').hide();
                         $('.social_hide').removeClass('social_hide');
                         scope.join();

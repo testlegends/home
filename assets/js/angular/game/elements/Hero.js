@@ -170,7 +170,7 @@ define([
                         this_hero.show(this_hero.preAttackSprite);
 
                     }else{
-                        Trackr.questionAnswered(targetM.answer_box.answer_text, false);
+                        Trackr.questionAnswered(target_monster.answer_box.answer_text, false);
 
                         // -- hide monster select animation
                         target_monster.hide(target_monster.selectSprite);

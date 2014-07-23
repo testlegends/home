@@ -1331,7 +1331,6 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 1.4em;
     font-weight: 100;
     width: 78.7%;
-    cursor: pointer;
 }
 
 #inputs button {
@@ -1344,6 +1343,7 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 0.2em 0 0.3em 0;
     width: 17%;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 #free {
