@@ -42,6 +42,10 @@ module.exports = (function(){
             trackrData.info.timestamp = Date.now();
 
             if (data) {
+                if (!data.email && trackrData.email) {
+                    data.email = trackrData.email;
+                }
+
                 data.eventHistory.push(trackrData.info);
                 data.save(function (err) {
                     if (err) {

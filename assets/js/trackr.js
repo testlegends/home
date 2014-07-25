@@ -30,26 +30,28 @@
         });
     }
 
-    function handleEvent (el, event, cb) {
+    function handleEvent (tracker) {
         // wait for AngularJS to finish loading the templates
         setTimeout(function(){
-            $(el).on(event, function(e){
+            $(tracker.element).on(tracker.event, function(e){
                 e.preventDefault();
 
                 if (validateConditions()) {
-                    if (event === 'keyup') {
+                    if (tracker.event === 'keyup') {
                         var code = (e.keyCode ? e.keyCode : e.which);
                         if (code === 13) {
                             save({
-                                event: event,
-                                elem: el
-                            }, cb);
+                                name: tracker.name,
+                                event: tracker.event,
+                                elem: tracker.element
+                            }, tracker.callback);
                         }
                     } else {
                         save({
-                            event: event,
-                            elem: el
-                        }, cb);
+                            name: tracker.name,
+                            event: tracker.event,
+                            elem: tracker.element
+                        }, tracker.callback);
                     }
                 }
             });
@@ -118,6 +120,7 @@
                 refCode: queryStrings('ref') || queryStrings('refCode'),
                 email: queryStrings('email'),
                 info: {
+                    name: data.name,
                     event: data.event,
                     elem: data.elem
                 }
@@ -145,6 +148,10 @@
         pageWaitTime = config.pageWaitTime || 1000;
 
         $.each(config.trackers, function (index, tracker) {
+            if (!tracker.name) {
+                tracker.name = tracker.element;
+            }
+
             if (!tracker.event) {
                 console.log('Ignoring tracker ' + tracker.toString());
                 return false;
@@ -164,11 +171,17 @@
                 ajaxUrls.push(tracker.url);
             } else if (tracker.event === 'viewport') {
                 viewportElems.push({
+                    name: tracker.name,
                     element: tracker.element,
                     callback: tracker.callback
                 });
             } else {
-                handleEvent(tracker.element, tracker.event, tracker.callback);
+                handleEvent({
+                    name: tracker.name,
+                    element: tracker.element,
+                    event: tracker.event,
+                    callback: tracker.callback
+                });
             }
         });
 
@@ -179,6 +192,7 @@
     /** For fullpage.js since the scroll timer above is not accurate **/
     $.trackr.logPage = function (currentPageIndex) {
         save({
+            name: 'Page ' + currentPageIndex,
             event: 'viewport',
             elem: 'page ' + currentPageIndex
         }, function () {});

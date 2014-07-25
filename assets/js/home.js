@@ -97,7 +97,7 @@ require([
         $.trackr({
             name: 'TestLegends Home',
             dbUrl: '/trackr',
-            pageWaitTime: 8000,
+            pageWaitTime: 6000,
             trackers: [
                 // { element: '#pageOne',   event: 'viewport' },
                 // { element: '#pageTwo',   event: 'viewport' },
@@ -105,31 +105,31 @@ require([
                 // { element: '#pageFour',  event: 'viewport' },
                 // { element: '#pageFive',  event: 'viewport' },
                 // { element: '#pageSix',  event: 'viewport' },
-                { element: '#pageOne button',            event: 'click', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
-                { element: '#pageOne input[type=email]', event: 'keyup', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
-                { element: '#pageSix button',            event: 'click', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
-                { element: '#pageSix input[type=email]', event: 'keyup', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
-                { element: '.showJoinBox.pageTwo',   event: 'click' },
-                { element: '.showJoinBox.pageThree', event: 'click' },
-                { element: '.showJoinBox.pageFour',  event: 'click' },
-                { element: '.showJoinBox.pageFive',  event: 'click' },
-                { element: '.submitJoin.pageTwo',    event: 'click', condition: { notEmpty: '.user_sub input.pageTwo' } },
-                { element: '.submitJoin.pageThree',  event: 'click', condition: { notEmpty: '.user_sub input.pageThree' } },
-                { element: '.submitJoin.pageFour',   event: 'click', condition: { notEmpty: '.user_sub input.pageFour' } },
-                { element: '.submitJoin.pageFive',   event: 'click', condition: { notEmpty: '.user_sub input.pageFive' } },
-                { element: '.user_sub input.pageTwo',   event: 'keyup', condition: { notEmpty: '.user_sub input.pageTwo' } },
-                { element: '.user_sub input.pageThree', event: 'keyup', condition: { notEmpty: '.user_sub input.pageThree' } },
-                { element: '.user_sub input.pageFour',  event: 'keyup', condition: { notEmpty: '.user_sub input.pageFour' } },
-                { element: '.user_sub input.pageFive',  event: 'keyup', condition: { notEmpty: '.user_sub input.pageFive' } },
-                { element: '.sel1, .sel1a', event: 'mouseenter' },
-                { element: '.sel2, .sel2a', event: 'mouseenter' },
-                { element: '.sel3',         event: 'mouseenter' },
-                { element: '#demo_button',       event: 'click' },
-                { element: '#vocabulary button', event: 'click' },
-                { element: '#physics button',    event: 'click' },
-                { element: '#follow button:first', event: 'click' }, // Follow on FB
-                { element: '#follow button:last',  event: 'click' }, // Follow on Twitter
-                { url: '/adventurers',   event: 'ajax'}
+                // { url: '/adventurers',   event: 'ajax'},
+                { element: '#pageOne button',            name: 'Signup in page 1', event: 'click', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
+                { element: '#pageOne input[type=email]', name: 'Signup in page 1', event: 'keyup', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
+                { element: '#pageSix button',            name: 'Signup in page 6', event: 'click', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
+                { element: '#pageSix input[type=email]', name: 'Signup in page 6', event: 'keyup', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
+                { element: '.showJoinBox.pageTwo',   name: 'Signup box in page 2', event: 'click' },
+                { element: '.showJoinBox.pageThree', name: 'Signup box in page 3', event: 'click' },
+                { element: '.showJoinBox.pageFour',  name: 'Signup box in page 4', event: 'click' },
+                { element: '.showJoinBox.pageFive',  name: 'Signup box in page 5', event: 'click' },
+                { element: '.submitJoin.pageTwo',    name: 'Signup in page 2', event: 'click', condition: { notEmpty: '.user_sub input.pageTwo' } },
+                { element: '.submitJoin.pageThree',  name: 'Signup in page 3', event: 'click', condition: { notEmpty: '.user_sub input.pageThree' } },
+                { element: '.submitJoin.pageFour',   name: 'Signup in page 4', event: 'click', condition: { notEmpty: '.user_sub input.pageFour' } },
+                { element: '.submitJoin.pageFive',   name: 'Signup in page 5', event: 'click', condition: { notEmpty: '.user_sub input.pageFive' } },
+                { element: '.user_sub input.pageTwo',   name: 'Signup in page 2', event: 'keyup', condition: { notEmpty: '.user_sub input.pageTwo' } },
+                { element: '.user_sub input.pageThree', name: 'Signup in page 3', event: 'keyup', condition: { notEmpty: '.user_sub input.pageThree' } },
+                { element: '.user_sub input.pageFour',  name: 'Signup in page 4', event: 'keyup', condition: { notEmpty: '.user_sub input.pageFour' } },
+                { element: '.user_sub input.pageFive',  name: 'Signup in page 5', event: 'keyup', condition: { notEmpty: '.user_sub input.pageFive' } },
+                { element: '.sel1, .sel1a', name: 'Mouse hover knight',    event: 'mouseenter' },
+                { element: '.sel2, .sel2a', name: 'Mouse hover questions', event: 'mouseenter' },
+                { element: '.sel3',         name: 'Mouse hover monsters',  event: 'mouseenter' },
+                { element: '#demo_button',         name: 'Play button',       event: 'click' },
+                { element: '#vocabulary button',   name: 'Vocab button',      event: 'click' },
+                { element: '#physics button',      name: 'Physics button',    event: 'click' },
+                { element: '#follow button:first', name: 'Follow on FB',      event: 'click' }, // Follow on FB
+                { element: '#follow button:last',  name: 'Follow on Twitter', event: 'click' }  // Follow on Twitter
             ]
         });
     });

@@ -32,9 +32,9 @@ require([
             name: 'TestLegends Share',
             dbUrl: '/trackr',
             trackers: [
-                { element: '#facebook', event: 'click' },
-                { element: '#twitter', event: 'click' },
-                { element: '#email', event: 'click' }
+                { element: '#facebook', name: 'Share on FB',       event: 'click' },
+                { element: '#twitter',  name: 'Share on Twitter',  event: 'click' },
+                { element: '#email',    name: 'Share with E-mail', event: 'click' }
             ]
         });
     });
