@@ -25,12 +25,8 @@ define(['angular', 'share/Service'], function (angular) {
 			}
 
 			$scope.facebookShared = function () {
-				var facebookShareUrl = 'https://www.facebook.com/dialog/feed?' +
-					'app_id=1412582839022573' + '&' +
-					'link=http://testlegends.com/?ref=' + $scope.refCode + '&' +
-					'message=hello' + '&' +
-					'display=popup' + '&' +
-					'redirect_uri=http://testlegends.com/?close_window=true';
+				var facebookShareUrl = 'https://www.facebook.com/sharer/sharer.php?' +
+					'u=http://testlegends.com/?ref=' + $scope.refCode;
 
 				window.open(facebookShareUrl, 'popUpWindow',
 					'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'

@@ -48,10 +48,14 @@ module.exports = (function(){
                 return;
             }
 
-            referrer.visited++;
-            referrer.save(function (err) {
-                done(err, referrer);
-            });
+            if (referrer) {
+                referrer.visited++;
+                referrer.save(function (err) {
+                    done(err, referrer);
+                });
+            } else {
+                done('Referrer not found', null);
+            }
         });
     }
 
@@ -63,10 +67,14 @@ module.exports = (function(){
                 return;
             }
 
-            adventurer.survey = sails.util.merge(adventurer.survey, data);
-            adventurer.save(function (err) {
-                done(err, adventurer);
-            });
+            if (adventurer) {
+                adventurer.survey = sails.util.merge(adventurer.survey, data);
+                adventurer.save(function (err) {
+                    done(null, adventurer);
+                });
+            } else {
+                done('Adventurer not found', null);
+            }
         });
     }
 
