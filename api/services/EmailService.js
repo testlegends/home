@@ -8,6 +8,8 @@
  */
 
 var Sendgrid = require("sendgrid")(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+var fs = require('fs');
+var _ = require('underscore');
 
 module.exports = (function(){
 
@@ -17,19 +19,27 @@ module.exports = (function(){
     };
 
     function sendWelcomeEmail (params, callback) {
-        var mailOptions = {
-            from: generalParams.admin_email,
-            to: params.email,
-            subject: '[' + generalParams.project_name + '] Thank you for Joining TestLegends!',
-            text: (function(){
-                var ref_url = process.env.PROJECT_URL + "/?ref=" + params.code;
-                var content = "Share the link to get referal points ";
+        var templateUrl = 'api/services/emailtpls/signup.html';
 
-                return content + ref_url;
-            })()
-        };
+        fs.exists(templateUrl, function (exists) {
+            if (exists) {
+                var buffer = fs.readFile(templateUrl, 'utf8', function (err, data) {
+                    var emailtpl = _.template(data);
 
-        Sendgrid.send(mailOptions, callback);
+                    var mailOptions = {
+                        from: generalParams.admin_email,
+                        to: params.email,
+                        subject: 'Thank you for joining TestLegends!',
+                        html: emailtpl({
+                            refCode: params.code,
+                            email: params.email
+                        })
+                    };
+
+                    Sendgrid.send(mailOptions, callback);
+                });
+            }
+        });
     }
 
     function sendResetPasswordEmail (params, callback) {

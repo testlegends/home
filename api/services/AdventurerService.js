@@ -23,6 +23,7 @@ module.exports = (function(){
             code: data.code,
             referrals: [],
             visited: 0,
+            survey: {}
         }, function (err, adventurer) {
             done(err, adventurer);
         });
@@ -49,6 +50,21 @@ module.exports = (function(){
 
             referrer.visited++;
             referrer.save(function (err) {
+                done(err, referrer);
+            });
+        });
+    }
+
+    function updateSurvey (code, data, done) {
+        Adventurer.findOneByCode(code, function (err, adventurer) {
+            if (err) {
+                console.log(err);
+                done(err, null);
+                return;
+            }
+
+            adventurer.survey = sails.util.merge(adventurer.survey, data);
+            adventurer.save(function (err) {
                 done(err, referrer);
             });
         });

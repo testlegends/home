@@ -19,6 +19,7 @@ module.exports.routes = {
     'PUT  /adventurers'             : 'AdventurerController.join',
     'GET  /adventurer/:code'        : 'AdventurerController.get',
     'POST /adventurer/:code'        : 'AdventurerController.visited',
+    'POST /adventurer/:code/survey' : 'AdventurerController.updateSurvey',
     'GET  /adventurer/:code/shares' : 'AdventurerController.getShares',
 
     'GET  /trackr/view'         : 'HomeController.trackrView',

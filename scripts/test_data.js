@@ -17,6 +17,9 @@ module.exports = {
             referrals: [
                 "hubert.pt.ka@gmail.com"
             ],
+            survey: {
+                satisfaction: 1
+            },
             _id: new ObjectID("537c0713e478890b0037d97a")
         },
         {
@@ -24,6 +27,9 @@ module.exports = {
             code: "Ei2MmQ",
             visited: 2,
             referrals: [],
+            survey: {
+                satisfaction: 1
+            },
             _id: new ObjectID("537c0713e478890b0f3028c3")
         }
     ],

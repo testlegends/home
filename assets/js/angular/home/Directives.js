@@ -252,22 +252,24 @@ define([
                 link: function (scope, elem, attrs) {
                     $('.join_on_sidebar.submitJoin').hide();
 
-                    $('.join_on_sidebar.showJoinBox').on('click', function () {
-                        $('.point').hide();
-                        $(this).parent().parent().find('input').removeClass('hidden').focus();
-                        $(this).parent().parent().find('input').on('keyup', function (e) {
-                            if (validator.isEnter(e)) {
-                                if (!validator.isEmail(scope.$parent.email)) {
-                                    // TODO: show some error msg
-                                    return false;
+                    $('.join_on_sidebar.showJoinBox').each(function(){
+                        $(this).on('click', function () {
+                            $('.point').hide();
+                            $(this).parent().parent().find('input').removeClass('hidden').focus();
+                            $(this).parent().parent().find('input').on('keyup', function (e) {
+                                if (validator.isEnter(e)) {
+                                    if (!validator.isEmail(scope.$parent.email)) {
+                                        // TODO: show some error msg
+                                        return false;
+                                    }
+
+                                    scope.$parent.join();
                                 }
+                            });
 
-                                scope.$parent.join();
-                            }
+                            $(this).hide();
+                            $(this).next('button').show();
                         });
-
-                        $(this).hide();
-                        $('.join_on_sidebar.submitJoin.' + attrs.page).show();
                     });
 
                     $('.join_on_sidebar.submitJoin').on('click', function () {

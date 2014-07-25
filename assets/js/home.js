@@ -105,30 +105,30 @@ require([
                 // { element: '#pageFour',  event: 'viewport' },
                 // { element: '#pageFive',  event: 'viewport' },
                 // { element: '#pageSix',  event: 'viewport' },
+                { element: '#pageOne button',            event: 'click', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
+                { element: '#pageOne input[type=email]', event: 'keyup', condition: { notEmpty: '#pageOne input[type=email]' } }, // Join in page 1
+                { element: '#pageSix button',            event: 'click', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
+                { element: '#pageSix input[type=email]', event: 'keyup', condition: { notEmpty: '#pageSix input[type=email]' } }, // Join in page 6
+                { element: '.showJoinBox.pageTwo',   event: 'click' },
+                { element: '.showJoinBox.pageThree', event: 'click' },
+                { element: '.showJoinBox.pageFour',  event: 'click' },
+                { element: '.showJoinBox.pageFive',  event: 'click' },
+                { element: '.submitJoin.pageTwo',    event: 'click', condition: { notEmpty: '.user_sub input.pageTwo' } },
+                { element: '.submitJoin.pageThree',  event: 'click', condition: { notEmpty: '.user_sub input.pageThree' } },
+                { element: '.submitJoin.pageFour',   event: 'click', condition: { notEmpty: '.user_sub input.pageFour' } },
+                { element: '.submitJoin.pageFive',   event: 'click', condition: { notEmpty: '.user_sub input.pageFive' } },
+                { element: '.user_sub input.pageTwo',   event: 'keyup', condition: { notEmpty: '.user_sub input.pageTwo' } },
+                { element: '.user_sub input.pageThree', event: 'keyup', condition: { notEmpty: '.user_sub input.pageThree' } },
+                { element: '.user_sub input.pageFour',  event: 'keyup', condition: { notEmpty: '.user_sub input.pageFour' } },
+                { element: '.user_sub input.pageFive',  event: 'keyup', condition: { notEmpty: '.user_sub input.pageFive' } },
                 { element: '.sel1, .sel1a', event: 'mouseenter' },
                 { element: '.sel2, .sel2a', event: 'mouseenter' },
-                { element: '.sel3', event: 'mouseenter' },
-                { element: '#pageOne button', event: 'click' }, // Join in page 1
-                { element: '#pageOne input[type=email]', event: 'keyup' }, // Join in page 1
-                { element: '.join_on_sidebar.showJoinBox.pageTwo', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'keyup' },
-                { element: '.join_on_sidebar.showJoinBox.pageThree', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageThree', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageThree', event: 'keyup' },
-                { element: '.join_on_sidebar.showJoinBox.pageFour', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageFour', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageFour', event: 'keyup' },
-                { element: '.join_on_sidebar.showJoinBox.pageFive', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageFive', event: 'click' },
-                { element: '.join_on_sidebar.submitJoin.pageFive', event: 'keyup' },
-                { element: '#pageSix button', event: 'click' }, // Join in page 6
-                { element: '#pageSix input[type=email]', event: 'keyup' }, // Join in page 6
-                { element: '#demo_button', event: 'click' },
+                { element: '.sel3',         event: 'mouseenter' },
+                { element: '#demo_button',       event: 'click' },
                 { element: '#vocabulary button', event: 'click' },
-                { element: '#physics button', event: 'click' },
+                { element: '#physics button',    event: 'click' },
                 { element: '#follow button:first', event: 'click' }, // Follow on FB
-                { element: '#follow button:last', event: 'click' }, // Follow on Twitter
+                { element: '#follow button:last',  event: 'click' }, // Follow on Twitter
                 { url: '/adventurers',   event: 'ajax'}
             ]
         });

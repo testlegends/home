@@ -109,6 +109,27 @@ module.exports = (function(){
         });
     }
 
+    function updateSurvey (req, res) {
+        var code = req.param('code');
+        var satisfcation = req.body.level;
+
+        if (!code) {
+            return res.json({
+                status: 'OK',
+                data: 'No code specified'
+            })
+        }
+
+        AdventurerService.updateSurvey(code, {
+            satisfaction: satisfaction
+        }, function (err, adventurer) {
+            return res.json({
+                status: 'OK',
+                data: adventurer
+            });
+        });
+    }
+
     function getShares (req, res) {
         var code = req.param('code');
 
@@ -134,6 +155,7 @@ module.exports = (function(){
     return {
         join: join,
         visited: visited,
+        updateSurvey: updateSurvey,
         get: get,
         getShares: getShares,
 

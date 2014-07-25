@@ -20,11 +20,14 @@ define(['angular', 'share/Service'], function (angular) {
 				$scope.progress = data.length / 5 * 100;
 			});
 
+			if ($location.search().s) {
+				share.updateSatisfaction($scope.refCode, $location.search().s);
+			}
+
 			$scope.facebookShared = function () {
 				var facebookShareUrl = 'https://www.facebook.com/dialog/feed?' +
 					'app_id=1412582839022573' + '&' +
 					'link=http://testlegends.com/?ref=' + $scope.refCode + '&' +
-					'message=helloworld' + '&' +
 					'display=popup' + '&' +
 					'redirect_uri=http://testlegends.com/?close_window=true';
 
@@ -35,7 +38,7 @@ define(['angular', 'share/Service'], function (angular) {
 
 			$scope.twitterShared = function () {
 				var twitterShareUrl = 'http://twitter.com/share?' +
-					'text=hello' + '&' +
+					"text=You don't need to be a developer to #gamifyEducation anymore. Teachers can too! via @TestLegendsApp" + '&' +
 					'url=http://testlegends.com/?ref=' + $scope.refCode;
 
 				window.open(twitterShareUrl, 'popUpWindow',

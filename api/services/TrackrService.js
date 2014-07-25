@@ -54,7 +54,7 @@ module.exports = (function(){
                 data = {
                     trackrId: trackrData.id,
                     name: trackrData.name,
-                    userCategory: trackrData.cat,
+                    userCategory: trackrData.userCategory,
                     email: trackrData.email,
                     refCode: trackrData.refCode,
 

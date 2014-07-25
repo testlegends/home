@@ -29,11 +29,6 @@ define(['game/services'], function (gameServices) {
                         Options : ['complex', 'delight', 'perplex', 'enlighten']
                     },
                     {
-                        Question: "What is the acceleration due to gravity on Earth?",
-                        Answer  : '9.81 m/s^2',
-                        Options : ['6.67 x 10^-11', '9.81 m/s^2', 'the same as on the sun', 'all of the above']
-                    },
-                    {
                         Question: "Which choice below is not a source of light?",
                         Answer  : 'Chlorescence',
                         Options : ['Fluorescence', 'Bioluminescence', 'Chemiluminescence', 'Chlorescence']
@@ -52,8 +47,12 @@ define(['game/services'], function (gameServices) {
                         Question: "The mastermind behind the website hoped to live a(n) ________ life once the site made him a millionaire.",
                         Answer  : 'opulent',
                         Options : ['opulent', 'reiterate', 'insidious', 'tentative']
+                    },
+                    {
+                        Question: "What is the acceleration due to gravity on Earth?",
+                        Answer  : '9.81 m/s^2',
+                        Options : ['6.67 x 10^-11', '9.81 m/s^2', 'the same as on the sun', 'all of the above']
                     }
-
                 ];
 
                 this.getList = function () {

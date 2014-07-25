@@ -15,6 +15,8 @@
 
     var viewportElems = [];
 
+    var elementConditions = [];
+
     var pageWaitTime = 1000;
 
     function trackAjax () {
@@ -34,22 +36,32 @@
             $(el).on(event, function(e){
                 e.preventDefault();
 
-                if (event === 'keyup') {
-                    var code = (e.keyCode ? e.keyCode : e.which);
-                    if (code === 13) {
+                if (validateConditions()) {
+                    if (event === 'keyup') {
+                        var code = (e.keyCode ? e.keyCode : e.which);
+                        if (code === 13) {
+                            save({
+                                event: event,
+                                elem: el
+                            }, cb);
+                        }
+                    } else {
                         save({
                             event: event,
                             elem: el
                         }, cb);
                     }
-                } else {
-                    save({
-                        event: event,
-                        elem: el
-                    }, cb);
                 }
             });
         }, pageWaitTime);
+    }
+
+    function registerConditions (conditions) {
+
+    }
+
+    function validateConditions () {
+        return true;
     }
 /*
     function trackViewport () {
@@ -103,7 +115,7 @@
             data: {
                 name: trackrAppName,
                 userCategory: queryStrings('cat'),
-                refCode: queryStrings('ref'),
+                refCode: queryStrings('ref') || queryStrings('refCode'),
                 email: queryStrings('email'),
                 info: {
                     event: data.event,
@@ -136,6 +148,10 @@
             if (!tracker.event) {
                 console.log('Ignoring tracker ' + tracker.toString());
                 return false;
+            }
+
+            if (tracker.conditions) {
+                registerConditions(tracker.conditions);
             }
 
             if (!tracker.callback) {

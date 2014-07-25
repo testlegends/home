@@ -20,6 +20,14 @@ define(['angular'], function (angular) {
                             cb(response.msg, null);
                         }
                     });
+                },
+                updateSatisfaction: function (code, level) {
+                    var url = '/adventurer/' + code + '/survey';
+                    $http.post(url, {
+                        level: level
+                    }).success(function (response) {
+
+                    });
                 }
             };
         }]);
