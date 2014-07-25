@@ -14,24 +14,16 @@ module.exports = {
             email: "leejefon@gmail.com",
             code: "Ei2MmP",
             visited: 2,
-            referals: [
+            referrals: [
                 "hubert.pt.ka@gmail.com"
             ],
-            survey: {
-                assessment: 'Simple metrics',
-                topic: 'Calculus for AP'
-            },
             _id: new ObjectID("537c0713e478890b0037d97a")
         },
         {
             email: "hubert.pt.ka@gmail.com",
             code: "Ei2MmQ",
             visited: 2,
-            referals: [],
-            survey: {
-                assessment: 'Metric for student attendence',
-                topic: 'Social Science for gr 10'
-            },
+            referrals: [],
             _id: new ObjectID("537c0713e478890b0f3028c3")
         }
     ],

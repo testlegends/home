@@ -11,15 +11,15 @@ require.config({
         jquery: '../vendor/jquery/dist/jquery.min',
         flowtype: '../vendor/FlowType.JS/flowtype',
         fullpage: '../vendor/fullpage.js/jquery.fullPage',
-        debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',
         trackr: '../trackr'
+        //debounce: '../vendor/jquery-throttle-debounce/jquery.ba-throttle-debounce.min',
         //slimscroll: '../vendor/jquery.slimscroll/jquery.slimscroll.min'
     },
     shim: {
         flowtype: ['jquery'],
         fullpage: ['jquery', 'trackr'],
-        debounce: ['jquery'],
-        trackr: ['jquery', 'debounce']
+        trackr: ['jquery']
+        //trackr: ['jquery', 'debounce']
         //fullpage: ['jquery', 'slimscroll']
     },
     priority: ['jquery']
@@ -29,7 +29,6 @@ require([
     'jquery',
     'flowtype',
     'fullpage',
-    'debounce',
     'trackr'
 ], function () {
     $(document).ready(function(){
@@ -66,6 +65,10 @@ require([
                     $('#follow').hide();
                 }
 
+                if (index === 1 || index === 6) {
+                    $('.shade').fadeOut();
+                }
+
                 if (nextIndex === 2) {
                     $('#EpicGame').show();
                 }
@@ -81,6 +84,10 @@ require([
                     }, 500);
                 }
 
+                if (index === 1 || index === 6) {
+                    $('.shade').fadeIn();
+                }
+
                 if (index === 3) {
                     $('#EpicGame').hide();
                 }
@@ -90,6 +97,7 @@ require([
         $.trackr({
             name: 'TestLegends Home',
             dbUrl: '/trackr',
+            pageWaitTime: 8000,
             trackers: [
                 // { element: '#pageOne',   event: 'viewport' },
                 // { element: '#pageTwo',   event: 'viewport' },
@@ -100,8 +108,8 @@ require([
                 { element: '.sel1, .sel1a', event: 'mouseenter' },
                 { element: '.sel2, .sel2a', event: 'mouseenter' },
                 { element: '.sel3', event: 'mouseenter' },
-                { element: '#join', event: 'click' }, // Join in page 1
-                { element: '#join', event: 'keyup' }, // Join in page 1
+                { element: '#pageOne button', event: 'click' }, // Join in page 1
+                { element: '#pageOne input[type=email]', event: 'keyup' }, // Join in page 1
                 { element: '.join_on_sidebar.showJoinBox.pageTwo', event: 'click' },
                 { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'click' },
                 { element: '.join_on_sidebar.submitJoin.pageTwo', event: 'keyup' },
@@ -114,8 +122,8 @@ require([
                 { element: '.join_on_sidebar.showJoinBox.pageFive', event: 'click' },
                 { element: '.join_on_sidebar.submitJoin.pageFive', event: 'click' },
                 { element: '.join_on_sidebar.submitJoin.pageFive', event: 'keyup' },
-                { element: '#signup button', event: 'click' }, // Join in page 6
-                { element: '#signup button', event: 'keyup' }, // Join in page 6
+                { element: '#pageSix button', event: 'click' }, // Join in page 6
+                { element: '#pageSix input[type=email]', event: 'keyup' }, // Join in page 6
                 { element: '#demo_button', event: 'click' },
                 { element: '#vocabulary button', event: 'click' },
                 { element: '#physics button', event: 'click' },

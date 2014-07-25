@@ -16,27 +16,24 @@ define([
 
     return angular.module('Home.directives', ['Home.services', 'Game.services', 'Game.constants'])
 
-        .directive('landing', ['$location', 'adventurers', function ($location, adventurers) {
+        .directive('landing', ['$location', 'adventurers', 'validator', function ($location, adventurers, validator) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/landing.html',
                 controller: ['$scope', function ($scope) {
                     $scope.join = function () {
+                        if (!validator.isEmail($scope.email)) {
+                            // TODO: show some error msg
+                            return false;
+                        }
+
                         adventurers.join({
                             email: $scope.email,
                             refCode: $location.search().ref
                         }, function (data) {
-                            $scope.joined();
-                            adventurers.share(data.code);
+                            window.location.href = '/share?refCode=' + data.code + '&email=' + $scope.email
                         });
-                    };
-
-                    $scope.joined = function () {
-                        $('#pageOne .submit').hide();
-                        $('#pageSix #signup').hide();
-                        $('.user_sub').hide();
-                        $('.social_hide').removeClass('social_hide');
                     };
                 }],
                 link: function (scope) {
@@ -48,8 +45,7 @@ define([
                     }
 
                     $('#pageOne input[type=email]').on('keyup', function (e) {
-                        var code = (e.keyCode ? e.keyCode : e.which);
-                        if (code === 13) {
+                        if (validator.isEnter(e)) {
                             scope.join();
                         }
                     });
@@ -223,8 +219,7 @@ define([
                 templateUrl: '/js/angular/home/partials/signup.html',
                 link: function (scope) {
                     $('#pageSix input[type=email]').on('keyup', function (e) {
-                        var code = (e.keyCode ? e.keyCode : e.which);
-                        if (code === 13) {
+                        if (validator.isEnter(e)) {
                             scope.join();
                         }
                     });
@@ -240,14 +235,13 @@ define([
             };
         }])
 
-        .directive('signupAndShare', [function () {
+        .directive('signupAndShare', ['validator', function (validator) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/home/partials/signupAndShare.html',
                 scope: {
-                    pageNumber: '@page',
-                    join: '&'
+                    pageNumber: '@page'
                 },
                 controller: ['$scope', function ($scope) {
                     $scope.pageTwo = 'pageTwo';
@@ -262,9 +256,13 @@ define([
                         $('.point').hide();
                         $(this).parent().parent().find('input').removeClass('hidden').focus();
                         $(this).parent().parent().find('input').on('keyup', function (e) {
-                            var code = (e.keyCode ? e.keyCode : e.which);
-                            if (code === 13) {
-                                $('.join_on_sidebar.submitJoin').click();
+                            if (validator.isEnter(e)) {
+                                if (!validator.isEmail(scope.$parent.email)) {
+                                    // TODO: show some error msg
+                                    return false;
+                                }
+
+                                scope.$parent.join();
                             }
                         });
 
@@ -273,9 +271,12 @@ define([
                     });
 
                     $('.join_on_sidebar.submitJoin').on('click', function () {
-                        $('.user_sub').hide();
-                        $('.social_hide').removeClass('social_hide');
-                        scope.join();
+                        if (!validator.isEmail(scope.$parent.email)) {
+                            // TODO: show some error msg
+                            return false;
+                        }
+
+                        scope.$parent.join();
                     });
                 }
             };

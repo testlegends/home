@@ -13,5 +13,8 @@ define([
 
     return angular.module('Home', [
         'Home.directives'
-    ]);
+    ]).config(['$locationProvider', function ($locationProvider) {
+        // Need this so $location.search() can work
+        $locationProvider.html5Mode(true);
+    }]);
 });

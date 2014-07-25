@@ -15,6 +15,8 @@
 
     var viewportElems = [];
 
+    var pageWaitTime = 1000;
+
     function trackAjax () {
         $(document).ajaxSuccess(function(event, xhr, settings){
             if ($.inArray(settings.url, ajaxUrls) !== -1) {
@@ -24,28 +26,6 @@
                 }, cb);
             }
         });
-    }
-
-    function trackViewport () {
-        $(window).bind('mousewheel wheel',  $.debounce(300, checkViewport));
-        $(window).keyup($.debounce(250, function (e) {
-            var code = (e.keyCode ? e.keyCode : e.which);
-            if (code === 40 || code === 38) {
-                // For fullpage.js, wait until the events is finished
-                setTimeout(checkViewport, 750);
-            }
-        }));
-
-        function checkViewport() {
-            viewportElems.forEach(function(el){
-                if (isElementInViewport($(el.element))) {
-                    save({
-                        event: 'viewport',
-                        elem: el.element
-                    }, el.callback);
-                }
-            });
-        }
     }
 
     function handleEvent (el, event, cb) {
@@ -69,7 +49,29 @@
                     }, cb);
                 }
             });
-        }, 8000);
+        }, pageWaitTime);
+    }
+/*
+    function trackViewport () {
+        $(window).bind('mousewheel wheel',  $.debounce(300, checkViewport));
+        $(window).keyup($.debounce(250, function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code === 40 || code === 38) {
+                // For fullpage.js, wait until the events is finished
+                setTimeout(checkViewport, 750);
+            }
+        }));
+
+        function checkViewport() {
+            viewportElems.forEach(function(el){
+                if (isElementInViewport($(el.element))) {
+                    save({
+                        event: 'viewport',
+                        elem: el.element
+                    }, el.callback);
+                }
+            });
+        }
     }
 
     function isElementInViewport (el) {
@@ -83,11 +85,11 @@
         return (
             rect.top >= 0 &&
             rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
     }
-
+*/
     /** Source: https://developer.mozilla.org/en-US/docs/Web/API/Window.location **/
     function queryStrings (sVar) {
         return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
@@ -102,6 +104,7 @@
                 name: trackrAppName,
                 userCategory: queryStrings('cat'),
                 refCode: queryStrings('ref'),
+                email: queryStrings('email'),
                 info: {
                     event: data.event,
                     elem: data.elem
@@ -127,6 +130,7 @@
 
         trackrAppName = config.name;
         trackrApiUrl = config.dbUrl;
+        pageWaitTime = config.pageWaitTime || 1000;
 
         $.each(config.trackers, function (index, tracker) {
             if (!tracker.event) {
@@ -153,7 +157,7 @@
         });
 
         trackAjax();
-        trackViewport();
+        //trackViewport();
     };
 
     /** For fullpage.js since the scroll timer above is not accurate **/

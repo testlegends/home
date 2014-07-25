@@ -15,10 +15,14 @@
     <title>TestLegends</title>
 
     <link rel="stylesheet" href="styles/share.min.css" />
+
+    <% /* HACK: Need this for JavaScripts in angular partials */ %>
+    <% /* https://groups.google.com/forum/#!topic/angular/H4haaMePJU0 */ %>
+	<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
 </head>
 
 <body>
-    <div ng-view></div>
+    <div ng-view id="content"></div>
 
     <script src="js/vendor/requirejs/require.js" data-main="js/angular/share.min"></script>
 

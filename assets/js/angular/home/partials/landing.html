@@ -1,32 +1,24 @@
 <div id="pageOne">
-    <div id="title">
-        <h1><span>T</span>est<span>L</span>egends</h1>
-        <h2>Transform your homework into an epic adventure game.</h2>
-        <div class="submit">
-            <p>sign up for early invite to TestLegends</p>
-            <input type="email" ng-model="email" placeholder="email" /><button id="join" ng-click="join()">Join</button>
-        </div>
-
-        <div class="social_hide social">
-            <div class="social_text">
-                <p>Thanks! <span class="social_subtext">Help us spread the word:</span></p>
-            </div>
-            <button class="facebook share_button">
-                <img src="images/facebook.png" title="Facebook" />
-                <span>Share</span>
-            </button>
-            <button class="twitter share_button">
-                <img src="images/twitter.png" title="Twitter"/>
-                <span>Tweet</span>
-            </button>
-            <button class="mail share_button">
-                <img src="images/email.png" title="E-mail" />
-                <span>Email</span>
-            </button>
-        </div>
+    <div class="shade"></div>
+    <div class="logo">
+        <div class="logo_icon"></div><p><span>T</span>est<span>L</span>egends</p>
     </div>
-
-    <div id="characters">
-        <img src="images/p1-characters.png" />
+    <div id="main">
+        <div id="left_section">
+            <div id="phrase">
+                <h2>You don't need to be a developer to gamify education</h2>
+            </div>
+            <div class="submit">
+                <p>teachers can too.</p>
+                <div class="input">
+                    <input type="email" ng-model="email" placeholder="email" /><button ng-click="join()">Get Early Invite</button>
+                </div>
+            </div>
+        </div>
+        <div id="right_section">
+            <div id="characters">
+                <div id="characters_image"></div>
+            </div>
+        </div>
     </div>
 </div>

@@ -9,14 +9,25 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
 
     return angular.module('Home.services', [])
 
+        .factory('validator', [function () {
+            return {
+                isEmail: function (email) {
+                    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(email);
+                },
+                isEnter: function (e) {
+                    var code = (e.keyCode ? e.keyCode : e.which);
+                    return code === 13;
+                }
+            }
+        }])
+
         .factory('adventurers', ['$http', function ($http) {
             return {
                 join: function (data, cb) {
                     $http.put('/adventurers', {
                         email: data.email,
-                        ref: data.refCode,
-                        assessment: data.assessment,
-                        topic: data.topic
+                        refCode: data.refCode,
                     }).success(function (response) {
                         if (response.status === 'OK') {
                             cb(response.data);
@@ -29,36 +40,11 @@ define(['angular', 'goog!visualization,1,packages:[corechart]'], function (angul
                             cb(response.data);
                         });
                     }
-                },
-                share: function (code) {
-                    $('button.facebook').on('click', function(){
-                        var facebookShareUrl = 'https://www.facebook.com/dialog/feed?' +
-                            'app_id=1412582839022573' + '&' +
-                            'link=http://testlegends.com/?ref=' + code + '&' +
-                            'message=helloworld' + '&' +
-                            'display=popup' + '&' +
-                            'redirect_uri=http://testlegends.com/?close_window=true';
-
-                        window.open(facebookShareUrl, 'popUpWindow',
-                            'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
-                        );
-                    });
-
-                    $('button.twitter').on('click', function(){
-                        var twitterShareUrl = 'http://twitter.com/share?' +
-                            'text=hello' + '&' +
-                            'url=http://testlegends.com/?ref=' + code;
-
-                        window.open(twitterShareUrl, 'popUpWindow',
-                            'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
-                        );
-                    });
                 }
             };
         }])
 
         .factory('scores', [function () {
-
             var scores_data = {
                 'Class Average': {
                     'correct':28,

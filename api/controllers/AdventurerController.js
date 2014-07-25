@@ -27,17 +27,6 @@ module.exports = (function(){
             }
 
             if (adventurers.length > 0) {
-                var assessment = req.body.assessment;
-                var topic = req.body.topic;
-
-                if (assessment) {
-                    AdventurerService.updateAssessment(email, assessment);
-                }
-
-                if (topic) {
-                    AdventurerService.updateTopic(email, topic);
-                }
-
                 adventurers[0].count = adventurers[0].referrals.length;
                 adventurers[0].status = 'already_joined';
 
@@ -46,7 +35,7 @@ module.exports = (function(){
                     data: adventurers[0]
                 });
             } else {
-                var refCode = req.body.ref;
+                var refCode = req.body.refCode;
                 if (refCode) {
                     AdventurerService.updateReferrals(email, refCode);
                 }
@@ -55,8 +44,6 @@ module.exports = (function(){
                 AdventurerService.addAdventurer({
                     email: email,
                     code: code,
-                    assessment: req.body.assessment,
-                    topic: req.body.topic
                 }, function (err, adventurer) {
                     if (err) {
                         console.log(err);
@@ -103,24 +90,52 @@ module.exports = (function(){
     function visited (req, res) {
         var code = req.param('code');
 
-        if (code) {
-            AdventurerService.updateVisited(code, function (err, referrer) {
-                if (err) {
-                    console.log(err);
-                }
-
-                return res.json({
-                    status: 'OK',
-                    data: referrer
-                });
-            });
+        if (!code) {
+            return res.json({
+                status: 'OK',
+                data: 'No code specified'
+            })
         }
+
+        AdventurerService.updateVisited(code, function (err, referrer) {
+            if (err) {
+                console.log(err);
+            }
+
+            return res.json({
+                status: 'OK',
+                data: referrer
+            });
+        });
+    }
+
+    function getShares (req, res) {
+        var code = req.param('code');
+
+        if (!code) {
+            return res.json({
+                status: 'ERROR',
+                msg: 'No code specified'
+            })
+        }
+
+        AdventurerService.getAdventurer(code, function (err, adventurer) {
+            if (err) {
+                console.log(err);
+            }
+
+            return res.json({
+                status: 'OK',
+                data: adventurer.referrals
+            });
+        });
     }
 
     return {
         join: join,
-        get: get,
         visited: visited,
+        get: get,
+        getShares: getShares,
 
         _config: {
             blueprints: {

@@ -31,7 +31,8 @@ module.exports = (function(){
 
     function save (trackrData, cb) {
         Trackr.findOne({
-            trackrId: trackrData.id
+            trackrId: trackrData.id,
+            //name: trackrData.name
         }, function (err, data) {
             if (err) {
                 console.log(err);
@@ -53,6 +54,10 @@ module.exports = (function(){
                 data = {
                     trackrId: trackrData.id,
                     name: trackrData.name,
+                    userCategory: trackrData.cat,
+                    email: trackrData.email,
+                    refCode: trackrData.refCode,
+
                     eventHistory: [
                         trackrData.info
                     ],

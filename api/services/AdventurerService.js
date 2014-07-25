@@ -23,10 +23,6 @@ module.exports = (function(){
             code: data.code,
             referrals: [],
             visited: 0,
-            survey: {
-                assessment: data.assessment,
-                topic: data.topic
-            }
         }, function (err, adventurer) {
             done(err, adventurer);
         });
@@ -39,30 +35,6 @@ module.exports = (function(){
                 adventurer.save(function (err) {
                     if (err) console.log(err);
                 });
-            }
-        });
-    }
-
-    function updateAssessment (email, assessment, done) {
-        Adventurer.update({
-            email: email
-        }, {
-            'survey.assessment': assessment
-        }, function (err, adventurer) {
-            if (err) {
-                console.log(err);
-            }
-        });
-    }
-
-    function updateTopic (email, topic, done) {
-        Adventurer.update({
-            email: email
-        }, {
-            'survey.topic': topic
-        }, function (err, adventurer) {
-            if (err) {
-                console.log(err);
             }
         });
     }
@@ -102,8 +74,6 @@ module.exports = (function(){
         addAdventurer: addAdventurer,
         getAdventurer: getAdventurer,
         updateReferrals: updateReferrals,
-        updateAssessment: updateAssessment,
-        updateTopic: updateTopic,
         updateVisited: updateVisited,
         uid: uid
     };

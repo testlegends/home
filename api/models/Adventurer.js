@@ -28,10 +28,6 @@ module.exports = (function(){
 
         visited: {
             type: 'integer'
-        },
-
-        survey: {
-            type: 'json'
         }
     };
 

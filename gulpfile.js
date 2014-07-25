@@ -9,8 +9,8 @@ var paths = {
 	assets: [
 		'assets/**',
 		'!assets/js/home.js',
-		'!assets/js/trackr.js',
-		'!assets/js/angular/**/*.js',
+		//'!assets/js/trackr.js',
+		'!assets/js/angular/*/*.js',
 		'!assets/styles/*.css'
 	],
 	assetsToWatch: [
