@@ -65,7 +65,7 @@ module.exports = (function(){
 
             adventurer.survey = sails.util.merge(adventurer.survey, data);
             adventurer.save(function (err) {
-                done(err, referrer);
+                done(err, adventurer);
             });
         });
     }
@@ -91,6 +91,8 @@ module.exports = (function(){
         getAdventurer: getAdventurer,
         updateReferrals: updateReferrals,
         updateVisited: updateVisited,
+        updateSurvey: updateSurvey,
+
         uid: uid
     };
 })();

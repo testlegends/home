@@ -111,7 +111,7 @@ module.exports = (function(){
 
     function updateSurvey (req, res) {
         var code = req.param('code');
-        var satisfcation = req.body.level;
+        var satisfaction = req.body.level;
 
         if (!code) {
             return res.json({

@@ -28,6 +28,7 @@ define(['angular', 'share/Service'], function (angular) {
 				var facebookShareUrl = 'https://www.facebook.com/dialog/feed?' +
 					'app_id=1412582839022573' + '&' +
 					'link=http://testlegends.com/?ref=' + $scope.refCode + '&' +
+					'message=hello' + '&' +
 					'display=popup' + '&' +
 					'redirect_uri=http://testlegends.com/?close_window=true';
 
@@ -38,7 +39,7 @@ define(['angular', 'share/Service'], function (angular) {
 
 			$scope.twitterShared = function () {
 				var twitterShareUrl = 'http://twitter.com/share?' +
-					"text=You don't need to be a developer to #gamifyEducation anymore. Teachers can too! via @TestLegendsApp" + '&' +
+					"text=You don't need to be a developer to %23gamifyEducation anymore. Teachers can too! via %40TestLegendsApp" + '&' +
 					'url=http://testlegends.com/?ref=' + $scope.refCode;
 
 				window.open(twitterShareUrl, 'popUpWindow',
