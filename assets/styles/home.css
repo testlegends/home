@@ -908,7 +908,7 @@ button:hover {
     width: 20%;
     display: inline-block;
     vertical-align: top;
-    font-weight: 100;
+    font-weight: 400;
     height: 80%;
 }
 
@@ -1013,7 +1013,7 @@ button:hover {
 .meter_num {
     font-size: 1em;
     font-family: Lato;
-    font-weight: 100;
+    font-weight: 400;
     text-align: center;
     color: white;
     width: 3.9em;
@@ -1024,7 +1024,7 @@ button:hover {
 .meter_num span {
     font-family: Lato;
     font-size: 1em;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 .stats {
@@ -1044,7 +1044,7 @@ button:hover {
 
 .sub_percentage {
     font-size: 1.2em;
-    font-weight: 100;
+    font-weight: 400;
     font-family: Lato;
     margin: 0.3em 0;
 }
@@ -1069,7 +1069,7 @@ button:hover {
 
 .metricList span {
     font-family: Lato;
-    font-weight: 100 !important;
+    font-weight: 300 !important;
 }
 
 .qNum {
@@ -1245,7 +1245,7 @@ button:hover {
     border-radius: 3px 0 0 3px;
     padding: 0.4em 0.5em;
     margin: 0;
-    width: 65%;
+    width: 64%;
 }
 
 .six_input button {
