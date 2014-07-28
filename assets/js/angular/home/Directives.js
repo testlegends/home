@@ -212,7 +212,7 @@ define([
             };
         }])
 
-        .directive('signup', [function () {
+        .directive('signup', ['validator', function (validator) {
             return {
                 restrict: 'E',
                 replace: true,
