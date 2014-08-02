@@ -132,7 +132,7 @@ module.exports = (function(){
             AccessToken.create({
                 token: token,
                 userId: null,
-                clientId: client.clientId
+                clientId: client.id
             }, function(err, accessToken) {
                 if (err) { return done(err); }
                 done(null, token);
