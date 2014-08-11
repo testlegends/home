@@ -16,7 +16,7 @@ module.exports = (function(){
 		var md = new MobileDetect(req.headers['user-agent']);
 
 		if (md.mobile()) {
-			return res.redirect('http://m.testlegends.com');
+			return res.redirect('https://m.testlegends.com');
 		} else {
 			return res.view({
 				layout: 'layouts/home'
@@ -26,7 +26,7 @@ module.exports = (function(){
 
 	function share (req, res) {
 		return res.view({
-			layout: 'layouts/share'
+			Html: Html
 		});
 	}
 

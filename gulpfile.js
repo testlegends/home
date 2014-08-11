@@ -9,7 +9,7 @@ var paths = {
 	assets: [
 		'assets/**',
 		'!assets/js/home.js',
-		//'!assets/js/trackr.js',
+		// '!assets/js/trackr.js',
 		'!assets/js/angular/*/*.js',
 		'!assets/styles/*.css'
 	],
@@ -20,15 +20,13 @@ var paths = {
 };
 
 var cssFiles = {
-	landing: [
+	home: [
 		'assets/styles/reset.css',
 		'assets/styles/home.css',
 		'assets/js/vendor/fullpage.js/jquery.fullPage.css'
 	],
-	share: [
-		'assets/styles/share.css'
-	],
-	main: [
+	default: [
+		'assets/js/vendor/toastr/toastr.min.css',
 		'assets/styles/style.css'
 	]
 };
@@ -63,17 +61,12 @@ gulp.task('uglifyJs', function () {
 });
 
 gulp.task('minifyCSS', function () {
-	gulp.src(cssFiles.landing)
+	gulp.src(cssFiles.home)
 		.pipe(concat('home.min.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(paths.target + '/styles'));
 
-	gulp.src(cssFiles.share)
-		.pipe(concat('share.min.css'))
-		.pipe(minifyCSS())
-		.pipe(gulp.dest(paths.target + '/styles'));
-
-	gulp.src(cssFiles.main)
+	gulp.src(cssFiles.default)
 		.pipe(concat('style.min.css'))
 		.pipe(minifyCSS())
 		.pipe(gulp.dest(paths.target + '/styles'));

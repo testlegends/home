@@ -1,4 +1,4 @@
-<%- Html.tag('h2', 'Sign Up') %>
+<%- Html.tag('h2', 'Sign Up', { id: 'title' }) %>
 
 <%- Form.create('User', { method: 'post', class: 'form-horizontal', action: '/user/add' }) %>
 <%- Form.input('name', { placeholder: 'Enter your Name' }) %>

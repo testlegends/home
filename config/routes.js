@@ -10,11 +10,12 @@
 
 module.exports.routes = {
 
-    '/': 'HomeController.index',
-    '/share': 'HomeController.share',
+    'GET /': 'HomeController.index',
+    'GET /share': 'HomeController.share',
 
-    'GET /user/login'           : 'UserController.loginForm',
-    '/user/reset_password/:key' : 'UserController.reset_password',
+    'GET  /user/login'               : 'UserController.loginForm',
+    'GET  /user/reset_password/:key' : 'UserController.reset_password',
+    'POST /user/reset_password/:key' : 'UserController.reset_password',
 
     'PUT  /adventurers'             : 'AdventurerController.join',
     'GET  /adventurer/:code'        : 'AdventurerController.get',
@@ -22,6 +23,9 @@ module.exports.routes = {
     'POST /adventurer/:code/survey' : 'AdventurerController.updateSurvey',
     'GET  /adventurer/:code/shares' : 'AdventurerController.getShares',
 
-    'GET  /trackr/view'         : 'HomeController.trackrView',
-    'POST /trackr'              : 'HomeController.trackr'
+    'GET  /trackr/view' : 'HomeController.trackrView',
+    'POST /trackr'      : 'HomeController.trackr',
+
+    'GET  /payment' : 'PaymentController.index',
+    'POST /payment' : 'PaymentController.charge'
 };

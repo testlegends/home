@@ -1,71 +1,44 @@
-<%- Html.docType() %>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title><%- title %></title>
+<head prefix="og: http://ogp.me/ns#">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-		<!-- Viewport mobile tag for sensible mobile support -->
-		<%- Html.meta({ name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' }) %>
+    <!--Meta Data for Open Graph-->
+    <meta property="og:title" content="TestLegends" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.testlegends.com/images/share_thumbnail.png" />
+    <meta property="og:url" content="https://www.testlegends.com/" />
+    <meta property="og:site_name" content="TestLegends" />
+    <meta property="og:description" content="You don't need to be a developer to gamify education. Teachers can too." />
 
-		<%- Html.meta('icon') %>
+    <title>TestLegends</title>
 
-		<%- Html.css([
-				'//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css',
-				'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-				'../js/vendor/toastr/toastr.min.css',
-				'style.min.css'
-		]) %>
+    <link rel="stylesheet" href="/styles/style.min.css" />
 
-		<%- Html.script([
-				'//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
-				'//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
-				'bootstrap.js'
-		]) %>
-	</head>
+    <% /* HACK: Need this for JavaScripts in angular partials */ %>
+    <% /* https://groups.google.com/forum/#!topic/angular/H4haaMePJU0 */ %>
+	<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+</head>
 
-	<body>
-		<div id="wrap">
-			<div class="navbar navbar-default navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<a data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
+<body>
+    <div id="wrap">
+        <div class="shade"></div>
+        <div id="top_background"></div>
+        <div id="top">
+            <div class="logo">
+                <a href="/" title="TestLegends Home" target="_self">
+                    <div class="logo_icon"></div><p><span>T</span>est<span>L</span>egends</p>
+                </a>
+            </div>
+            <%- partial('../partials/flash') %>
+        </div>
 
-						<a href="/" class="navbar-brand"><%- title %></a>
-					</div>
+        <div id="bottom">
+            <%- body %>
+            <%- partial('../partials/google_analytics') %>
+        </div>
+    </div>
+</body>
 
-					<div class="collapse navbar-collapse navbar-right">
-						<ul class="nav navbar-nav">
-							<% if (!req.isAuthenticated()) { %>
-								<li><a href="/user/register"><i class="fa fa-sign-in"></i> Sign Up</a></li>
-								<li><a href="/user/login"><i class="fa fa-sign-in"></i> Log In</a></li>
-							<% } else { %>
-								<li><a href="/user/profile"><i class="fa fa-user"></i> My Account</a></li>
-								<li><a href="/user/logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
-							<% } %>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="container">
-				<header></header>
-
-				<div id="content">
-					<%- partial('../partials/flash') %>
-					<%- body %>
-				</div>
-
-				<div id="push"></div>
-			</div>
-		</div>
-
-		<footer>
-			<div class="container">
-				<p class="muted credit">&copy; 2013 <a href="http://jefflee.net/" target="_blank">Jeff Lee</a></p>
-			</div>
-		</footer>
-	</body>
 </html>

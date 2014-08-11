@@ -1,3 +1,5 @@
+<%- Html.tag('h2', 'Users', { id: 'title' }) %>
+
 <% _.each(users, function (user) { %>
-	<li><%= user.username %></li>
+	<li><%= user.email %></li>
 <% }) %>

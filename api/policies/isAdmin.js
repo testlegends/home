@@ -8,7 +8,7 @@
  */
 
 module.exports = function(req, res, next) {
-    if (req.session.role === 'admin') {
+    if (req.user[0].role === 'admin') {
         return next();
     }
 

@@ -1,4 +1,4 @@
-<%- Html.tag('h2', 'Login') %>
+<%- Html.tag('h2', 'Login', { id: 'title' }) %>
 
 <%- Form.create('User', { method: 'POST', class: 'form-horizontal' }) %>
 <%- Form.input('email', { placeholder: 'E-mail' }) %>

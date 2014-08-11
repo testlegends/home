@@ -1,4 +1,4 @@
-<%- Html.tag('h2', 'Update Info') %>
+<%- Html.tag('h2', 'Update Info', { id: 'title' }) %>
 
 <%- Form.create('User', { method: 'post', class: 'form-horizontal', values: user, action: '/user/update' }) %>
 <%- Form.input('name') %>

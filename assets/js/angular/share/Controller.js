@@ -26,7 +26,7 @@ define(['angular', 'share/Service'], function (angular) {
 
 			$scope.facebookShared = function () {
 				var facebookShareUrl = 'https://www.facebook.com/sharer/sharer.php?' +
-					'u=http://testlegends.com/?ref=' + $scope.refCode;
+					'u=https://testlegends.com/?ref=' + $scope.refCode;
 
 				window.open(facebookShareUrl, 'popUpWindow',
 					'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'
@@ -34,9 +34,9 @@ define(['angular', 'share/Service'], function (angular) {
 			};
 
 			$scope.twitterShared = function () {
-				var twitterShareUrl = 'http://twitter.com/share?' +
+				var twitterShareUrl = 'https://twitter.com/share?' +
 					"text=You don't need to be a developer to %23gamifyEducation anymore. Teachers can too! via %40TestLegendsApp" + '&' +
-					'url=http://testlegends.com/?ref=' + $scope.refCode;
+					'url=https://testlegends.com/?ref=' + $scope.refCode;
 
 				window.open(twitterShareUrl, 'popUpWindow',
 					'height=480,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes'

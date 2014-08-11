@@ -19,9 +19,55 @@ module.exports = (function () {
         return res.view(helpers);
     }
 
+    function login (req, res) {
+        if (req.xhr || req.query.remote) {
+            Passport.authenticate('local', function (err, user) {
+                if (err) {
+                    return res.json({
+                        status: 'ERROR',
+                        data: {
+                            message: err.message
+                        }
+                    });
+                } else if (!user) {
+                    return res.json({
+                        status: 'ERROR',
+                        data: {
+                            message: 'Username/Password incorrect'
+                        }
+                    });
+                }
+
+                req.login(user, {}, function (err) {
+                    if (err) {
+                        return res.json({error:err});
+                    }
+
+                    return res.json({
+                        status: 'OK',
+                        data: req.user
+                    });
+                });
+            })(req, res);
+        } else {
+            Passport.authenticate('local', {
+                successReturnToOrRedirect: '/',
+                failureRedirect: '/user/login',
+                failureFlash: 'Wrong username or password.'
+            })(req, res);
+        }
+    }
+
     function logout (req, res) {
         req.logout();
-        return res.redirect('/');
+
+        if (req.xhr || req.query.remote) {
+            return res.json({
+                status: 'OK'
+            });
+        } else {
+            return res.redirect('/');
+        }
     }
 
     function reset_password (req, res) {
@@ -113,7 +159,7 @@ module.exports = (function () {
     }
 
     return {
-        login: Passport.authenticate('local', { successReturnToOrRedirect: '/', failureRedirect: '/user/login', failureFlash: 'Wrong username or password.' }),
+        login: login,
         loginForm: loginForm,
         logout: logout,
         reset_password: reset_password,

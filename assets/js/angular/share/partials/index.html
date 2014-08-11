@@ -1,41 +1,27 @@
-<div id="wrap">
-    <div class="shade"></div>
-    <div id="top_background"></div>
-    <div id="top">
-        <div class="logo">
-            <a href="/" title="TestLegends Home" target="_self">
-                <div class="logo_icon"></div><p><span>T</span>est<span>L</span>egends</p>
-            </a>
-        </div>
+<h2 id="title"><span>T</span>hanks<span>!</span></h2>
 
-        <h2><span>T</span>hanks<span>!</span></h2>
+<h1>Want to get TestLegends<br />free for 12 months?</h1>
+
+<div id="signuplink">
+    <p>Get 5 friends to sign up using your link:</p>
+    <p><b>https://testlegends.com/?ref={{ refCode }}</b></p>
+</div>
+
+<div class="progressBar">
+    <div class="currentProgress" style="width: {{ progress }}%">
+        <div class="currentProgressText" ng-class="{ notZero: progress }">{{ progress }}%</div>
     </div>
+</div>
 
-    <div id="bottom">
-        <h1>Want to get TestLegends<br />free for 12 months?</h1>
-
-        <div id="signuplink">
-            <p>Get 5 friends to sign up using your link:</p>
-            <p><b>http://testlegends.com/?ref={{ refCode }}</b></p>
-        </div>
-
-        <div class="progressBar">
-            <div class="currentProgress" style="width: {{ progress }}%">
-                <div class="currentProgressText" ng-class="{ notZero: progress }">{{ progress }}%</div>
-            </div>
-        </div>
-
-        <div id="share">
-            <div id="facebook" ng-click="facebookShared()">
-                <img src="/images/share/facebook.png" />
-            </div>
-            <div id="twitter" ng-click="twitterShared()">
-                <img src="/images/share/twitter.png" />
-            </div>
-            <div id="email" ng-click="emailShared()">
-                <img src="/images/share/email.png" />
-            </div>
-        </div>
+<div id="share">
+    <div id="facebook" ng-click="facebookShared()">
+        <img src="/images/share/facebook.png" />
+    </div>
+    <div id="twitter" ng-click="twitterShared()">
+        <img src="/images/share/twitter.png" />
+    </div>
+    <div id="email" ng-click="emailShared()">
+        <img src="/images/share/email.png" />
     </div>
 </div>
 
