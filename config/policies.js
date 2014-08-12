@@ -13,7 +13,7 @@
 
 module.exports.policies = {
 
-    '*': ['isHttps'],
+    '*': true,
 
     HomeController: {
 
