@@ -1,6 +1,6 @@
 <%- Html.tag('h2', 'User Profile', { id: 'title' }) %>
 
-<div class="list-group">
+<div class="list-group container">
     <div class="list-group-item list-group-item-info">
         Profile
         <%- Html.link('Edit', { controller: 'user', action: 'edit' }, { icon: 'pencil', class: 'btn btn-xs btn-primary pull-right' }) %>
@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<div class="list-group">
+<div class="list-group container">
     <div class="list-group-item list-group-item-info">Authorized Apps</div>
     <% if (appsAuthorized.length === 0) { %>
         <div class="list-group-item">No apps authorized yet</div>
@@ -34,10 +34,10 @@
     <% } %>
 </div>
 
-<div class="list-group">
+<div class="list-group container">
     <div class="list-group-item list-group-item-info">
         Developer Apps
-        <%- Html.link('Register App', '#', { class: 'btn btn-xs btn-primary pull-right' }) %>
+        <button class="btn btn-xs btn-primary pull-right" onclick="alert('Not supported yet')">Create New App</button>
     </div>
     <% if (appsCreated.length === 0) { %>
         <div class="list-group-item">No apps created yet</div>
@@ -47,7 +47,7 @@
                 <span class="list-group-item-heading"><%= appsCreated[i].name %></span>
                 (URL: <span class="redirectURI"><%= appsCreated[i].redirectURI.protocol + "://" + appsCreated[i].redirectURI.domain %></span>)
 
-                <button class="btn btn-primary btn-xs pull-right">Edit</button>
+                <button class="btn btn-primary btn-xs pull-right" onclick="alert('Not supported yet')">Regenerate</button>
 
                 <div class="clientInfo">
                     <div class="clientId">

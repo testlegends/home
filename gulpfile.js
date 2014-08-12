@@ -9,7 +9,7 @@ var paths = {
 	assets: [
 		'assets/**',
 		'!assets/js/home.js',
-		// '!assets/js/trackr.js',
+		'!assets/js/trackr.js',
 		'!assets/js/angular/*/*.js',
 		'!assets/styles/*.css'
 	],
@@ -26,6 +26,7 @@ var cssFiles = {
 		'assets/js/vendor/fullpage.js/jquery.fullPage.css'
 	],
 	default: [
+		'assets/styles/bootstrap.css',
 		'assets/js/vendor/toastr/toastr.min.css',
 		'assets/styles/style.css'
 	]

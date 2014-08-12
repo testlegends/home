@@ -1,26 +1,15 @@
 <%- Html.tag('h2', 'Login', { id: 'title' }) %>
 
-<%- Form.create('User', { method: 'POST', class: 'form-horizontal' }) %>
+<%- Form.create('User', { method: 'POST' }) %>
 <%- Form.input('email', { placeholder: 'E-mail' }) %>
 <%- Form.input('password', { placeholder: 'Password' }) %>
 <%- Form.end('Login') %>
 
+<%- Html.link('Sign Up', { controller: 'user', action: 'register' }) %> /
+<%- Html.link('Forgot Password', { controller: 'user', action: 'reset_password' }) %>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('input[name=email]').focus();
-
-		var reset_password = 'Reset Password';
-        $('input[name=password]').parent('div').after($('<div />').addClass('col-lg-2 reset-password').html(
-            $('<a />').attr('href', '/user/reset_password').html(reset_password)
-        ));
 	});
 </script>
-
-<style type="text/css">
-	@media (min-width: 1200px) {
-		.reset-password {
-			padding-top: 9px;
-			padding-left: 0;
-		}
-	}
-</style>
