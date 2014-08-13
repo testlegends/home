@@ -20,7 +20,7 @@ $(document).ready(function(){
         if (!validator.isEmail($('input[name=email]').val())) {
             error = true;
             toastr.error('E-mail appears to be invalid.');
-        } else if (tripe.validateCardNumber(ccNum)) {
+        } else if (!Stripe.validateCardNumber(ccNum)) {
 			error = true;
 			toastr.error('The credit card number appears to be invalid.');
 		} else if (!Stripe.validateCVC(cvcNum)) {

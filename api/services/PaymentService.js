@@ -25,7 +25,8 @@ module.exports = (function(){
                 customer: customerId,
                 amount: plans[plan].amount,
                 currency: plans[plan].currency,
-                description: plans[plan].description(params.email)
+                description: plans[plan].description(params.email),
+                receipt_email: params.email
             }, function (err, charge) {
                 if (err) {
                     console.log(err);
@@ -35,10 +36,6 @@ module.exports = (function(){
                 cb(null, charge);
             });
         });
-    }
-
-    function refund (id, cb) {
-
     }
 
     function _retrieveCustomer (params, cb) {

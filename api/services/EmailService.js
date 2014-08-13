@@ -19,26 +19,18 @@ module.exports = (function(){
     };
 
     function sendWelcomeEmail (params, callback) {
-        var templateUrl = 'api/services/emailtpls/signup.html';
+        _useTemplate('signup', function (emailtpl) {
+            var mailOptions = {
+                from: generalParams.admin_email,
+                to: params.email,
+                subject: 'Thank you for joining TestLegends!',
+                html: emailtpl({
+                    refCode: params.code,
+                    email: params.email
+                })
+            };
 
-        fs.exists(templateUrl, function (exists) {
-            if (exists) {
-                var buffer = fs.readFile(templateUrl, 'utf8', function (err, data) {
-                    var emailtpl = _.template(data);
-
-                    var mailOptions = {
-                        from: generalParams.admin_email,
-                        to: params.email,
-                        subject: 'Thank you for joining TestLegends!',
-                        html: emailtpl({
-                            refCode: params.code,
-                            email: params.email
-                        })
-                    };
-
-                    Sendgrid.send(mailOptions, callback);
-                });
-            }
+            Sendgrid.send(mailOptions, callback);
         });
     }
 
@@ -56,6 +48,19 @@ module.exports = (function(){
         };
 
         Sendgrid.send(mailOptions, callback);
+    }
+
+    function _useTemplate (name, callback) {
+        var templateUrl = 'views/emailtpls/' + name + '.html';
+
+        fs.exists(templateUrl, function (exists) {
+            if (exists) {
+                var buffer = fs.readFile(templateUrl, 'utf8', function (err, data) {
+                    var emailtpl = _.template(data);
+                    callback(emailtpl);
+                });
+            }
+        });
     }
 
     return {

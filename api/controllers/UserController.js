@@ -51,7 +51,7 @@ module.exports = (function () {
             })(req, res);
         } else {
             Passport.authenticate('local', {
-                successReturnToOrRedirect: '/',
+                successReturnToOrRedirect: '/user/profile',
                 failureRedirect: '/user/login',
                 failureFlash: 'Wrong username or password.'
             })(req, res);
