@@ -39,14 +39,9 @@ module.exports = (function(){
             defaultsTo: null
         },
 
-        games: {
-            type: 'array',
-            defaultsTo: []
-        },
-
-        payments: {
-            type: 'array',
-            defaultsTo: []
+        meta: {
+            type: 'json',
+            defaultsTo: {}
         },
 
         toJSON: function () {

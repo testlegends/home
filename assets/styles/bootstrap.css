@@ -1269,7 +1269,7 @@ output {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   vertical-align: text-top;
-  width: 240px;
+  width: 300px;
 }
 .form-control:focus {
   border-color: #66afe9;

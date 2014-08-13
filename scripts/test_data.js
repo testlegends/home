@@ -67,7 +67,7 @@ module.exports = {
             password_reset_key: null,
             role: "admin",
             games: [],
-            payments: [],
+            meta: {},
             _id: new ObjectID("abcdef1234567890deadbeef")
         },
         {
@@ -77,7 +77,7 @@ module.exports = {
             password_reset_key: null,
             role: "admin",
             games: [],
-            payments: [],
+            meta: {},
             _id: new ObjectID("53562b9335e2098c4c0001fa")
         }
     ]

@@ -15,19 +15,35 @@ module.exports = (function(){
     var helpers = { Html: Html, Form: Form };
 
     function index (req, res) {
-        return res.view(helpers);
+        return res.view(_.extend({
+            stripeKey: process.env.STRIPE_KEY_PUBLIC
+        }, helpers));
     }
 
     function charge (req, res) {
-        var token = req.body.stripe_token;
+        var token = req.body.stripeToken;
         var email = req.body.email;
+        var name = req.body.name;
+        var cardType = req.body.cardType;
 
         PaymentService.chargeByPlan('BetaUserPromotion', {
             token: token,
-            email: email
+            email: email,
+            name: name,
+            cardType: cardType
         }, function (err, charge) {
-            return res.json({
+            if (err) {
+                console.log(err);
 
+                return res.json({
+                    status: 'ERROR',
+                    error: err
+                })
+            }
+
+            return res.json({
+                status: 'OK',
+                data: charge
             });
         });
     }
