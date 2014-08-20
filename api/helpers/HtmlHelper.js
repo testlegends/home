@@ -10,8 +10,8 @@
 var _ = require('underscore'),
     UglifyJS = require("uglify-js");
 
-module.exports = {
-	_tags: {
+module.exports = (function(){
+	var _tags = {
 		meta: _.template('<meta<%= attrs %>/>'),
 		charset: _.template('<meta http-equiv="Content-Type" content="text/html; charset="<%= charset %>" />'),
 		metalink: _.template('<link href="<%= href %>"<%= attrs %>/>'),
@@ -74,9 +74,9 @@ module.exports = {
 		//javascriptblock: '<script%s>%s</script>',
 		javascriptstart: '<script>',
 		javascriptend: '</script>'
-	},
+	};
 
-	_docTypes: {
+	var _docTypes = {
 		'html4-strict': '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
 		'html4-trans' : '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">',
 		'html4-frame' : '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">',
@@ -85,21 +85,21 @@ module.exports = {
 		'xhtml-trans' : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 		'xhtml-frame' : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
 		'xhtml11'     : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">'
-	},
+	};
 
-	docType: function(type) {
+	function docType (type) {
 		if (_.isUndefined(type)) {
 			type = 'html5';
 		}
 
-		if (!_.isUndefined(this._docTypes[type])) {
-			return this._docTypes[type];
+		if (!_.isUndefined(_docTypes[type])) {
+			return _docTypes[type];
 		}
 
 		return null;
-	},
+	}
 
-	meta: function(type, url, options) {
+    function meta (type, url, options) {
 		if (!_.isObject(type)) {
 			var types = {
 				rss: { type: 'application/rss+xml', rel: 'alternate', title: type, link: url },
@@ -128,50 +128,50 @@ module.exports = {
 
 		if (!_.isUndefined(options.link)) {
 			if (_.isUndefined(options.rel) && options.rel === 'icon') {
-				out = this._tags.metalink({ href: options.link, attrs: this._parseAttributes(options, ['link']) });
+				out = _tags.metalink({ href: options.link, attrs: _parseAttributes(options, ['link']) });
 				options.rel = 'shortcut icon';
 			}
-			out += this._tags.metalink({ href: options.link, attrs: this._parseAttributes(options, ['link']) });
+			out += _tags.metalink({ href: options.link, attrs: _parseAttributes(options, ['link']) });
 		} else {
-			out = this._tags.meta({ attrs: this._parseAttributes(options, ['type']) });
+			out = _tags.meta({ attrs: _parseAttributes(options, ['type']) });
 		}
 
 		return out;
-	},
+	}
 
-	charset: function(charset) {
+	function charset (charset) {
 		if (_.isUndefined(charset)) {
 			charset = 'utf-8';
 		}
 
-		return this._tags.charset({ charset: charset });
-	},
+		return _tags.charset({ charset: charset });
+	}
 
-	link: function(title, url, options) {
+	function link (title, url, options) {
 		var escapeTitle = true;
 		if (_.isUndefined(url)) {
-			url = this._url(title);
+			url = _url(title);
 		} else {
-			url = this._url(url);
+			url = _url(url);
 		}
 
-		return this._tags.link({
+		return _tags.link({
 			href: url,
 			title: title,
-			attrs: this._parseAttributes(options)
+			attrs: _parseAttributes(options)
 		});
-	},
+	}
 
-	image: function(path, options) {
+	function image (path, options) {
 		// parse path
 
-		return this._tags.image({
+		return _tags.image({
 			src: path,
-			attrs: this._parseAttributes(options)
+			attrs: _parseAttributes(options)
 		});
-	},
+	}
 
-	css: function(path, options) {
+	function css (path, options) {
 		// if starts with /, don't prepend
 		// add options support
 		if (!_.isArray(path)) {
@@ -179,48 +179,48 @@ module.exports = {
 				path = '/styles/' + path;
 			}
 
-			return this._tags.css({
+			return _tags.css({
 				rel: 'stylesheet',
 				href: path,
-				attrs: this._parseAttributes(options)
+				attrs: _parseAttributes(options)
 			});
 		} else {
 			var out = '';
 			for (var i in path) {
-				out += "\n\t" + this.css(path[i]);
+				out += "\n\t" + css(path[i]);
 			}
 			return out;
 		}
-	},
+	}
 
-	script: function(path, options) {
+	function script (path, options) {
 		if (process.env.NODE_ENV) {
-			return this.uglifyScript(path, options);
+			return _uglifyScript(path, options);
 		} else {
-			return this.regularScript(path, options);
+			return _regularScript(path, options);
 		}
-	},
+	}
 
-    regularScript: function(path, options) {
+    function _regularScript (path, options) {
         if (!_.isArray(path)) {
             if (path.indexOf("//") === -1) {
                 path = '/js/' + path;
             }
 
-            return this._tags.javascriptlink({
+            return _tags.javascriptlink({
                 src: path,
-                attrs: this._parseAttributes(options)
+                attrs: _parseAttributes(options)
             });
         } else {
             var out = '';
             for (var j in path) {
-                out += "\n\t" + this.regularScript(path[j]);
+                out += "\n\t" + _regularScript(path[j]);
             }
             return out;
         }
-    },
+    }
 
-    uglifyScript: function(path, options) {
+    function _uglifyScript (path, options) {
         if (!_.isArray(path)) {
             path = [path];
         }
@@ -236,13 +236,13 @@ module.exports = {
 
         var uglify = UglifyJS.minify(internalPaths);
 
-        var internalOutput = this._tags.javascriptstart + uglify.code + this._tags.javascriptend;
-        var externalOutput = this.regularScript(externalPaths, options);
+        var internalOutput = _tags.javascriptstart + uglify.code + _tags.javascriptend;
+        var externalOutput = _regularScript(externalPaths, options);
 
         return externalOutput + internalOutput;
-    },
+    }
 
-	style: function(data) {
+	function style (data) {
 		if (!_.isObject(data)) {
 			return data;
 		}
@@ -253,13 +253,9 @@ module.exports = {
 		}
 
 		return out.join(' ');
-	},
+	}
 
-	media: function(path, options) {
-
-	},
-
-	div: function(class_name, text, options) {
+	function div (class_name, text, options) {
 		if (class_name) {
 			if (_.isUndefined(options)) {
 				options = {};
@@ -268,32 +264,24 @@ module.exports = {
 		}
 
 		if (_.isUndefined(text) || _.isEmpty(text)) {
-			return this._tags.blockstart({ attrs: this._parseAttributes(options) });
+			return _tags.blockstart({ attrs: _parseAttributes(options) });
 		} else {
-			return this.tag('div', text, options);
+			return tag('div', text, options);
 		}
-	},
+	}
 
-	tag: function(name, text, options) {
+    function tag (name, text, options) {
 		if (!_.isUndefined(name)) {
 			if (!_.isUndefined(options) && !_.isUndefined(options.escape) && options.escape) {
 				text = _.escape(text);
 				delete options.escape;
 			}
 
-			return this._tags.tag({ name: name, text: text, attrs: this._parseAttributes(options) });
+			return _tags.tag({ name: name, text: text, attrs: _parseAttributes(options) });
 		}
-	},
+	}
 
-	tableHeaders: function(names, trOptions, thOptions) {
-
-	},
-
-	tableCells: function(data, oddTrOptions, evenTrOptions) {
-
-	},
-
-	_parseAttributes: function(options, exclude) {
+	function _parseAttributes (options, exclude) {
 		var out = '';
 
 		if (!_.isString(options)) {
@@ -325,9 +313,9 @@ module.exports = {
 		}
 
 		return ' ' + out;
-	},
+	}
 
-	_url: function(url) {
+	function _url (url) {
 		if (_.isObject(url)) {
 			var newUrl = '/' + url.controller + '/' + url.action;
 
@@ -341,4 +329,20 @@ module.exports = {
 			return url;
 		}
 	}
-};
+
+    return {
+        docType: docType,
+        meta: meta,
+        charset: charset,
+        link: link,
+        image: image,
+        css: css,
+        script: script,
+        style: style,
+        div: div,
+        tag: tag,
+
+        _tags: _tags,
+        _parseAttributes: _parseAttributes
+    };
+})();

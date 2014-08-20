@@ -8,7 +8,7 @@
   "main": "app.js",
   "license": "",
   "engines": {
-    "node": "0.10.x"
+    "node": "0.10.30"
   },
   "dependencies": {
     "bcrypt": "^0.7.8",

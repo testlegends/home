@@ -60,14 +60,7 @@ module.exports = (function () {
 
     function logout (req, res) {
         req.logout();
-
-        if (req.xhr || req.query.remote) {
-            return res.json({
-                status: 'OK'
-            });
-        } else {
-            return res.redirect('/');
-        }
+        return res.redirect('/user/login');
     }
 
     function reset_password (req, res) {

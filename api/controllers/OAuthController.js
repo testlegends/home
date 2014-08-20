@@ -37,6 +37,10 @@ module.exports = (function(){
         decision: decision,
         token: token,
 
-        _config: {}
+        _config: {
+            blueprints: {
+                actions: true
+            }
+        }
     };
 })();

@@ -11,46 +11,48 @@ var Html = require('./HtmlHelper.js'),
     ChangeCase = require('change-case'),
 	_ = require('underscore');
 
-module.exports = {
-	create: function(model, options) {
-		if (!_.isEmpty(model)) {
-			try {
-				this.model = require('../models/' + model);
+module.exports = (function(){
+
+    var model = null,
+        values = null;
+
+    function create (_model, options) {
+        if (!_.isEmpty(_model)) {
+            try {
+                model = require('../models/' + _model);
                 if (options.values) {
-                    this.values = options.values;
-                    delete this.values.password;
-                    delete this.values.password_reset_key;
+                    values = options.values;
+                    delete values.password;
+                    delete values.password_reset_key;
                     delete options.values;
                 }
-			} catch (e) {
-				this.model = model;
-			}
-		} else {
-			this.model = null;
-		}
+            } catch (e) {
+                model = _model;
+            }
+        }
 
-		options = _.extend({
-			method: 'GET',
-			action: '',
-			encoding: 'utf8',
+        options = _.extend({
+            method: 'GET',
+            action: '',
+            encoding: 'utf8',
             name: model + 'Form'
-		}, options);
+        }, options);
 
-		return Html._tags.form({ action: options.action, attrs: Html._parseAttributes(options, ['action']) });
-	},
+        return Html._tags.form({ action: options.action, attrs: Html._parseAttributes(options, ['action']) });
+    }
 
-	input: function(fieldName, options) {
-		options = _.extend({
-			id: fieldName + Math.floor(Math.random()*1000),
-			class: ''
-		}, options);
+    function input (fieldName, options) {
+        options = _.extend({
+            id: fieldName + Math.floor(Math.random()*1000),
+            class: ''
+        }, options);
 
-		options.class += ' form-control';
+        options.class += ' form-control';
 
-		var type = options.type || this.model.attributes[fieldName].type || this.model.attributes[fieldName];
+        var type = options.type || model.attributes[fieldName].type || model.attributes[fieldName];
 
-		var selectOptions = null;
-		if (options.in) {
+        var selectOptions = null;
+        if (options.in) {
             selectOptions = options.in;
             if (!_.isArray(selectOptions)) {
                 selectOptions.length = (function(){
@@ -61,19 +63,18 @@ module.exports = {
                     return size;
                 })();
             }
-        } else if (this.model.attributes && this.model.attributes[fieldName] && this.model.attributes[fieldName].in) {
-            selectOptions = this.model.attributes[fieldName].in;
+        } else if (model.attributes && model.attributes[fieldName] && model.attributes[fieldName].in) {
+            selectOptions = model.attributes[fieldName].in;
         }
 
-		var result = "";
+        var result = "";
 
-		if (selectOptions) {
+        if (selectOptions) {
             if (type === 'radio' || type === 'boolean' || type === 'string') {
                 if (type === 'radio' || type === 'boolean' || selectOptions.length < 5) {
-                    var that = this;
                     for (var key in selectOptions) {
                         if (key === 'length') continue;
-                        result += that._singleSelectField(fieldName, options, key, selectOptions[key]);
+                        result += _singleSelectField(fieldName, options, key, selectOptions[key]);
                     }
                     result = Html.div('btn-group col-lg-4', null, { 'data-toggle': 'buttons' }) + result + '</div>';
                 } else {
@@ -83,7 +84,7 @@ module.exports = {
             } else if (type === 'checkbox' || type === 'array') {
                 // TODO multiple select
             }
-		}
+        }
 
         if (type === 'hidden') {
             return Html._tags.hidden({
@@ -94,25 +95,25 @@ module.exports = {
 
         if (fieldName === 'password' || type === 'password') {
             options.type = 'password';
-			result = this._textField(fieldName, options);
-		} else if (type === 'string' && !selectOptions) {
-			options.type = 'text';
-			result = this._textField(fieldName, options);
+            result = _textField(fieldName, options);
+        } else if (type === 'string' && !selectOptions) {
+            options.type = 'text';
+            result = _textField(fieldName, options);
         } else if (type === 'email' || type === 'text' || type === 'number') {
             options.type = type;
-            result = this._textField(fieldName, options);
-		} else if (type === 'date' || type === 'time' || type === 'datetime') {
+            result = _textField(fieldName, options);
+        } else if (type === 'date' || type === 'time' || type === 'datetime') {
 
-		} else if (type === 'button' || type === 'submit') {
+        } else if (type === 'button' || type === 'submit') {
 
         }
 
-		result = Html.div('form-group') + Html._tags.label({ id: options.id, name: ChangeCase.titleCase(fieldName), attrs: null }) + result + '</div>';
+        result = Html.div('form-group') + Html._tags.label({ id: options.id, name: ChangeCase.titleCase(fieldName), attrs: null }) + result + '</div>';
 
-		return result;
-	},
+        return result;
+    }
 
-    _singleSelectField: function(fieldName, options, value, text, type) {
+    function _singleSelectField (fieldName, options, value, text, type) {
         // if too many use dropdown, if not radio
         if (type && type === 'dropdown') {
 
@@ -125,46 +126,54 @@ module.exports = {
                     displayText: text
                 }) + "</label>";
         }
-    },
+    }
 
-    _multipleSelectField: function() {
+    function _multipleSelectField () {
         // if too many use multi select, if not checkbox
-    },
+    }
 
-	_textField: function(fieldName, options) {
-        if (this.values && this.values[fieldName]) {
-            options.value = this.values[fieldName];
+    function _textField (fieldName, options) {
+        if (values && values[fieldName]) {
+            options.value = values[fieldName];
         }
 
-		return Html._tags.input({
-			name: fieldName,
-			attrs: Html._parseAttributes(options)
-		});
-	},
+        return Html._tags.input({
+            name: fieldName,
+            attrs: Html._parseAttributes(options)
+        });
+    }
 
-	_datetimeField: function() {
+    function _datetimeField () {
 
-	},
+    }
 
-	submit: function(caption, options) {
-		options = _.extend({
-			class: 'btn btn-primary btn-large'
-		}, options);
+    function submit (caption, options) {
+        options = _.extend({
+            class: 'btn btn-primary btn-large'
+        }, options);
 
-		var result = Html.div('form-group') + Html._tags.submit({
-			name: caption,
-			attrs: Html._parseAttributes(options)
-		}) + '</div>';
+        var result = Html.div('form-group') + Html._tags.submit({
+            name: caption,
+            attrs: Html._parseAttributes(options)
+        }) + '</div>';
 
-		return result;
-	},
+        return result;
+    }
 
-	end: function(options) {
-		var submitBtn = "";
-		if (_.isString(options)) {
-			submitBtn = this.submit(options);
-		}
+    function end (options) {
+        var submitBtn = "";
+        if (_.isString(options)) {
+            submitBtn = submit(options);
+        }
 
-		return submitBtn + Html._tags.formend;
-	}
-};
+        return submitBtn + Html._tags.formend;
+    }
+
+    return {
+        create: create,
+        input: input,
+        submit: submit,
+        end: end
+    };
+
+})();
