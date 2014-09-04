@@ -13,9 +13,9 @@ module.exports = (function(){
 
     var plans = {
         BetaUserPromotion: {
-            amount: 10000,
+            amount: 500,
             currency: "USD",
-            description: function (email) { return 'Beta user promotion $100 for a year (' + email + ')'; }
+            description: function (email) { return 'Beta user promotion $5 for a month (' + email + ')'; }
         }
     };
 

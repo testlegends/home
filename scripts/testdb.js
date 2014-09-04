@@ -54,3 +54,7 @@ iniparser.parse('.env', function(err, data){
 String.prototype.endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
+
+process.on('SIGINT', function() {
+    process.exit();
+});

@@ -26,8 +26,8 @@ module.exports = (function(){
 
         role: {
             type: 'string',
-            in: ['admin', 'student', 'teacher'],
-            defaultsTo: 'student'
+            in: ['admin', 'regular'],
+            defaultsTo: 'regular'
         },
 
         password: {

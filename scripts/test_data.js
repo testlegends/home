@@ -66,7 +66,6 @@ module.exports = {
             password: "$2a$10$z8pa3ARMJyhMNOBKJ/XZcO2y4lbFxHosPkMpI5xAy0F2fc4UN7P5C",
             password_reset_key: null,
             role: "admin",
-            games: [],
             meta: {},
             _id: new ObjectID("abcdef1234567890deadbeef")
         },
@@ -76,7 +75,6 @@ module.exports = {
             password: "$2a$10$z8pa3ARMJyhMNOBKJ/XZcO2y4lbFxHosPkMpI5xAy0F2fc4UN7P5C",
             password_reset_key: null,
             role: "admin",
-            games: [],
             meta: {},
             _id: new ObjectID("53562b9335e2098c4c0001fa")
         }
