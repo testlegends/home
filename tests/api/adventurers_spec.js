@@ -9,7 +9,7 @@
 
 var frisby = require('frisby');
 
-var serverUrl = 'http://localhost:1338';
+var serverUrl = 'https://leejefon.local:1338';
 
 frisby.create('Join Adventure')
     .put(serverUrl + '/adventurers', {
