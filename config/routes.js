@@ -10,8 +10,9 @@
 
 module.exports.routes = {
 
-    'GET /': 'HomeController.index',
-    'GET /share': 'HomeController.share',
+    'GET /'       : 'HomeController.index',
+    'GET /share'  : 'HomeController.share',
+    'POST /invite': 'HomeController.invite',
 
     'GET  /users'                    : 'UserController.index',
     'GET  /user/profile'             : 'UserController.profile',

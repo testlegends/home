@@ -34,6 +34,22 @@ module.exports = (function(){
         });
     }
 
+    function sendInviteEmail (params, callback) {
+        _useTemplate('invite', function (emailtpl) {
+            var mailOptions = {
+                from: generalParams.admin_email,
+                to: params.email,
+                subject: 'Someone just invited you to a class',
+                html: emailtpl({
+                    key: params.password_reset_key,
+                    classInfo: params.classInfo
+                })
+            };
+
+            Sendgrid.send(mailOptions, callback);
+        });
+    }
+
     function sendResetPasswordEmail (params, callback) {
         var mailOptions = {
             from: generalParams.admin_email,
@@ -65,6 +81,7 @@ module.exports = (function(){
 
     return {
         sendWelcomeEmail: sendWelcomeEmail,
+        sendInviteEmail: sendInviteEmail,
         sendResetPasswordEmail: sendResetPasswordEmail
     };
 

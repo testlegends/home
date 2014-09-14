@@ -9,6 +9,7 @@
 
 var Html = require('../helpers/HtmlHelper.js');
 var MobileDetect = require('mobile-detect');
+var SHA256 = require('sha256');
 
 module.exports = (function(){
 
@@ -27,6 +28,33 @@ module.exports = (function(){
 	function share (req, res) {
 		return res.view({
 			Html: Html
+		});
+	}
+
+	function invite (req, res) {
+		var classInfo = req.body.classInfo;
+		var email = req.body.email;
+
+		User.create({
+			name: email,
+			email: email,
+			password: SHA256(email),
+			password_reset_key: SHA256(email + (new Date().getTime()).toString()),
+			role: 'regular',
+			meta: {
+				invitedBy: classInfo.owner.id
+			}
+		}, function (err, user) {
+			EmailService.sendInviteEmail({
+				email: user.email,
+				password_reset_key: user.password_reset_key,
+				classInfo: classInfo
+			}, function (err, data) {
+				return res.json({
+					status: 'OK',
+					data: user
+				});
+			});
 		});
 	}
 
@@ -87,6 +115,7 @@ module.exports = (function(){
     return {
         index: index,
 		share: share,
+		invite: invite,
 		trackr: trackr,
         trackrView: trackrView,
 
