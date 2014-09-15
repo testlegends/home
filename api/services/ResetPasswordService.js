@@ -31,10 +31,12 @@ module.exports = (function(){
             if (users.length === 0) {
                 req.flash('error', 'Invalid Password reset key');
                 return res.view(_.extend({
+                    name: null,
                     key: null
                 }, helpers));
             } else {
                 return res.view(_.extend({
+                    name: users[0].name,
                     key: key
                 }, helpers));
             }
@@ -85,14 +87,20 @@ module.exports = (function(){
     function reset (req, res, helpers) {
         var key = req.param('key');
         var password = req.body.new_password;
+        var newInfo = {
+            password: password,
+            password_reset_key: null
+        };
+
+        // For the invited users
+        if (req.body.name) {
+            newInfo.name = req.body.name;
+        }
 
         var id = null;
         User.update({
             password_reset_key: key
-        }, {
-            password: password,
-            password_reset_key: null
-        }).done(function(err, user) {
+        }, newInfo).done(function(err, user) {
             if (err) {
                 req.flash('Something went wrong');
                 return res.view(helpers);

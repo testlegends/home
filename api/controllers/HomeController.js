@@ -17,7 +17,7 @@ module.exports = (function(){
 		var md = new MobileDetect(req.headers['user-agent']);
 
 		if (md.mobile()) {
-			return res.redirect('https://m.testlegends.com');
+			return res.redirect(process.env.MOBILE_URL);
 		} else {
 			return res.view({
 				layout: 'layouts/home'

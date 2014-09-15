@@ -52,7 +52,7 @@ module.exports = (function () {
         } else {
             Passport.authenticate('local', {
                 // successReturnToOrRedirect: '/user/profile',
-                successReturnToOrRedirect: 'https://build.testlegends.com',
+                successReturnToOrRedirect: process.env.BUILD_URL,
                 failureRedirect: '/user/login',
                 failureFlash: 'Wrong username or password.'
             })(req, res);
