@@ -22,6 +22,7 @@ module.exports = (function(){
         _useTemplate('signup', function (emailtpl) {
             var mailOptions = {
                 from: generalParams.admin_email,
+                fromname: generalParams.project_name,
                 to: params.email,
                 subject: 'Thank you for joining TestLegends!',
                 html: emailtpl({
@@ -38,6 +39,7 @@ module.exports = (function(){
         _useTemplate('invite', function (emailtpl) {
             var mailOptions = {
                 from: generalParams.admin_email,
+                fromname: generalParams.project_name,
                 to: params.email,
                 subject: 'Someone just invited you to a class',
                 html: emailtpl({
@@ -53,6 +55,7 @@ module.exports = (function(){
     function sendResetPasswordEmail (params, callback) {
         var mailOptions = {
             from: generalParams.admin_email,
+            fromname: generalParams.project_name,
             to: params.email,
             subject: '[' + generalParams.project_name + '] Password Reset',
             text: (function(){
