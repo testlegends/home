@@ -105,6 +105,12 @@ module.exports = (function(){
                 req.flash('Something went wrong');
                 return res.view(helpers);
             } else {
+                user.security_logs.push({
+                    action: 'Reset Password',
+                    timestamp: new Date()
+                });
+                user.save(function(){});
+
                 req.flash('success', 'Password reset successfully');
                 res.redirect('/user/login');
             }
