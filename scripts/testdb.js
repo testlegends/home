@@ -10,6 +10,10 @@ var iniparser = require('iniparser');
 var _ = require('underscore');
 var test_data = require('./test_data.js');
 
+process.on('SIGINT', function() {
+    process.exit(0);
+});
+
 iniparser.parse('.env', function(err, data){
     if (err) {
         console.log(err);
@@ -54,7 +58,3 @@ iniparser.parse('.env', function(err, data){
 String.prototype.endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
 };
-
-process.on('SIGINT', function() {
-    process.exit();
-});

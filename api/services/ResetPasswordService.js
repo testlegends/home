@@ -100,16 +100,17 @@ module.exports = (function(){
         var id = null;
         User.update({
             password_reset_key: key
-        }, newInfo).done(function(err, user) {
+        }, newInfo, function (err, users) {
             if (err) {
                 req.flash('Something went wrong');
                 return res.view(helpers);
             } else {
-                user.security_logs.push({
+                delete users[0].password;
+                users[0].security_logs.push({
                     action: 'Reset Password',
                     timestamp: new Date()
                 });
-                user.save(function(){});
+                users[0].save(function(){});
 
                 req.flash('success', 'Password reset successfully');
                 res.redirect('/user/login');
