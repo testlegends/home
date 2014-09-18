@@ -8,3 +8,17 @@
 <%- Form.end('Sign Up') %>
 
 <%- Html.link('Login', { controller: 'user', action: 'login' }) %>
+
+<script src="/js/trackr.js"></script>
+<script>
+$(document).ready(function(){
+    $.trackr({
+        name: 'TestLegends Sign Up Page',
+        dbUrl: '/trackr',
+        // pageWaitTime: 6000,
+        trackers: [
+            { element: 'button.btn', name: 'Sign Up', event: 'click', condition: { notEmpty: '#bottom input[type=email]' } }
+        ]
+    });
+});
+</script>
