@@ -5,15 +5,25 @@
 <%- Form.input('password', { placeholder: 'Password' }) %>
 <%- Form.end('Login') %>
 
-<%- Html.link('Sign Up', { controller: 'user', action: 'register' }) %> /
+<%- Html.link('Sign Up', { controller: 'user', action: 'register' }, { id: 'signup' }) %> /
 <%- Html.link('Forgot Password', { controller: 'user', action: 'reset_password' }) %>
 
 <br /><br />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w78roeviEZM" frameborder="0" allowfullscreen></iframe>
 
+<script src="/js/trackr.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('input[name=email]').focus();
+
+		$.trackr({
+			name: 'TestLegends Login Page',
+			dbUrl: '/trackr',
+			// pageWaitTime: 6000,
+			trackers: [
+				{ element: '#signup', name: 'Sign up', event: 'click' }
+			]
+		});
 	});
 </script>
