@@ -130,14 +130,6 @@ module.exports = (function () {
         });
     }
 
-    function index (req, res) {
-        User.find().exec(function (err, users) {
-            return res.view(_.extend({
-                users: users
-            }, helpers));
-        });
-    }
-
     function profile (req, res) {
         if (!req.isAuthenticated()) {
             res.redirect('/user/login');
@@ -161,7 +153,6 @@ module.exports = (function () {
         add: add,
         edit: edit,
         update: update,
-        index: index,
         profile: profile,
 
         _config: {}
