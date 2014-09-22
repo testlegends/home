@@ -14,7 +14,6 @@ module.exports.routes = {
     'GET /share'  : 'HomeController.share',
     'POST /invite': 'HomeController.invite',
 
-    'GET  /users'                    : 'UserController.index',
     'GET  /user/profile'             : 'UserController.profile',
     'GET  /user/login'               : 'UserController.loginForm',
     'POST /user/login'               : 'UserController.login',
