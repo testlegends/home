@@ -53,7 +53,8 @@ module.exports = (function(){
 					classInfo: classInfo
 				}, function (err, data) {
 					return res.json({
-						status: 'OK'
+						status: 'OK',
+						data: user
 					});
 				});
 			});
@@ -63,8 +64,7 @@ module.exports = (function(){
 				classInfo: classInfo
 			}, function (err, data) {
 				return res.json({
-					status: 'OK',
-					data: user
+					status: 'OK'
 				});
 			});
 		}
