@@ -35,15 +35,31 @@ module.exports = (function(){
         });
     }
 
-    function sendInviteEmail (params, callback) {
-        _useTemplate('invite', function (emailtpl) {
+    function sendInviteEmail_NewUser (params, callback) {
+        _useTemplate('invite_new_user', function (emailtpl) {
             var mailOptions = {
                 from: generalParams.admin_email,
                 fromname: generalParams.project_name,
                 to: params.email,
-                subject: 'Someone just invited you to a class',
+                subject: 'Someone just invited you to a class in TestLegends',
                 html: emailtpl({
                     key: params.password_reset_key,
+                    classInfo: params.classInfo
+                })
+            };
+
+            Sendgrid.send(mailOptions, callback);
+        });
+    }
+
+    function sendInviteEmail_OldUser (params, callback) {
+        _useTemplate('invite_old_user', function (emailtpl) {
+            var mailOptions = {
+                from: generalParams.admin_email,
+                fromname: generalParams.project_name,
+                to: params.email,
+                subject: 'Someone has added you to a class in TestLegends',
+                html: emailtpl({
                     classInfo: params.classInfo
                 })
             };
@@ -84,7 +100,8 @@ module.exports = (function(){
 
     return {
         sendWelcomeEmail: sendWelcomeEmail,
-        sendInviteEmail: sendInviteEmail,
+        sendInviteEmail_NewUser: sendInviteEmail_NewUser,
+        sendInviteEmail_OldUser: sendInviteEmail_OldUser,
         sendResetPasswordEmail: sendResetPasswordEmail
     };
 

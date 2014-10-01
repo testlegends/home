@@ -34,20 +34,32 @@ module.exports = (function(){
 	function invite (req, res) {
 		var classInfo = req.body.classInfo;
 		var email = req.body.email;
+		var newUser = req.body.newUser;
 
-		User.create({
-			name: email,
-			email: email,
-			password: SHA256(email),
-			password_reset_key: SHA256(email + (new Date().getTime()).toString()),
-			role: 'regular',
-			meta: {
-				invitedBy: classInfo.owner.id
-			}
-		}, function (err, user) {
-			EmailService.sendInviteEmail({
-				email: user.email,
-				password_reset_key: user.password_reset_key,
+		if (newUser) {
+			User.create({
+				name: email,
+				email: email,
+				password: SHA256(email),
+				password_reset_key: SHA256(email + (new Date().getTime()).toString()),
+				role: 'regular',
+				meta: {
+					invitedBy: classInfo.owner.id
+				}
+			}, function (err, user) {
+				EmailService.sendInviteEmail_NewUser({
+					email: user.email,
+					password_reset_key: user.password_reset_key,
+					classInfo: classInfo
+				}, function (err, data) {
+					return res.json({
+						status: 'OK'
+					});
+				});
+			});
+		} else {
+			EmailService.sendInviteEmail_OldUser({
+				email: email,
 				classInfo: classInfo
 			}, function (err, data) {
 				return res.json({
@@ -55,7 +67,7 @@ module.exports = (function(){
 					data: user
 				});
 			});
-		});
+		}
 	}
 
 	function trackr (req, res) {

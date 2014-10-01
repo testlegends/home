@@ -1,0 +1,47 @@
+<table cellspacing="0" cellpadding="0" style="padding:30px 10px;background:#eee;width:100%;font-family:arial">
+
+  <tbody>
+    <tr>
+      <td>
+        <table align="center" cellspacing="0" style="max-width:650px;min-width:320px">
+          <tbody>
+            <tr>
+              <td style="text-align:left;padding-bottom:14px">
+                <img style="height:26px" align="left" alt="logo" src="https://www.testlegends.com/images/email/logo.png">
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="background:#fff;border:1px solid #e4e4e4;padding:50px 30px">
+
+                <table align="left">
+                  <tbody>
+                    <tr>
+                      <td style="color:#666;font-size:20px;font-weight:bold;font-family:arial">
+                        Hi there!
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td style="color:#666;font-size:14px;line-height:20px;font-family:arial">
+                        <p>You've been invited by <%= classInfo.owner.name %> (<%= classInfo.owner.email %>) to join a TestLegends Adventure in
+                            <b><%= classInfo.name %></b>.  Click the link below to sign up and start the adventure!</p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <!-- <a href="https://leejefon.local:1336/class/<%= classInfo.id %>">Go to Class</a> -->
+                            <a href="https://build.testlegends.com/class/<%= classInfo.id %>">Go to Class</a>
+                        </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
