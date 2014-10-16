@@ -19,6 +19,7 @@
     <% /* HACK: Need this for JavaScripts in angular partials */ %>
     <% /* https://groups.google.com/forum/#!topic/angular/H4haaMePJU0 */ %>
 	<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+    <%- partial('../partials/heap-analytics') %>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 
         <div id="bottom">
             <%- body %>
-            <%- partial('../partials/google_analytics') %>
+            <%- partial('../partials/google-analytics') %>
         </div>
     </div>
 </body>
