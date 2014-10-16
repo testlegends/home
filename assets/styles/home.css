@@ -267,7 +267,7 @@ button:hover {
 
 /*------------------logo------------------*/
 .logo {
-    padding: 1em;
+    padding: 0.7em 9em;
 }
 
 .logo_icon {
@@ -299,7 +299,7 @@ button:hover {
 #main {
     height: 100%;
     text-align: center;
-    margin-top: 4%;
+    margin-top: 6%;
 }
 
 #left_section {

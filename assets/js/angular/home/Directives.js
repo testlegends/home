@@ -35,6 +35,10 @@ define([
                             window.location.href = '/share?refCode=' + data.code + '&email=' + $scope.email
                         });
                     };
+
+                    $scope.gotoBuild = function () {
+                        window.location.href = 'https://build.testlegends.com';
+                    };
                 }],
                 link: function (scope) {
                     adventurers.visited($location.search().ref, function (data) { });
