@@ -1,7 +1,7 @@
 <%- Html.tag('h2', 'Login', { id: 'title' }) %>
 
 <%- Form.create('User', { method: 'POST' }) %>
-<%- Form.input('email', { placeholder: 'E-mail' }) %>
+<%- Form.input('email', { placeholder: 'E-mail', value: '' }) %>
 <%- Form.input('password', { placeholder: 'Password' }) %>
 <%- Form.end('Login') %>
 
