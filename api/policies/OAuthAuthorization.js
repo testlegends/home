@@ -18,8 +18,9 @@ module.exports = Server.authorization(function (clientId, redirectURI, done) {
 }, function (client, user, done) {
     var TestLegendsAppID = '536c7df8fe3a9bf0fa000216';
     var TestLegendsBuildID = '53562b9335e2e5c84c0001fa';
+    var VersalID = '545061a8925a4d23af0018cc';
 
-    if (client.id === TestLegendsBuildID || client.id === TestLegendsAppID) {
+    if (client.id === TestLegendsBuildID || client.id === TestLegendsAppID || client.id === VersalID) {
         return done(null, true);
     }
 
