@@ -57,11 +57,11 @@ module.exports = (function(){
     }));
 
     server.grant(OAuth2orize.grant.token(function(client, user, ares, done) {
-        var token = uid(100);
+        var token = uid(16);
         AccessToken.create({
             token: token,
             userId: user.id,
-            clientId: client.clientId
+            clientId: client.id
         }, function(err, accessToken) {
             if (err) { return done(err); }
             done(null, token);
@@ -74,7 +74,7 @@ module.exports = (function(){
             if (client.id !== authCode.clientId) { return done(null, false); }
             if (redirectURI !== authCode.redirectURI) { return done(null, false); }
 
-            var token = uid(100);
+            var token = uid(16);
             AccessToken.create({
                 token: token,
                 userId: authCode.userId,
@@ -100,10 +100,9 @@ module.exports = (function(){
                 if (err) { return done(null, err); }
                 if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect User'}); }
                 bcrypt.compare(password, user.password, function (err, res) {
-                    if (!res) return done(null, false, { message: 'Invalid Password'});
+                    if (!res) return done(null, false, { message: 'Invalid Password' });
 
-                    //Everything validated, return the token
-                    var token = uid(100);
+                    var token = uid(16);
                     AccessToken.create({
                         token: token,
                         userId: user.id,
@@ -127,7 +126,7 @@ module.exports = (function(){
                 return done(null, false);
             }
 
-            var token = uid(100);
+            var token = uid(16);
             //Pass in a null for user id since there is no user with this grant type
             AccessToken.create({
                 token: token,
